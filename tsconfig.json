@@ -21,7 +21,8 @@
             }
         ],
         "paths": {
-            "@/*": ["./src/*"]
+            "@/*": ["./src/*"],
+            "@inquiry/*": ["./src/app/more/inquiry/*"] // 추후에 문의 관련된 컴포넌트의 경로 수정은 여기서 한다.
         }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
