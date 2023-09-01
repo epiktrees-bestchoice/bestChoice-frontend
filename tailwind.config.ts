@@ -8,14 +8,6 @@ const config: Config = {
         './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     ],
     theme: {
-        screens: {
-            // => @media (min-width: 640px) { ... }
-            sm: '640px',
-            // => @media (min-width: 768px) { ... }
-            md: '768px',
-            // => @media (min-width: 1024px) { ... }
-            lg: '1024px',
-        },
         colors: {
             // 여기어때 메인 컬러
             'main-red': '#f7323f',
