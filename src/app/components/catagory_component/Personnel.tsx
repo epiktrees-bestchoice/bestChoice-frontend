@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import RoomCataCSS from '@/app/styles/RoomCata.module.scss'
+import style from '@/app/styles/RoomCata.module.scss'
 
 export default function Personnel() {
     let [Count, setCount] = useState(1)
 
     return (
-        <section className={RoomCataCSS.personnel_box}>
+        <section className={style.personnel_box}>
             <strong>인원</strong>
             <div>
                 <button

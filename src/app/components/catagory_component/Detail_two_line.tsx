@@ -1,11 +1,11 @@
-import RoomCataCSS from '@/app/styles/RoomCata.module.scss'
+import style from '@/app/styles/RoomCata.module.scss'
 
 export default function Detail_two_line() {
     return (
         <>
-            <section className={RoomCataCSS.detail_checkbox}>
-                <strong className={RoomCataCSS.detail_title}>호텔 유형</strong>
-                <ul className={RoomCataCSS.detail_two_line_list_box}>
+            <section className={style.detail_checkbox}>
+                <strong className={style.detail_title}>호텔 유형</strong>
+                <ul className={style.detail_two_line_list_box}>
                     <li>
                         <input id="booking2" type="checkbox"></input>
                         <label htmlFor="booking2">예약 가능</label>

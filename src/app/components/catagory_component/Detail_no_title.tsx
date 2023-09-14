@@ -1,8 +1,8 @@
-import RoomCataCSS from '@/app/styles/RoomCata.module.scss'
+import style from '@/app/styles/RoomCata.module.scss'
 
 export default function Detail_no_title() {
     return (
-        <section className={RoomCataCSS.detail_checkbox}>
+        <section className={style.detail_checkbox}>
             <ul>
                 <li>
                     <input id="booking1" type="checkbox"></input>

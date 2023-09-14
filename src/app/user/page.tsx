@@ -1,13 +1,13 @@
 'use client'
 import Link from 'next/link'
-import login_style from '@/app/styles/login.module.scss'
+import style from '@/app/styles/login.module.scss'
 import { useState } from 'react'
 import '@/public/fonts/style.css'
 
 function Logo() {
     return (
-        <div className={login_style.title_logo}>
-            <strong className={login_style.logo}>
+        <div className={style.title_logo}>
+            <strong className={style.logo}>
                 <Link href="/">여기어때.</Link>
             </strong>
         </div>
@@ -21,7 +21,7 @@ function SnsBtn_box() {
         'Facebook으',
     ])
     return (
-        <div className={login_style.snsBtn_box}>
+        <div className={style.snsBtn_box}>
             <Btn
                 title={LoginSNS[0]}
                 bg_color="rgb(252,229,30)"
@@ -35,7 +35,7 @@ function SnsBtn_box() {
 function Btn(props: { title: string; bg_color: string; color: string }) {
     return (
         <button
-            className={login_style.snsBtn}
+            className={style.snsBtn}
             style={{ backgroundColor: props.bg_color, color: props.color }}>
             {props.title}로 로그인
         </button>
@@ -58,7 +58,7 @@ function Input_box() {
 
 function Input(props) {
     return (
-        <div className={login_style.login_input}>
+        <div className={style.login_input}>
             <input
                 type={props.type}
                 name={props.id}
@@ -70,8 +70,8 @@ function Input(props) {
 
 function Space_or() {
     return (
-        <div className={login_style.or_box}>
-            <p className={login_style.space_or}>
+        <div className={style.or_box}>
+            <p className={style.space_or}>
                 <span>또는</span>
             </p>
         </div>
@@ -80,8 +80,8 @@ function Space_or() {
 
 function Login_btn() {
     return (
-        <div className={`${login_style.snsBtn_box} ${login_style.login_btn}`}>
-            <button className={login_style.snsBtn} type="submit">
+        <div className={`${style.snsBtn_box} ${style.login_btn}`}>
+            <button className={style.snsBtn} type="submit">
                 로그인
             </button>
         </div>
@@ -90,17 +90,17 @@ function Login_btn() {
 
 function Login_footer() {
     return (
-        <div className={login_style.footer_box}>
-            <div className={login_style.join_box}>
-                <div className={login_style.textbox}>
+        <div className={style.footer_box}>
+            <div className={style.join_box}>
+                <div className={style.textbox}>
                     <a href="https://www.goodchoice.kr/user/join">
                         <span>비밀번호 재설정</span>
                     </a>
                 </div>
             </div>
 
-            <div className={login_style.join_box}>
-                <div className={login_style.textbox}>
+            <div className={style.join_box}>
+                <div className={style.textbox}>
                     <a href="https://www.goodchoice.kr/user/join">
                         <span>회원가입</span>
                     </a>
@@ -113,8 +113,8 @@ function Login_footer() {
 export default function Login() {
     return (
         <>
-            <main className={login_style.background}>
-                <form className={login_style.form_box}>
+            <main className={style.background}>
+                <form className={style.form_box}>
                     <input type="hidden"></input>
                     <Logo />
                     <SnsBtn_box />
