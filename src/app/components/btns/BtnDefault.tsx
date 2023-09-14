@@ -5,22 +5,9 @@ const BtnDefault = ({ ...props }) => {
     return (
         <button
             disabled={props.disable}
-            className={
-                // `
-                `${style.btnDefault} ${props.disable ? style.disable : ''} ${
-                    props.style == 'sub' ? style.sub : ''
-                }`
-                // ${
-                //     props.sub == 'sub' ? style.sub : ''
-                // }`
-                // `${style.btnDefault} ${props.disabled && style.disabled} ${
-                //     props.sub && style.sub
-                // }`
-
-                // props.disable
-                //     ? `${style.btnDefault} ${style.disabled}`
-                //     : style.btnDefault
-            }>
+            className={`${style.btnDefault} 
+                ${props.disable ? style.disable : ''} 
+                ${props.style == 'sub' ? style.sub : ''}`}>
             {props.text}
         </button>
     )
