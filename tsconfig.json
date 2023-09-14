@@ -1,21 +1,21 @@
 {
     "compilerOptions": {
-         "target": "es5",
-         "lib": ["dom", "dom.iterable", "esnext"],
-         "allowJs": true,
+        "target": "es5",
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "allowJs": true,
         "skipLibCheck": true,
         "strict": false,
-         "noEmit": true,
+        "noEmit": true,
         "esModuleInterop": true,
         "module": "esnext",
         "moduleResolution": "bundler",
         "resolveJsonModule": true,
-         "isolatedModules": true,
-         "jsx": "preserve",
-         "incremental": true,
-         "noFallthroughCasesInSwitch": true,
-         "forceConsistentCasingInFileNames": true,
-         "plugins": [
+        "isolatedModules": true,
+        "jsx": "preserve",
+        "incremental": true,
+        "noFallthroughCasesInSwitch": true,
+        "forceConsistentCasingInFileNames": true,
+        "plugins": [
             {
                 "name": "next"
             }
@@ -23,7 +23,7 @@
         "paths": {
             "@/*": ["./src/*"],
             "@/public/*": ["./public/*"],
-            "@inquiry/*":["./src/app/more/inquiry/*"], // 1대1 문의 컴포넌트 수정하려면 이 path 수정
+            "@inquiry/*": ["./src/app/more/inquiry/*"] // 1대1 문의 컴포넌트 수정하려면 이 path 수정
         }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
