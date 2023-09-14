@@ -9,10 +9,10 @@ export default function Date_choice() {
     const [startDate, endDate] = dateRange
     return (
         <>
-            <div className={style.date_choice_box}>
-                <h3>날짜</h3>
-                <label htmlFor="Date" className={style.btn_date}>
-                    <div className={style.btn_date2}>
+            <div className={style.calendarChoiceBox}>
+                <h3 className={style.calendarDate}>날짜</h3>
+                <label htmlFor="Date" className={style.calendarButton}>
+                    <div className={style.calendarButtonBox}>
                         <DatePicker
                             id="Date"
                             className={style.DatePicker}

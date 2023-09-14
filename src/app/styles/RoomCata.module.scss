@@ -1,7 +1,4 @@
-%pd-L24 {
-    padding-left: 24px;
-}
-%componentbox {
+%componentBox {
     margin-left: 24px;
     padding-top: 27px;
     position: relative;
@@ -21,13 +18,47 @@
     border: 1px solid black;
 }
 
-.date_choice_box {
-    @extend %componentbox;
-    width: 100%;
-
-    h3 {
+.calendar {
+    &ChoiceBox {
+        @extend %componentBox;
+        width: 100%;
+    }
+    &Date {
         font-weight: bold;
         font-size: 18px;
+    }
+    &Button {
+        display: inline-block;
+        position: relative;
+        width: 250px;
+        height: 40px;
+        margin: 13px 0 32px 0;
+        padding: 0 0 0 39px;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 4px;
+
+        background-size: 24px auto;
+        font-size: 18px;
+        line-height: 40px;
+        color: rgba(0, 0, 0, 0.56);
+        text-align: left;
+        box-sizing: border-box;
+        :hover {
+            cursor: pointer;
+        }
+        &Box::after {
+            display: inline-block;
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 3px;
+            width: 32px;
+            height: 32px;
+            background: url(//image.goodchoice.kr/images/web_v3/ico_cal_2.png) 0
+                0 no-repeat;
+
+            background-size: 32px auto;
+        }
     }
 }
 
@@ -36,114 +67,48 @@
     height: 38px;
     outline: none;
     display: flex;
-
     border-radius: 4px;
-
     box-sizing: border-box;
 }
 
-.btn_date {
-    display: inline-block;
-    position: relative;
-    width: 250px;
-    height: 40px;
-    margin: 13px 0 32px 0;
-    padding: 0 0 0 39px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 4px;
-
-    background-size: 24px auto;
-    font-size: 18px;
-    line-height: 40px;
-    color: rgba(0, 0, 0, 0.56);
-    text-align: left;
-    box-sizing: border-box;
-    :hover {
-        cursor: pointer;
+.detail {
+    &Box {
+        margin-top: 24px;
+        padding-left: 24px;
     }
-}
-
-.btn_date2::after {
-    display: inline-block;
-    content: '';
-    position: absolute;
-    top: 4px;
-    left: 3px;
-    width: 32px;
-    height: 32px;
-    background: url(//image.goodchoice.kr/images/web_v3/ico_cal_2.png) 0 0
-        no-repeat;
-
-    background-size: 32px auto;
-}
-
-.detail_div {
-    margin-top: 24px;
-    @extend %pd-L24;
-    .detail_cata_word {
+    &Cata {
         font-weight: bold;
         font-size: 18px;
     }
-}
 
-.detail_title {
-    margin-bottom: 21px;
-    display: block;
-    position: relative;
-    font-weight: bold;
-}
+    &Button {
+        &Box {
+            position: relative;
+            height: 64px;
+            padding: 0 24px;
+        }
 
-.btn_wrap {
-    position: relative;
-    height: 64px;
-    padding: 0 24px;
+        &Reset {
+            @extend %detail_btn;
+            float: left;
+            background: #fff;
+            color: rgb(242, 7, 76);
+        }
 
-    button:nth-child(1) {
-        @extend %detail_btn;
-        float: left;
-        background: #fff;
-        color: rgb(242, 7, 76);
-    }
-
-    button:nth-child(2) {
-        @extend %detail_btn;
-        float: right;
-        background: rgb(242, 7, 76);
-        color: #fff;
+        &Apply {
+            @extend %detail_btn;
+            float: right;
+            background: rgb(242, 7, 76);
+            color: #fff;
+        }
     }
 }
 
-.detail_checkbox {
-    @extend %componentbox;
-
-    il {
-        margin-bottom: 16px;
+.personnel {
+    &Box {
+        @extend %componentBox;
     }
-
-    label {
-        padding: 0 0 0 10px;
-        height: 21px;
-        display: inline-block;
-        background-repeat: no-repeat;
-        background-position: 0 0;
-        font-size: 16px;
-        line-height: 22px;
-        color: rgba(0, 0, 0, 0.56);
-        vertical-align: top;
-    }
-    label:hover {
-        cursor: pointer;
-    }
-
-    input:hover {
-        cursor: pointer;
-    }
-}
-
-.personnel_box {
-    @extend %componentbox;
-
-    span {
+    &Count {
         position: absolute;
         top: 25px;
         right: 90px;
@@ -153,7 +118,7 @@
         color: rgb(229, 16, 72);
     }
 
-    button:first-child {
+    &Minus {
         position: absolute;
         top: 25px;
         right: 135px;
@@ -163,7 +128,7 @@
             50% no-repeat;
         background-size: 20px auto;
     }
-    button:last-child {
+    &Plus {
         position: absolute;
         top: 25px;
         right: 30px;
@@ -176,21 +141,22 @@
     }
 }
 
-.pride_box {
-    @extend %componentbox;
-    span {
-        color: #ea1c51;
+.pride {
+    &Box {
+        @extend %componentBox;
     }
-    .progress_div {
-        text-align: center;
+    &Range {
+        color: #ea1c51;
     }
 }
 
-.bed_type_box {
-    @extend %componentbox;
-    height: 120px;
+.bed {
+    &ComponentBox {
+        @extend %componentBox;
+        height: 120px;
+    }
 
-    strong {
+    &TypeStrong {
         display: block;
         position: relative;
         margin-bottom: 21px;
@@ -199,64 +165,98 @@
         color: rgba(0, 0, 0, 0.56);
     }
 
-    div {
+    &TypeBox {
         text-align: center;
         overflow: hidden;
         width: 304px;
         margin-left: -20px;
     }
 
-    p {
+    &Box {
         display: inline-block;
         float: left;
         width: 25%;
-    }
 
-    input {
-        position: absolute;
-        z-index: -1000;
-        left: -1000px;
-        overflow: hidden;
-        clip: rect(0 0 0 0);
-        height: 1px;
-        width: 1px;
-        margin: -1px;
-        padding: 0;
-        border: 0;
-    }
+        &Input {
+            position: absolute;
+            z-index: -1000;
+            left: -1000px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            width: 1px;
+            margin: -1px;
+            padding: 0;
+            border: 0;
+        }
+        &Label {
+            position: relative;
+            width: 76px;
+            padding: 28px 0 0 0;
+            height: 46px;
+            display: inline-block;
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            font-size: 13px;
+            line-height: normal;
+            color: rgba(0, 0, 0, 0.87);
+            vertical-align: top;
+            cursor: pointer;
+            text-align: center;
+        }
 
-    .label_room1 {
-        position: relative;
-        width: 76px;
-        padding: 28px 0 0 0;
-        height: 46px;
-        display: inline-block;
-        background-repeat: no-repeat;
-        background-position: 0 0;
-        font-size: 13px;
-        line-height: normal;
-        color: rgba(0, 0, 0, 0.87);
-        vertical-align: top;
-        cursor: pointer;
-        text-align: center;
-    }
-
-    .label_room1::after {
-        display: inline-block;
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 50%;
-        width: 48px;
-        height: 24px;
-        margin: 0 0 0 -24px;
-        background: url(//image.goodchoice.kr/images/web_v3/ico_room.png) 0 0
-            no-repeat;
-        background-size: 192px auto;
+        &Label::after {
+            display: inline-block;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 48px;
+            height: 24px;
+            margin: 0 0 0 -24px;
+            background: url(//image.goodchoice.kr/images/web_v3/ico_room.png) 0
+                0 no-repeat;
+            background-size: 192px auto;
+        }
     }
 }
 
-.detail_two_line_list_box {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.detail {
+    &Title {
+        margin-bottom: 21px;
+        display: block;
+        position: relative;
+        font-weight: bold;
+    }
+
+    &List {
+        margin-bottom: 16px;
+
+        &Box {
+            @extend %componentBox;
+        }
+
+        &Grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        &Label {
+            padding: 0 0 0 10px;
+            height: 21px;
+            display: inline-block;
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            font-size: 16px;
+            line-height: 22px;
+            color: rgba(0, 0, 0, 0.56);
+            vertical-align: top;
+        }
+        &Label:hover {
+            cursor: pointer;
+        }
+        &Input:hover {
+            cursor: pointer;
+        }
+    }
 }
