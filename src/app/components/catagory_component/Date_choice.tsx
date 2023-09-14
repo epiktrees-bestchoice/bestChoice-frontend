@@ -1,5 +1,5 @@
 import { createContext, use, useContext, useState } from 'react'
-import RoomCataCSS from '../../styles/RoomCata.module.css'
+import RoomCataCSS from '@/app/styles/RoomCata.module.scss'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { ko } from 'date-fns/esm/locale'

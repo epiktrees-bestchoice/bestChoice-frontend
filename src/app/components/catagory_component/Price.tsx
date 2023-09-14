@@ -1,4 +1,4 @@
-import RoomCataCSS from '../../styles/RoomCata.module.css'
+import RoomCataCSS from '@/app/styles/RoomCata.module.scss'
 import Slider from 'rc-slider'
 import Range from 'rc-slider'
 import 'rc-slider/assets/index.css'

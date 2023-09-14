@@ -1,8 +1,8 @@
 'use client'
 import Link from 'next/link'
-import login_style from '../styles/login.module.css'
+import login_style from '@/app/styles/login.module.scss'
 import { useState } from 'react'
-import '../../../public/fonts/style.css'
+import '@/public/fonts/style.css'
 
 function Logo() {
     return (
@@ -116,12 +116,10 @@ export default function Login() {
             <main className={login_style.background}>
                 <form className={login_style.form_box}>
                     <input type="hidden"></input>
-
                     <Logo />
                     <SnsBtn_box />
                     <Space_or />
                     <Input_box />
-
                     <Login_btn />
                     <Login_footer />
                 </form>

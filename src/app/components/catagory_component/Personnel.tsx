@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import RoomCataCSS from '../../styles/RoomCata.module.css'
+import RoomCataCSS from '@/app/styles/RoomCata.module.scss'
 
 export default function Personnel() {
     let [Count, setCount] = useState(1)

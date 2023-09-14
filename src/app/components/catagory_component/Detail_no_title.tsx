@@ -1,4 +1,4 @@
-import RoomCataCSS from '../../styles/RoomCata.module.css'
+import RoomCataCSS from '@/app/styles/RoomCata.module.scss'
 
 export default function Detail_no_title() {
     return (
