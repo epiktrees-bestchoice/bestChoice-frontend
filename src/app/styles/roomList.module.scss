@@ -1,10 +1,9 @@
-$pt-yellow: rgb(255, 167, 38);
-$pt-green: rgb(22, 141, 133);
+@use './styles/scss' as *;
 
 .roomList {
     &Item {
         padding: 16px;
-        background-color: rgba(254, 251, 245, 1);
+        background-color: rgb(254, 251, 245);
         border-bottom: 1px solid rgba(0, 0, 0, 0.08);
         position: relative;
         overflow: hidden;
@@ -39,9 +38,7 @@ $pt-green: rgb(22, 141, 133);
                 .info {
                     display: flex;
                     flex-direction: column;
-
                     gap: 4px;
-
                     &Tit {
                         font-size: 22px;
                         line-height: 1;
@@ -54,7 +51,7 @@ $pt-green: rgb(22, 141, 133);
                     &Score {
                         font-size: 18px;
                         line-height: 19px;
-                        color: $pt-yellow;
+                        color: $yellow;
                         em {
                             display: inline-block;
                             height: 17px;
@@ -62,7 +59,7 @@ $pt-green: rgb(22, 141, 133);
                             position: relative;
                             top: -1px;
                             border-radius: 4px;
-                            background: $pt-yellow;
+                            background: $yellow;
                             font-size: 14px;
                             line-height: 15px;
                             color: #fff;
@@ -74,7 +71,7 @@ $pt-green: rgb(22, 141, 133);
                         line-height: 19px;
                     }
                     &Evt {
-                        color: $pt-green;
+                        color: $green;
                         font-size: 18px;
                         line-height: 1.4;
                     }
@@ -94,7 +91,7 @@ $pt-green: rgb(22, 141, 133);
                             top: -1px;
                             padding: 0 3px;
                             font-size: 14px;
-                            background-color: rgba(248, 113, 111, 1);
+                            background-color: $red-light;
                             color: #fff;
                             vertical-align: bottom;
                         }
@@ -102,7 +99,7 @@ $pt-green: rgb(22, 141, 133);
                             color: rgba(0, 0, 0, 1);
                             font-weight: bold;
                             &.pink {
-                                color: rgba(248, 113, 111, 1);
+                                color: $red-light;
                             }
                         }
                     }

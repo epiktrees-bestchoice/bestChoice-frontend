@@ -1,6 +1,13 @@
-$bg-main: #f7323f;
+@use '../../styles/scss' as *;
 
-.top{
-    background: $bg-main;min-height:141px;
-    &Tit{padding:21px 0 0 31px;font-size:38px;font-weight:normal;letter-spacing:-1px;color:#fff;}
+.top {
+    background: $main-color;
+    min-height: 141px;
+    &Tit {
+        padding: 21px 0 0 31px;
+        font-size: 38px;
+        font-weight: normal;
+        letter-spacing: -1px;
+        color: #fff;
+    }
 }

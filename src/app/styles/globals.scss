@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@use './scss/' as *;
 
 @font-face {
     font-family: 'yg-jalnan';
@@ -17,35 +15,11 @@
     font-style: normal;
 }
 
-:root {
-    --foreground-rgb: 0, 0, 0;
-    --background-start-rgb: 214, 219, 220;
-    --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --foreground-rgb: 255, 255, 255;
-        --background-start-rgb: 0, 0, 0;
-        --background-end-rgb: 0, 0, 0;
-    }
-}
-
-body {
-    color: rgb(var(--foreground-rgb));
-    background: linear-gradient(
-            to bottom,
-            transparent,
-            rgb(var(--background-end-rgb))
-        )
-        rgb(var(--background-start-rgb));
-}
-
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: 'Pretendard';
+    font-family: 'Pretendard', sans-serif;
 }
 
 html,
@@ -60,6 +34,23 @@ a {
 em {
     font-style: normal;
     font-weight: normal;
+}
+button,
+input {
+    outline: 0;
+    border: none;
+    background: none;
+}
+ul,
+ol,
+li {
+    list-style-type: none;
+}
+img {
+    max-width: 100%;
+}
+iframe {
+    border: 0;
 }
 .blind {
     position: absolute !important;
@@ -87,21 +78,18 @@ em {
     padding: 70px 0 120px;
     flex-grow: 1;
     flex-shrink: 0;
+    @include tablet {
+        padding: 60px 0;
+    }
 }
 
 .inner {
     margin: 0 auto;
     width: 1024px;
+    @include tablet {
+        width: 100%;
+    }
 }
 .main {
     padding: 0 31px;
-}
-
-@media (max-width: 1024px) {
-    .content {
-        padding: 60px 0;
-    }
-    .inner {
-        width: 100%;
-    }
 }

@@ -1,3 +1,5 @@
+@use '../../styles/scss/' as *;
+
 .footer {
     position: relative;
     padding: 63px 31px 40px;
@@ -7,6 +9,10 @@
     line-height: 20px;
     &Wrap {
         margin: auto;
+        width: $tablet-width;
+        @include tablet {
+            width: 100%;
+        }
     }
     &Link {
         display: flex;
@@ -41,11 +47,5 @@
         display: inline-block;
         text-align: center;
         width: 24px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .footerWrap {
-        width: 1024px;
     }
 }
