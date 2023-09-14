@@ -2,15 +2,21 @@ import style from '@/app/styles/RoomCata.module.scss'
 
 export default function Detail_no_title() {
     return (
-        <section className={style.detail_checkbox}>
+        <section className={style.detailListBox}>
             <ul>
-                <li>
+                <li className={style.detailList}>
                     <input id="booking1" type="checkbox"></input>
-                    <label htmlFor="booking1">예약 가능</label>
+                    <label className={style.detailListLabel} htmlFor="booking1">
+                        예약 가능
+                    </label>
                 </li>
-                <li>
+                <li className={style.detailList}>
                     <input id="promotion2" type="checkbox"></input>
-                    <label htmlFor="promotion2">프로모션</label>
+                    <label
+                        className={style.detailListLabel}
+                        htmlFor="promotion2">
+                        프로모션
+                    </label>
                 </li>
             </ul>
         </section>

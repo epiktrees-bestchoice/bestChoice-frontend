@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
@@ -46,7 +48,6 @@ export const navLinks = [
 ]
 
 const Header = () => {
-    // 로그인 페이지에서 Header 컴포넌트 가리기
     const pathname = usePathname()
     if (pathname === '/user') return null
 

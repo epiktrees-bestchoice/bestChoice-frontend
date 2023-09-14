@@ -7,47 +7,66 @@
     position: relative;
 }
 
-.title_logo {
-    text-align: center;
-    margin-bottom: 16px;
-}
 .logo {
-    a {
-        text-decoration: none;
-        color: #f7323f;
-        font-size: 24px;
-        font-family: 'best_choice';
+    text-decoration: none;
+    color: #f7323f;
+    font-size: 24px;
+    font-family: 'best_choice';
+
+    &Box {
+        text-align: center;
+        margin-bottom: 16px;
     }
 }
 
-.snsBtn_box {
+.snsButtonBox {
     display: flex;
     flex-direction: column;
-    .snsBtn {
-        padding: 0px 91px;
-        height: 56px;
-        border-radius: 5px;
-        margin-bottom: 8px;
-        font-size: 16px;
-        border: none;
-        color: white;
-        :hover {
-            cursor: pointer;
-        }
+}
+
+.snsButton {
+    padding: 0px 91px;
+    height: 56px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    border: none;
+    color: white;
+    :hover {
+        cursor: pointer;
     }
 }
 
-.or_box {
-    position: relative;
+.loginInput {
+    width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+    border: none;
+    font-size: 15px;
+    outline: none;
+
+    &Box {
+        width: 100%;
+        padding: 0px 16px 0px 46px;
+        box-sizing: border-box;
+        border: 1px solid black;
+        border-radius: 4px;
+        margin-bottom: 8px;
+        height: 48px;
+    }
 }
 
-.space_or {
-    height: 56px;
-    margin-bottom: 8px;
-    box-sizing: border-box;
-    margin: 0px 0px 8px 0px;
-
-    span {
+.or {
+    &Box {
+        position: relative;
+    }
+    &Space {
+        height: 56px;
+        margin-bottom: 8px;
+        box-sizing: border-box;
+        margin: 0px 0px 8px 0px;
+    }
+    &Span {
         display: inline-block;
         position: absolute;
         top: 0;
@@ -62,13 +81,12 @@
         justify-content: center;
         align-items: center;
         display: flex;
-
         font-size: 16px;
         line-height: 40px;
     }
 }
 
-.space_or::after {
+.orSpace::after {
     content: '';
     position: absolute;
     top: 50%;
@@ -78,71 +96,49 @@
     background: rgba(0, 0, 0, 0.08);
 }
 
-.login_input {
-    width: 100%;
-    padding: 0px 16px 0px 46px;
-    box-sizing: border-box;
-    border: 1px solid black;
-    border-radius: 4px;
-    margin-bottom: 8px;
-    height: 48px;
-    input {
-        width: 100%;
-        box-sizing: border-box;
-        height: 100%;
-        border: none;
-        font-size: 15px;
-        outline: none;
-    }
-}
-
-.login_btn {
+.loginButton {
     margin-top: 16px;
     margin-bottom: 8px;
-
-    button {
-        background-color: rgb(255, 0, 85);
-        font-size: 16px;
-        color: white;
-        border: none;
-    }
 }
 
-.join_box {
-    width: 50%;
-    text-align: center;
-    margin: auto;
-
-    height: 56px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    a {
-        text-decoration: none;
-    }
-
-    ::after {
-        display: inline-block;
-        content: '';
-        position: absolute;
-        top: 20px;
-        left: 50%;
-        width: 1px;
-        height: 16px;
-        background: rgba(0, 0, 0, 0.08);
-    }
+.normalLoginButton {
+    background-color: rgb(255, 0, 85);
+    font-size: 16px;
+    color: white;
+    border: none;
 }
 
-.footer_box {
+.footer {
     width: 100%;
     position: relative;
     display: flex;
     flex-direction: row;
+    &Join {
+        width: 50%;
+        text-align: center;
+        margin: auto;
+        height: 56px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        ::after {
+            display: inline-block;
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            width: 1px;
+            height: 16px;
+            background: rgba(0, 0, 0, 0.08);
+        }
+    }
+    &Text {
+        text-decoration: none;
+    }
 }
 
 @media (max-width: 1024px) {
-    .form_box {
+    .formBox {
         width: 100%;
     }
     .background {
