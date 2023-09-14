@@ -5,9 +5,9 @@ const BtnDefault = ({ ...props }) => {
     return (
         <button
             disabled={props.disable}
-            className={`${style.btnDefault} 
-                ${props.disable ? style.disable : ''} 
-                ${props.style == 'sub' ? style.sub : ''}`}>
+            className={`${style.btnDefault} ${
+                props.disable ? style.disable : ''
+            } ${props.style == 'sub' ? style.sub : ''}`}>
             {props.text}
         </button>
     )

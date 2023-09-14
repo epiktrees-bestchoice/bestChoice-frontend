@@ -69,15 +69,11 @@ const RoomDetailPage = (props) => {
                                 </span>
                             </span>
                         </span> */}
-                        <span className={style.btn}>
+                        {exmDetail.soldOut ? (
                             <BtnDefault text="예약 마감" disable={true} />
-                            <BtnDefault
-                                text="숙소 예약"
-                                disable={false}
-                                style="sub"
-                            />
+                        ) : (
                             <BtnDefault text="숙소 예약" disable={false} />
-                        </span>
+                        )}
                     </div>
                 </div>
             </div>
