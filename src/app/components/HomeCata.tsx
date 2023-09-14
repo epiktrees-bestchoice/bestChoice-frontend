@@ -38,12 +38,7 @@ const HomeCata = () => {
                                 href={`/room/${link.id}`}
                                 className={style.itemLink}>
                                 <span className={style.boxImg}>
-                                    <img
-                                        src={link.icon}
-                                        width="432"
-                                        height="432"
-                                        alt=""
-                                    />
+                                    <img src={link.icon} alt="" />
                                 </span>
                                 <span className={style.boxTxt}>
                                     {link.name}

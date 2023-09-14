@@ -1,6 +1,6 @@
 import style from '@/app/styles/RoomCata.module.scss'
 
-export default function Detail_btn() {
+export default function DetailButton() {
     return (
         <>
             <div className={style.detailBox}>

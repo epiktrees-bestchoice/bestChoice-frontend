@@ -1,4 +1,4 @@
-import style from '@/app/styles/login.module.scss'
+import style from '@/app/styles/user.module.scss'
 import Link from 'next/link'
 import { useState } from 'react'
 import '@/public/fonts/style.css'
@@ -15,7 +15,7 @@ function Logo() {
     )
 }
 
-function SnsBtn_box() {
+function SnsButtonBox() {
     let [LoginSNS, setLoginSNS] = useState<string[]>([
         ' 카카오톡으',
         ' Google',
@@ -23,17 +23,20 @@ function SnsBtn_box() {
     ])
     return (
         <div className={style.snsButtonBox}>
-            <Btn
+            <Button
                 title={LoginSNS[0]}
                 bg_color="rgb(252,229,30)"
-                color="black"></Btn>
-            <Btn title={LoginSNS[1]} bg_color="#E8E7E7" color="black"></Btn>
-            <Btn title={LoginSNS[2]} bg_color="blue" color="white"></Btn>
+                color="black"></Button>
+            <Button
+                title={LoginSNS[1]}
+                bg_color="#E8E7E7"
+                color="black"></Button>
+            <Button title={LoginSNS[2]} bg_color="blue" color="white"></Button>
         </div>
     )
 }
 
-function Btn(props: { title: string; bg_color: string; color: string }) {
+function Button(props: { title: string; bg_color: string; color: string }) {
     return (
         <button
             className={style.snsButton}
@@ -43,7 +46,7 @@ function Btn(props: { title: string; bg_color: string; color: string }) {
     )
 }
 
-function Input_box() {
+function InputBox() {
     return (
         <div>
             <Input
@@ -70,7 +73,7 @@ function Input(props) {
     )
 }
 
-function Space_or() {
+function SpaceOr() {
     return (
         <div className={style.orBox}>
             <p className={style.orSpace}>
@@ -80,7 +83,7 @@ function Space_or() {
     )
 }
 
-function Login_btn() {
+function LoginButton() {
     return (
         <div className={`${style.snsButtonBox} ${style.loginButton}`}>
             <button
@@ -92,7 +95,7 @@ function Login_btn() {
     )
 }
 
-function Login_footer() {
+function LoginFooter() {
     return (
         <div className={style.footer}>
             <div className={style.footerJoin}>
@@ -118,13 +121,4 @@ function Login_footer() {
     )
 }
 
-export {
-    Login_footer,
-    Login_btn,
-    Space_or,
-    Input,
-    Input_box,
-    Logo,
-    SnsBtn_box,
-    Btn,
-}
+export { LoginFooter, LoginButton, SpaceOr, InputBox, Logo, SnsButtonBox }
