@@ -6,8 +6,8 @@
     width: 100%;
     z-index: 999;
     .gnb {
-        @include flex(normal, center);
-        padding: 17px 31px;
+        @include flex(center, center);
+        padding: 13px 31px;
         position: relative;
         margin: 0 auto;
         width: 1024px;
