@@ -4,6 +4,7 @@ import style from '@/app/components/btns/btn.module.scss'
 const BtnDefault = ({ ...props }) => {
     return (
         <button
+            type="button"
             disabled={props.disable}
             className={`${style.btnDefault} ${
                 props.disable ? style.disable : ''
