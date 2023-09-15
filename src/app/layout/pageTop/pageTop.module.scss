@@ -3,8 +3,16 @@
 .top {
     background: $main-color;
     min-height: 141px;
+    .inner {
+        padding: 0 31px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin: 0 auto;
+        width: 1024px;
+    }
     &Tit {
-        padding: 21px 0 0 31px;
+        padding: 21px 0 0 0px;
         font-size: 38px;
         font-weight: normal;
         letter-spacing: -1px;
