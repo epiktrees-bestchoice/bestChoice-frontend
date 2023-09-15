@@ -1,4 +1,6 @@
-import RoomSidebar from '@/app/layout/roomSidebar/page'
+'use client'
+
+import RoomCata from '@/app/room/RoomCata'
 import RoomList from '@/app/room/RoomList'
 import RoomListSort from '@/app/room/RoomListSort'
 
@@ -8,7 +10,7 @@ export default function Room() {
     return (
         <div className={`inner ${style.room}`}>
             <div className={style.roomSide}>
-                <RoomSidebar></RoomSidebar>
+                <RoomCata />
             </div>
             <div>
                 <RoomListSort />

@@ -1,6 +1,6 @@
 import style from '@/app/styles/RoomCata.module.scss'
 
-export default function Bed_type() {
+export default function BedType() {
     return (
         <section className={style.bedComponentBox}>
             <strong className={style.bedTypeStrong}>베드 타입</strong>

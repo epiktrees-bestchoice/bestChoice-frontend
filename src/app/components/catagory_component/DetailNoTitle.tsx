@@ -1,6 +1,6 @@
 import style from '@/app/styles/RoomCata.module.scss'
 
-export default function Detail_no_title() {
+export default function DetailNoTitle() {
     return (
         <section className={style.detailListBox}>
             <ul>

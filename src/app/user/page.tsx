@@ -1,13 +1,13 @@
 'use client'
-import style from '@/app/styles/login.module.scss'
+import style from '@/app/styles/user.module.scss'
 import '@/public/fonts/style.css'
 import {
-    Login_footer,
-    Login_btn,
-    Space_or,
-    Input_box,
+    LoginFooter,
+    LoginButton,
+    SpaceOr,
+    InputBox,
     Logo,
-    SnsBtn_box,
+    SnsButtonBox,
 } from '@/app/user/UserComponent'
 
 export default function Login() {
@@ -17,11 +17,11 @@ export default function Login() {
                 <form className={style.formBox}>
                     <input type="hidden"></input>
                     <Logo />
-                    <SnsBtn_box />
-                    <Space_or />
-                    <Input_box />
-                    <Login_btn />
-                    <Login_footer />
+                    <SnsButtonBox />
+                    <SpaceOr />
+                    <InputBox />
+                    <LoginButton />
+                    <LoginFooter />
                 </form>
             </main>
         </>

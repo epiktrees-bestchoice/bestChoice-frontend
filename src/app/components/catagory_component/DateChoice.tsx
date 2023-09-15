@@ -1,10 +1,12 @@
-import { createContext, use, useContext, useState } from 'react'
+'use client'
+
+import { useState } from 'react'
 import style from '@/app/styles/RoomCata.module.scss'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { ko } from 'date-fns/esm/locale'
 
-export default function Date_choice() {
+export default function DateChoice() {
     const [dateRange, setDateRange] = useState([new Date(), null])
     const [startDate, endDate] = dateRange
     return (

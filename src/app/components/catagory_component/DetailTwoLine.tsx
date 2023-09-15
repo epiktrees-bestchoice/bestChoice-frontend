@@ -1,6 +1,6 @@
 import style from '@/app/styles/RoomCata.module.scss'
 
-export default function Detail_two_line() {
+export default function DetailTwoLine() {
     return (
         <>
             <section className={style.detailListBox}>
