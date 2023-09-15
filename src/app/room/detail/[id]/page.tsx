@@ -1,6 +1,6 @@
 import React from 'react'
 import style from '@/app/room/room.module.scss'
-import BtnDefault from '@/app/components/btns/BtnDefault'
+import ButtonDefault from '@/app/components/btns/ButtonDefault'
 
 const RoomDetailPage = (props) => {
     const params = props.params.id
@@ -69,15 +69,11 @@ const RoomDetailPage = (props) => {
                                 </span>
                             </span>
                         </span> */}
-                        <span className={style.btn}>
-                            <BtnDefault text="예약 마감" disable={true} />
-                            <BtnDefault
-                                text="숙소 예약"
-                                disable={false}
-                                style="sub"
-                            />
-                            <BtnDefault text="숙소 예약" disable={false} />
-                        </span>
+                        {exmDetail.soldOut ? (
+                            <ButtonDefault text="예약 마감" disable={true} />
+                        ) : (
+                            <ButtonDefault text="숙소 예약" disable={false} />
+                        )}
                     </div>
                 </div>
             </div>
