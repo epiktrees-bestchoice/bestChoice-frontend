@@ -1,0 +1,62 @@
+@use '../../styles/scss/' as *;
+
+.select {
+    position: relative;
+    height: 32px;
+    padding: 0 36px 0 12px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.04);
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 32px;
+    color: #fff;
+    width: fit-content;
+    &Label {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        .icon {
+            position: absolute;
+            right: -30px;
+        }
+    }
+    &Option {
+        display: none;
+        position: absolute;
+        overflow: hidden;
+        z-index: 200;
+        top: 45px;
+        left: 0;
+        width: max-content;
+        border-radius: 4px;
+        border-right: 1px solid rgba(0, 0, 0, 0.06);
+        background: #fff;
+        box-sizing: border-box;
+        box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
+        padding: 15px 32px;
+        gap: 30px;
+        transition: all 0.5s ease;
+        &.on {
+            transition: all 0.5s ease;
+            @include flex(center, center);
+        }
+        .item {
+            flex-shrink: 0;
+            padding: 0 0;
+            height: 27px;
+            line-height: 27px;
+            font-size: 15px;
+            &.on {
+                a {
+                    color: $pink;
+                }
+            }
+            a {
+                display: block;
+                color: rgba(0, 0, 0, 0.78);
+            }
+        }
+    }
+}
