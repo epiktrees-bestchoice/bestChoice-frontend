@@ -93,3 +93,34 @@ iframe {
 .main {
     padding: 0 31px;
 }
+.scroll {
+    background-color: $white;
+    color: $black-light;
+    transition: all 0.4s;
+    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.1);
+    .gnb {
+        &Logo a {
+            color: $main-color;
+        }
+        &CataLink {
+            color: $black-light;
+            &:hover {
+                color: $black-light;
+            }
+        }
+        .btn {
+            &SrchIcon {
+                fill: $black-light;
+            }
+            &CancelIcon {
+                fill: $black-light;
+            }
+        }
+        .srchBarWrap input {
+            color: $black-light;
+            &::placeholder {
+                color: #a1a1a1;
+            }
+        }
+    }
+}

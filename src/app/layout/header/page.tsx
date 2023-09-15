@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 
 import SearchIcon from '@mui/icons-material/Search'
@@ -49,18 +49,24 @@ export const navLinks = [
 
 const Header = () => {
     const pathname = usePathname()
+    const headerRef = useRef(null)
     if (pathname === '/user') return null
 
     // 스크롤시 header 스타일 변경
-
-    const [scrPosition, setscrPosition] = useState(0)
-    const checkScroll = () => {
-        setscrPosition(window.scrollY || document.documentElement.scrollTop)
-    }
     useEffect(() => {
-        window.addEventListener('scroll', checkScroll)
+        const stickyHeader = () => {
+            if (
+                window.scrollY > 60 ||
+                document.documentElement.scrollTop > 60
+            ) {
+                headerRef.current.classList.add(style['scroll'])
+            } else {
+                headerRef.current.classList.remove(style['scroll'])
+            }
+        }
+        window.addEventListener('scroll', stickyHeader)
         return () => {
-            window.removeEventListener('scroll', checkScroll)
+            window.removeEventListener('scroll', stickyHeader)
         }
     }, [])
 
@@ -71,12 +77,7 @@ const Header = () => {
     }
 
     return (
-        <header
-            className={
-                scrPosition < 60
-                    ? style.header
-                    : `${style.header} ${style.scroll}`
-            }>
+        <header ref={headerRef} className={style.header}>
             <div className={style.gnb}>
                 <h1 className={style.gnbLogo}>
                     <Link href="/">여기어때.</Link>
