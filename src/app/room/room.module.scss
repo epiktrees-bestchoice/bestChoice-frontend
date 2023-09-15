@@ -7,6 +7,25 @@
     &Side {
         margin: 0 32px 0 31px;
     }
+    &Nav {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+        margin: 0 31px;
+        &Item {
+            display: inline-block;
+            width: auto !important;
+            height: 72px;
+            padding: 0 24px 0 0;
+            font-size: 18px;
+            line-height: 72px;
+            color: rgba(0, 0, 0, 0.38);
+            box-sizing: border-box;
+            text-align: center;
+            &.on {
+                font-weight: bold;
+                color: $pink;
+            }
+        }
+    }
     &List {
         padding: 23px 0 0 0;
         &Item {
