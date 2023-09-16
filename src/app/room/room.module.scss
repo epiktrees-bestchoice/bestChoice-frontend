@@ -142,9 +142,10 @@
             &Img {
                 flex-shrink: 0;
                 width: 490px;
-                background-color: #e9e9e9;
             }
             &Txt {
+                display: flex;
+                flex-direction: column;
                 flex-shrink: 0;
                 width: 424px;
                 .tit {
@@ -229,6 +230,9 @@
                             }
                         }
                     }
+                }
+                .btn {
+                    margin-top: auto;
                 }
             }
         }
