@@ -1,6 +1,7 @@
 import React from 'react'
 import style from '@/app/room/room.module.scss'
 import ButtonDefault from '@/app/components/btns/ButtonDefault'
+import RoomDetailSlide from '@/app/room/RoomDetailSlide'
 
 const RoomDetailPage = (props) => {
     const params = props.params.id
@@ -27,7 +28,9 @@ const RoomDetailPage = (props) => {
         <div className="content">
             <div className="inner">
                 <div className={style.roomDetail}>
-                    <div className={style.boxImg}></div>
+                    <div className={style.boxImg}>
+                        <RoomDetailSlide />
+                    </div>
                     <div className={style.boxTxt}>
                         <strong className={style.tit}>{exmDetail.name}</strong>
                         <span className={style.info}>
@@ -51,29 +54,19 @@ const RoomDetailPage = (props) => {
                                 </span>
                             </span>
                         </span>
-                        {/* <span className={style.price}>
-                            <span className={style.priceDetail}>
-                                {exmDetail.rentHalf}&nbsp;
-                                <span className={style.bold}>
-                                    {exmDetail.rentHalfPrice}원
-                                </span>
-                            </span>
-                            <span className={style.priceDetail}>
-                                {exmDetail.rentAll}&nbsp;
-                                <span className={style.badge}>
-                                    {exmDetail.rentBedge}
-                                </span>
-                                &nbsp;
-                                <span className={`${style.bold} ${style.pink}`}>
-                                    {exmDetail.rentAllPrice}원
-                                </span>
-                            </span>
-                        </span> */}
-                        {exmDetail.soldOut ? (
-                            <ButtonDefault text="예약 마감" disable={true} />
-                        ) : (
-                            <ButtonDefault text="숙소 예약" disable={false} />
-                        )}
+                        <span className={style.btn}>
+                            {exmDetail.soldOut ? (
+                                <ButtonDefault
+                                    text="예약 마감"
+                                    disable={true}
+                                />
+                            ) : (
+                                <ButtonDefault
+                                    text="숙소 예약"
+                                    disable={false}
+                                />
+                            )}
+                        </span>
                     </div>
                 </div>
             </div>

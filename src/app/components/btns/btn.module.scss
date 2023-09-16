@@ -51,4 +51,17 @@
             color: $pink;
         }
     }
+    &Carousel {
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        cursor: pointer;
+        &.prev {
+            left: -4px;
+        }
+        &.next {
+            right: -4px;
+        }
+    }
 }
