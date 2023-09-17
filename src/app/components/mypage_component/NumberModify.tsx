@@ -1,0 +1,42 @@
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import style from '@/app/my/mypage/mypage.module.scss'
+
+export default function NumberModify({ handle, handler, setPhoneNumber }) {
+    const inputRef = useRef(null)
+
+    function ChangeNumber() {
+        setPhoneNumber(String(inputRef.current.value))
+    }
+
+    return (
+        <div className={style.modifyBox}>
+            <section>
+                <input
+                    ref={inputRef}
+                    className={style.input}
+                    type="text"
+                    placeholder="체크인시 필요한 정보입니다"></input>
+            </section>
+            <div className={style.buttonsBox}>
+                <button
+                    type="button"
+                    className={style.applyButton}
+                    onClick={() => {
+                        ChangeNumber()
+                        handler({ handle })
+                    }}>
+                    수정완료
+                </button>
+                <button
+                    type="button"
+                    className={style.cancelButton}
+                    onClick={() => {
+                        ChangeNumber()
+                        handler({ handle })
+                    }}>
+                    수정취소
+                </button>
+            </div>
+        </div>
+    )
+}

@@ -9,6 +9,8 @@ import SrchBar from '@/app/components/SrchBar'
 
 import style from '@/app/layout/header/header.module.scss'
 
+import LoginSideBar from '../loginSidebar/page'
+
 export const navLinks = [
     // path 수정 필요 - 20230825 by oliv (수정 완료시 주석 삭제)
     {
@@ -50,7 +52,6 @@ export const navLinks = [
 const Header = () => {
     const pathname = usePathname()
     const headerRef = useRef(null)
-    if (pathname === '/user') return null
 
     // 스크롤시 header 스타일 변경
     useEffect(() => {
@@ -75,7 +76,7 @@ const Header = () => {
     const handleSrchBar = () => {
         setsrchBarOpen(!srchBarOpen)
     }
-
+    if (pathname === '/user') return null
     return (
         <header ref={headerRef} className={style.header}>
             <div className={style.gnb}>
@@ -137,6 +138,7 @@ const Header = () => {
                         handleSrchBar={handleSrchBar}
                     />
                 )}
+                <LoginSideBar />
             </div>
         </header>
     )

@@ -1,0 +1,183 @@
+%modbtn {
+    height: 42px;
+    border-radius: 4px;
+    width: 144px;
+    font-size: 15px;
+}
+
+.background {
+    margin: 0px 247.6px;
+    padding-top: 54px;
+    padding-bottom: 50px;
+}
+
+.sideBar {
+    float: left;
+    width: 269px;
+    padding-left: 31px;
+    height: 1150px;
+    .list {
+        margin-bottom: 26px;
+        .a {
+            font-size: 18px;
+            color: rgba(0, 0, 0, 0.56);
+            text-decoration: underline;
+            z-index: 99;
+        }
+        .a:hover {
+            cursor: pointer;
+        }
+    }
+}
+.myInfoBackGround {
+    margin-right: 31px;
+    .topArea {
+        position: relative;
+        padding-top: 137px;
+        padding-left: 207px;
+    }
+    .title {
+        padding-bottom: 43px;
+        display: block;
+        font-size: 18px;
+    }
+    .user {
+        &Img {
+            width: 130px;
+            height: 130px;
+            margin: 0 0 26px 0;
+        }
+        &LoginType {
+            font-weight: bold;
+            color: rgba(0, 0, 0, 0.32);
+            padding-bottom: 42px;
+            font-size: 15px;
+        }
+    }
+    .nickNameBox {
+        position: relative;
+
+        .nickName {
+            display: inline-block;
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+        .userNickName {
+            position: absolute;
+            left: 180px;
+            color: rgba(0, 0, 0, 0.56);
+            font-size: 18px;
+        }
+    }
+    .modifyButton {
+        padding: 10px 60px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 15px;
+        margin-bottom: 50px;
+        &Box {
+            display: block;
+        }
+    }
+    .modifyButton:hover {
+        cursor: pointer;
+    }
+    .modifyBox {
+        .input {
+            width: 374px;
+            box-sizing: border-box;
+            height: 44px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 5px;
+            font-size: 18px;
+            padding: 15px;
+            margin: 15px 10px 33px 0px;
+        }
+        .input::placeholder {
+            color: #cecfce;
+        }
+        .button {
+            height: 44px;
+            border-radius: 4px;
+            width: 100px;
+
+            background-color: rgb(255, 0, 85);
+            font-size: 14px;
+            color: white;
+            border: none;
+        }
+        .button:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.applyButton {
+    @extend %modbtn;
+    margin-right: 30px;
+    background-color: rgb(255, 0, 85);
+    color: white;
+    border: none;
+}
+.applyButton:hover {
+    cursor: pointer;
+}
+
+.cancelButton {
+    @extend %modbtn;
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+}
+.cancelButton:hover {
+    cursor: pointer;
+}
+
+.modifyButtonBoxHide {
+    display: none;
+}
+.modifyButtonBox {
+    display: block;
+}
+
+.buttonsBox {
+    margin-bottom: 50px;
+}
+
+.area {
+    position: relative;
+
+    padding-left: 207px;
+}
+
+.safetyText {
+    color: rgba(0, 0, 0, 0.56);
+    padding-bottom: 14px;
+    font-size: 14px;
+}
+
+.botButton {
+    height: 56px;
+    margin-top: 48px;
+
+    background: none;
+    text-align: left;
+    .p {
+        display: inline-block;
+        padding-top: 23px;
+        font-size: 16px;
+        color: rgba(0, 0, 0, 0.56);
+    }
+    .button {
+        height: auto;
+        margin-top: 0;
+        padding: 0 14px;
+        border: none;
+        background: none;
+        font-size: 16px;
+        text-decoration: underline;
+    }
+    .button:hover {
+        cursor: pointer;
+    }
+}
