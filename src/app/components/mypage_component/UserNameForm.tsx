@@ -13,31 +13,29 @@ export default function UserNameForm() {
             onSubmit={(e) => {
                 OnSubmit(e)
             }}>
-            <section className={style.area}>
+            <section className={style.userNumArea}>
                 <div className={style.nickNameBox}>
-                    <div className={style.nickNameTitle}>
-                        <b className={style.nickName}>예약자 이름</b>
-                        <span className={style.userNickName}>{UserName}</span>
-                        {IsUserNameVisible && (
-                            <div>
-                                <button
-                                    className={style.modifyButton}
-                                    onClick={() => {
-                                        setIsUserNameVisible(false)
-                                    }}>
-                                    수정
-                                </button>
-                            </div>
-                        )}
+                    <b className={style.nickName}>예약자 이름</b>
+                    <span className={style.userNickName}>{UserName}</span>
+                    {IsUserNameVisible && (
+                        <div>
+                            <button
+                                className={style.modifyButton}
+                                onClick={() => {
+                                    setIsUserNameVisible(false)
+                                }}>
+                                수정
+                            </button>
+                        </div>
+                    )}
 
-                        {IsUserNameVisible ? null : (
-                            <UserModify
-                                handle={IsUserNameVisible}
-                                handler={setIsUserNameVisible}
-                                setUserName={setUserName}
-                            />
-                        )}
-                    </div>
+                    {IsUserNameVisible ? null : (
+                        <UserModify
+                            handle={IsUserNameVisible}
+                            handler={setIsUserNameVisible}
+                            setUserName={setUserName}
+                        />
+                    )}
                 </div>
             </section>
         </form>

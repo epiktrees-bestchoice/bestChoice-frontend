@@ -31,7 +31,10 @@ export default function NickNameModify({
                     type="button"
                     className={style.applyButton}
                     onClick={() => {
-                        ChangeName()
+                        if (inputRef.current.value != '') {
+                            ChangeName()
+                        }
+
                         handler({ handle })
                     }}>
                     수정완료

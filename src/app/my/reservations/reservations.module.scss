@@ -1,0 +1,141 @@
+.background {
+    display: grid;
+    grid-template-columns: 238px auto;
+    margin: 54px auto;
+    &Side {
+        margin: 0 32px 0 31px;
+    }
+}
+
+.list {
+    &Box {
+        width: 724px;
+        margin-right: 31px;
+        padding-top: 35px;
+    }
+    &Text {
+        display: block;
+        padding: 0 0 20px 0;
+        font-size: 18px;
+    }
+    &Wrap {
+        box-sizing: border-box;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.reservationDetail {
+    position: relative;
+    margin-bottom: 15px;
+    margin-right: 15px;
+    .buttonDelete {
+        display: inline-block;
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        z-index: 30;
+        width: 24px;
+        height: 24px;
+        border: none;
+        background: url(https://image.goodchoice.kr/images/web_v3/ico_close_2.png)
+            50% 50% no-repeat;
+        background-size: 24px auto;
+        text-indent: -9999px;
+    }
+    .buttonDelete:hover {
+        cursor: pointer;
+    }
+
+    .pic {
+        height: 184px;
+        border-radius: 2px 2px 0 0;
+
+        position: relative;
+
+        width: 100%;
+        .image {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+
+            width: 100%;
+            height: 100%;
+            filter: brightness(50%);
+        }
+    }
+    .product {
+        &Title {
+            display: block;
+            position: relative;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            width: 100%;
+            height: auto;
+            padding: 0;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-top: none;
+            border-bottom: none;
+            border-radius: 0 0 2px 2px;
+            background: none;
+            color: rgba(0, 0, 0, 0.87);
+            text-align: center;
+            box-sizing: border-box;
+            .room {
+                &Name {
+                    display: block;
+                }
+                &Date {
+                    display: block;
+                    padding: 0 0 20px 0;
+                    font-size: 18px;
+                }
+            }
+        }
+        &Title:hover {
+            cursor: pointer;
+        }
+        &State {
+            background: rgb(235, 235, 235);
+            color: rgba(0, 0, 0, 0.87);
+            display: inline-block;
+            margin-bottom: 10px;
+            margin-top: 24px;
+            padding: 1px;
+            font-size: 14px;
+            font-style: normal;
+        }
+    }
+    .rebook {
+        &Button {
+            width: 100%;
+            height: auto;
+            padding-bottom: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-top: none;
+            border-radius: 0 0 4px 4px;
+            background: #fff;
+            text-align: center;
+        }
+        &Text {
+            font-size: 16px;
+            line-height: normal;
+            color: #00796b;
+            display: block;
+        }
+        &Text:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.seeMoreButton {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+}

@@ -22,8 +22,10 @@ export default function UserModify({ handle, handler, setUserName }) {
                     type="button"
                     className={style.applyButton}
                     onClick={() => {
+                        if (inputRef.current.value != '') {
+                            ChangeName()
+                        }
                         handler({ handle })
-                        ChangeName()
                     }}>
                     수정완료
                 </button>

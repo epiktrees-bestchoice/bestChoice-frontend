@@ -24,34 +24,31 @@ export default function NickNameForm() {
                         />
                     </div>
                     <p className={style.userLoginType}>
-                        KakaoTalk 회원으로 로그인- 로그인 수단에 따라 변경
+                        KakaoTalk 회원으로 로그인
                     </p>
                 </div>
                 <div className={style.nickNameBox}>
-                    <div className={style.nickNameTitle}>
-                        <b className={style.nickName}>닉네임</b>
-                        <span className={style.userNickName}>{Nickname}</span>
-                        {IsNickNameVisible && (
-                            <div>
-                                <button
-                                    className={style.modifyButton}
-                                    onClick={() => {
-                                        setIsNickNameVisible(false)
-                                    }}>
-                                    수정
-                                </button>
-                            </div>
-                        )}
+                    <b className={style.nickName}>닉네임</b>
+                    <span className={style.userNickName}>{Nickname}</span>
+                    {IsNickNameVisible && (
+                        <div>
+                            <button
+                                className={style.modifyButton}
+                                onClick={() => {
+                                    setIsNickNameVisible(false)
+                                }}>
+                                수정
+                            </button>
+                        </div>
+                    )}
 
-                        {IsNickNameVisible ? null : (
-                            <NickNameModify
-                                handle={IsNickNameVisible}
-                                handler={setIsNickNameVisible}
-                                NickName={Nickname}
-                                setNickName={setNickName}
-                            />
-                        )}
-                    </div>
+                    {IsNickNameVisible ? null : (
+                        <NickNameModify
+                            handle={IsNickNameVisible}
+                            handler={setIsNickNameVisible}
+                            setNickName={setNickName}
+                        />
+                    )}
                 </div>
             </section>
         </form>

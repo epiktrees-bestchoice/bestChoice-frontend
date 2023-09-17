@@ -22,7 +22,9 @@ export default function NumberModify({ handle, handler, setPhoneNumber }) {
                     type="button"
                     className={style.applyButton}
                     onClick={() => {
-                        ChangeNumber()
+                        if (inputRef.current.value != '') {
+                            ChangeNumber()
+                        }
                         handler({ handle })
                     }}>
                     수정완료

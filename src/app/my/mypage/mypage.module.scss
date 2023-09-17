@@ -6,22 +6,21 @@
 }
 
 .background {
-    margin: 0px 247.6px;
-    padding-top: 54px;
-    padding-bottom: 50px;
+    display: grid;
+    grid-template-columns: 238px auto;
+    margin: 54px auto;
+    &Side {
+        margin: 0 32px 0 31px;
+    }
 }
 
 .sideBar {
-    float: left;
-    width: 269px;
-    padding-left: 31px;
-    height: 1150px;
     .list {
         margin-bottom: 26px;
         .a {
             font-size: 18px;
             color: rgba(0, 0, 0, 0.56);
-            text-decoration: underline;
+            text-decoration: none;
             z-index: 99;
         }
         .a:hover {
@@ -34,7 +33,6 @@
     .topArea {
         position: relative;
         padding-top: 137px;
-        padding-left: 207px;
     }
     .title {
         padding-bottom: 43px;
@@ -109,6 +107,9 @@
         .button:hover {
             cursor: pointer;
         }
+        .buttonsBox {
+            margin-bottom: 50px;
+        }
     }
 }
 
@@ -133,33 +134,22 @@
     cursor: pointer;
 }
 
-.modifyButtonBoxHide {
-    display: none;
-}
-.modifyButtonBox {
-    display: block;
-}
-
-.buttonsBox {
-    margin-bottom: 50px;
-}
-
-.area {
+.userNumArea {
     position: relative;
-
-    padding-left: 207px;
-}
-
-.safetyText {
-    color: rgba(0, 0, 0, 0.56);
-    padding-bottom: 14px;
-    font-size: 14px;
+    .safetyText {
+        color: rgba(0, 0, 0, 0.56);
+        padding-bottom: 14px;
+        font-size: 14px;
+    }
+    .numberBox {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
 }
 
 .botButton {
     height: 56px;
     margin-top: 48px;
-
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
     background: none;
     text-align: left;
     .p {
