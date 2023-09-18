@@ -1,7 +1,7 @@
 import React from 'react'
 
-const RoomSidebar = () => {
-    return <aside>RoomSidebar</aside>
+const RoomSidebar = (props) => {
+    return <aside>{props.children}</aside>
 }
 
 export default RoomSidebar

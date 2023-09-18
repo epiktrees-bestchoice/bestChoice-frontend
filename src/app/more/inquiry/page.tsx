@@ -1,10 +1,11 @@
 'use client'
 // 1:1 문의
-import styles from '@inquiry/inquiry.module.css'
 import React, { useState } from 'react'
-import MyInqury from '@inquiry/components/myInquiry'
-import NewInqury from '@inquiry/components/newInquiry'
-import Tabs from '@inquiry/components/tabs'
+import MyInqury from '@/app/more/inquiry/myInquiry'
+import NewInqury from '@/app/more/inquiry/newInquiry'
+import Tabs from '@/app/components/tabs/Tabs'
+
+import style from '@/app/more/more.module.scss'
 
 function Inquiry() {
     const [selectedIdx, setSelectedIdx] = useState(0)
@@ -14,34 +15,22 @@ function Inquiry() {
     ]
 
     const handleItemClick = (index: number) => {
-        console.log(index)
         setSelectedIdx(index)
     }
 
-    // { items: Items } = items 속성의 객체를 Items 자료형으로 받아온다.
-    // { items } = 함수 안에서 items라는 이름으로 받은 객체를 사용한다.
-
-    const BlowTab = () => {
-        if (selectedIdx === 0) {
-            return <MyInqury />
-        } else {
-            return <NewInqury />
-        }
-    }
-
     return (
-        <div>
-            <div className={styles.align_rt}>
-                <div className={styles.inqury}>
-                    <Tabs
-                        items={items}
-                        selectedIdx={selectedIdx}
-                        itemClick={handleItemClick}
-                    />
-                    <BlowTab />
+        <>
+            <div className={style.inquiry}>
+                <Tabs
+                    items={items}
+                    selectedIdx={selectedIdx}
+                    itemClick={handleItemClick}
+                />
+                <div className={style.tabContent}>
+                    {selectedIdx === 0 ? <MyInqury /> : <NewInqury />}
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

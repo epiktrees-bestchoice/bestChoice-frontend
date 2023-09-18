@@ -1,12 +1,12 @@
 @use '../styles/scss' as *;
 
 .room {
-    display: grid;
-    grid-template-columns: 357px auto;
-    margin: 40px auto;
-    &Side {
-        margin: 0 32px 0 31px;
-    }
+    // display: grid;
+    // grid-template-columns: 357px auto;
+    // margin: 40px auto;
+    // &Side {
+    //     margin: 0 32px 0 31px;
+    // }
     &Nav {
         border-bottom: 1px solid rgba(0, 0, 0, 0.04);
         margin: 0 31px;

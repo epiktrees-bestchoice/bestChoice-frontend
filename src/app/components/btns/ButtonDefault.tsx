@@ -1,10 +1,10 @@
 import React from 'react'
 import style from '@/app/components/btns/btn.module.scss'
 
-const BtnDefault = ({ ...props }) => {
+const ButtonDefault = ({ ...props }) => {
     return (
         <button
-            type="button"
+            type={props.type}
             disabled={props.disable}
             className={`${style.btnDefault} ${
                 props.disable ? style.disable : ''
@@ -14,4 +14,4 @@ const BtnDefault = ({ ...props }) => {
     )
 }
 
-export default BtnDefault
+export default ButtonDefault

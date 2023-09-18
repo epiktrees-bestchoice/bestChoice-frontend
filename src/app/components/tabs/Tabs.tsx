@@ -1,5 +1,5 @@
-import styles from '@inquiry/components/module/tabs.module.css'
-
+import React from 'react'
+import style from '@/app/components/tabs/tabs.module.scss'
 interface Item {
     name: string
     text: string
@@ -10,26 +10,22 @@ interface TabsProps {
     selectedIdx: number
     itemClick: (index: number) => void
 }
-function Tabs(props: TabsProps) {
+const Tabs = (props: TabsProps) => {
     const { items, selectedIdx, itemClick } = props
 
-    const handleItemClick = (index: number) => {
-        itemClick(index)
-    }
-
     return (
-        <div className={styles.tabs}>
+        <div className={style.tab}>
             {items.map((item, index) => (
-                <span
+                <button
                     key={item.name}
                     className={` ${
                         selectedIdx === index
-                            ? `${styles.tab_btnRed}`
-                            : `${styles.tab_btn}`
+                            ? `${style.tabBtnOn}`
+                            : `${style.tabBtn}`
                     }`}
-                    onClick={() => handleItemClick(index)}>
+                    onClick={() => itemClick(index)}>
                     {item.text}
-                </span>
+                </button>
             ))}
         </div>
     )
