@@ -81,6 +81,15 @@ iframe {
     @include tablet {
         padding: 60px 0;
     }
+    &Grid {
+        display: grid;
+        grid-template-columns: 357px auto;
+        margin: 40px auto;
+        padding: 40px 0;
+        &.more {
+            grid-template-columns: 207px auto;
+        }
+    }
 }
 
 .inner {
@@ -92,6 +101,9 @@ iframe {
 }
 .main {
     padding: 0 31px;
+}
+.side {
+    margin: 0 32px 0 31px;
 }
 .scroll {
     background-color: $white;

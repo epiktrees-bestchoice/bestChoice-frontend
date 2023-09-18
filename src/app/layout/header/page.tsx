@@ -23,19 +23,19 @@ export const navLinks = [
     },
     {
         name: '더보기',
-        path: '/more',
+        path: '',
         sub: [
             {
                 name: '공지사항',
-                path: '/',
+                path: '/more/inq',
             },
             {
                 name: '이벤트',
-                path: '/',
+                path: '/more/event',
             },
             {
                 name: '자주 묻는 질문',
-                path: '/',
+                path: '/more/qna',
             },
             {
                 name: '1:1문의',
