@@ -19,7 +19,7 @@ export const navLinks = [
     },
     {
         name: '예약내역',
-        path: '/',
+        path: '/my/reservations',
     },
     {
         name: '더보기',
@@ -35,11 +35,11 @@ export const navLinks = [
             },
             {
                 name: '자주 묻는 질문',
-                path: '/more/qna',
+                path: '/more/inq',
             },
             {
                 name: '1:1문의',
-                path: '/',
+                path: '/more/inq',
             },
         ],
     },
