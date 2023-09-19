@@ -138,7 +138,6 @@ const Header = () => {
                         handleSrchBar={handleSrchBar}
                     />
                 )}
-                <LoginSideBar />
             </div>
         </header>
     )

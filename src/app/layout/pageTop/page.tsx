@@ -1,4 +1,3 @@
-import React from 'react'
 import style from '@/app/layout/pageTop/pageTop.module.scss'
 
 const PageTop = ({ ...props }) => {

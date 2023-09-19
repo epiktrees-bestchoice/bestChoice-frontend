@@ -1,25 +1,23 @@
-'use client'
-
 import React from 'react'
-
-import Used from '@/app/components/booking_component/Used'
-import Booking from '@/app/components/booking_component/Booking'
-
+import List from '@/app/components/booking_component/List'
 import style from '@/app/my/reservations/reservations.module.scss'
 
 function MyReservations() {
+    const used = true
+    const reserve = false
+
     return (
         <div>
             <section className={style.listBox}>
                 <h3 className={style.listText}>예약 내역</h3>
                 <ul className={style.listWrap}>
-                    <Used />
+                    <List isUsed={used} />
                 </ul>
             </section>
             <section className={style.listBox}>
                 <h3 className={style.listText}>이용 내역</h3>
                 <ul className={style.listWrap}>
-                    <Booking />
+                    <List isUsed={reserve} />
                 </ul>
                 <div className={style.seeMoreButton}>
                     더보기

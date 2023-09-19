@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import style from '@/app/my/mypage/mypage.module.scss'
-import UserModify from '@/app/components/mypage_component/UserModify'
+import Modify from '@/app/components/mypage_component/Modify'
 
-export default function UserNameForm() {
+export default function UserInfoForm({ data }) {
     const [IsUserNameVisible, setIsUserNameVisible] = useState(true)
-    const [UserName, setUserName] = useState('변재정')
+    const [inputValue, setInputValue] = useState(data.description)
+
     function OnSubmit(e) {
         e.preventDefault()
     }
@@ -14,9 +15,20 @@ export default function UserNameForm() {
                 OnSubmit(e)
             }}>
             <section className={style.userNumArea}>
-                <div className={style.nickNameBox}>
-                    <b className={style.nickName}>예약자 이름</b>
-                    <span className={style.userNickName}>{UserName}</span>
+                <div
+                    className={`${style.nickNameBox} ${
+                        data.textHandle ? style.nickNameBoxNumberBox : ''
+                    }`}>
+                    <b className={style.nickName}>{data.title}</b>
+                    <span className={style.userNickName}>{inputValue}</span>
+                    {data.textHandle && (
+                        <div className={style.safetyText}>
+                            <p>
+                                개인 정보 보호를 위해 내 정보는 모두 안전하게
+                                암호화됩니다.
+                            </p>
+                        </div>
+                    )}
                     {IsUserNameVisible && (
                         <div>
                             <button
@@ -30,10 +42,10 @@ export default function UserNameForm() {
                     )}
 
                     {IsUserNameVisible ? null : (
-                        <UserModify
+                        <Modify
                             handle={IsUserNameVisible}
                             handler={setIsUserNameVisible}
-                            setUserName={setUserName}
+                            setInputValue={setInputValue}
                         />
                     )}
                 </div>
