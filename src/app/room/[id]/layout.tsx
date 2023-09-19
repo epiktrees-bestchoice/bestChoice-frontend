@@ -7,8 +7,6 @@ export default function RoomLayout(props) {
     return (
         <div className="content">
             <PageTop title={props.params.id} children={<SelectBox />} />
-
-            {/* <Tabs/> */}
             <RoomNav />
             {props.children}
         </div>

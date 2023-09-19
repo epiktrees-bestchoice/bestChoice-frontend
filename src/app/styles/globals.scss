@@ -86,7 +86,7 @@ iframe {
         grid-template-columns: 357px auto;
         margin: 40px auto;
         padding: 40px 0;
-        &.more {
+        &.narrow {
             grid-template-columns: 207px auto;
         }
     }
@@ -104,6 +104,23 @@ iframe {
 }
 .side {
     margin: 0 32px 0 31px;
+    &.nav {
+        padding: 10px 0 0 0;
+        .navItem {
+            display: block;
+            font-size: 18px;
+            color: rgba(0, 0, 0, 0.56);
+            & + .navItem {
+                margin-top: 26px;
+            }
+
+            &On {
+                @extend .navItem;
+                font-weight: bold;
+                color: $pink;
+            }
+        }
+    }
 }
 .scroll {
     background-color: $white;
