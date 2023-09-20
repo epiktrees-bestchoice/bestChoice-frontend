@@ -2,6 +2,7 @@ import React from 'react'
 import style from '@/app/room/room.module.scss'
 import ButtonDefault from '@/app/components/btns/ButtonDefault'
 import RoomDetailSlide from '@/app/room/RoomDetailSlide'
+import ButtonLike from '@/app/components/btns/ButtonLike'
 
 const RoomDetailPage = (props) => {
     const params = props.params.id
@@ -70,6 +71,7 @@ const RoomDetailPage = (props) => {
                             )}
                         </span>
                     </div>
+                    <ButtonLike />
                 </div>
             </div>
         </div>
