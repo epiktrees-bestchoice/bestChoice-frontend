@@ -8,19 +8,19 @@ const RoomNav = () => {
             <div className={style.roomNav}>
                 <Link
                     className={`${style.roomNavItem} ${style.on}`}
-                    href={`/room/motel`}>
+                    href={`/room/1`}>
                     모텔
                 </Link>
-                <Link className={style.roomNavItem} href={`/room/hotel`}>
+                <Link className={style.roomNavItem} href={`/room/2`}>
                     호텔·리조트
                 </Link>
-                <Link className={style.roomNavItem} href={`/room/pension`}>
+                <Link className={style.roomNavItem} href={`/room/3`}>
                     펜션
                 </Link>
-                <Link className={style.roomNavItem} href={`/room/gHouse`}>
+                <Link className={style.roomNavItem} href={`/room/4`}>
                     게스트하우스
                 </Link>
-                <Link className={style.roomNavItem} href={`/room/camping`}>
+                <Link className={style.roomNavItem} href={`/room/5`}>
                     캠핑·글램핑
                 </Link>
             </div>

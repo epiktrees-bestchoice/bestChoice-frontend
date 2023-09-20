@@ -15,7 +15,7 @@ export const navLinks = [
     // path 수정 필요 - 20230825 by oliv (수정 완료시 주석 삭제)
     {
         name: '숙소찾기',
-        path: '/room/motel',
+        path: '/room/1',
     },
     {
         name: '예약내역',
