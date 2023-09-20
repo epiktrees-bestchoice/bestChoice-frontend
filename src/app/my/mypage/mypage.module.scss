@@ -5,15 +5,6 @@
     font-size: 15px;
 }
 
-.background {
-    display: grid;
-    grid-template-columns: 238px auto;
-    margin: 54px auto;
-    &Side {
-        margin: 0 32px 0 31px;
-    }
-}
-
 .sideBar {
     .list {
         margin-bottom: 26px;
@@ -54,6 +45,9 @@
     }
     .nickNameBox {
         position: relative;
+        &NumberBox {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
 
         .nickName {
             display: inline-block;
