@@ -64,4 +64,47 @@
             right: -4px;
         }
     }
+    &Like {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        z-index: 1;
+        background: rgba(0, 0, 0, 0.04);
+        border-radius: 10px;
+        width: 40px;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        svg {
+            fill: #fff;
+            path:first-child {
+                stroke: #fff;
+            }
+        }
+        &.on {
+            svg {
+                @include keyframes(blowUp) {
+                    0% {
+                        transform: scale(1, 1);
+                    }
+
+                    50% {
+                        transform: scale(1.5, 1.5);
+                    }
+
+                    100% {
+                        transform: scale(1, 1);
+                    }
+                }
+                @include animate(blowUp, 0.3s, ease, 1);
+                fill: $pink;
+                path:first-child {
+                    opacity: 1;
+                    stroke: $pink;
+                }
+            }
+        }
+    }
 }

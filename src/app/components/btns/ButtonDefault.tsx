@@ -8,7 +8,8 @@ const ButtonDefault = ({ ...props }) => {
             disabled={props.disable}
             className={`${style.btnDefault} ${
                 props.disable ? style.disable : ''
-            } ${props.style == 'sub' ? style.sub : ''}`}>
+            } ${props.style == 'sub' ? style.sub : ''}`}
+            onClick={props.onClick}>
             {props.text}
         </button>
     )
