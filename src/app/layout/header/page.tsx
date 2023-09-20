@@ -9,8 +9,6 @@ import SrchBar from '@/app/components/SrchBar'
 
 import style from '@/app/layout/header/header.module.scss'
 
-import LoginSideBar from '../loginSidebar/page'
-
 export const navLinks = [
     // path 수정 필요 - 20230825 by oliv (수정 완료시 주석 삭제)
     {
