@@ -6,11 +6,11 @@ const ButtonDefault = ({ ...props }) => {
         <button
             type={props.type}
             disabled={props.disable}
-            className={`${style.btnDefault} ${
+            className={`${style.btnDefault}${
                 props.disable ? style.disable : ''
-            } ${props.style == 'sub' ? style.sub : ''}`}
+            } ${props.style == 'sub' ? style.sub : ''}${props.className}`}
             onClick={props.onClick}>
-            {props.text}
+            {props.children}
         </button>
     )
 }

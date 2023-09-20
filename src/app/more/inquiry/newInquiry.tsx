@@ -46,7 +46,7 @@ function NewInqury() {
                 textareaRef={textareaRef}
             />
             <div className={style.btnSubmit}>
-                <ButtonDefault text="작성완료" type="submit" />
+                <ButtonDefault type="submit">작성완료</ButtonDefault>
             </div>
         </form>
     )

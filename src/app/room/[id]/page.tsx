@@ -1,21 +1,35 @@
 'use client'
 
+import { getRoomList } from '@/app/api/getFireBaseData'
 import Sidebar from '@/app/layout/sidebar/page'
 import RoomCata from '@/app/room/RoomCata'
 import RoomList from '@/app/room/RoomList'
 import RoomListSort from '@/app/room/RoomListSort'
 
-import style from '@/app/room/room.module.scss'
-import {
-    useParams,
-    usePathname,
-    useRouter,
-    useSearchParams,
-} from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 export default function Room() {
     const router = useRouter()
     const pathname = usePathname()
+    const [fetchRoomList, setFetchRoomList] = useState([])
+    const searchParams = useSearchParams()
+
+    useEffect(() => {
+        const valuesArray = Array.from(searchParams.values())
+        const fetchData = async () => {
+            const data = await getRoomList()
+            if (valuesArray.length > 0) {
+                const arr = data.filter((v) => {
+                    return valuesArray.every((a) => v['detailOpt'].includes(a))
+                })
+                setFetchRoomList(arr)
+            } else {
+                setFetchRoomList(data)
+            }
+        }
+        fetchData()
+    }, [searchParams])
 
     const handleAddQuery = (e) => {
         const target = e.target
@@ -29,15 +43,16 @@ export default function Room() {
         }
         router.push(`${pathname}?${params.toString()}`)
     }
+
     return (
         <div className={`inner contentGrid`}>
             <Sidebar>
-                <label htmlFor="re">예약가능</label>
+                <label htmlFor="re">스파</label>
                 <input
                     id="re"
                     type="checkbox"
                     name="detailOpt1"
-                    value="reservation"
+                    value="spa"
                     onChange={(e) => handleAddQuery(e)}
                 />
                 <label htmlFor="de">50% 할인</label>
@@ -48,13 +63,19 @@ export default function Room() {
                     value="discount"
                     onChange={(e) => handleAddQuery(e)}
                 />
-
-                {/* <button onClick={handleAddQuery('button')}>버튼</button> */}
+                <label htmlFor="de">수영장</label>
+                <input
+                    id="de"
+                    type="checkbox"
+                    name="detailOpt3"
+                    value="pool"
+                    onChange={(e) => handleAddQuery(e)}
+                />
                 <RoomCata />
             </Sidebar>
             <div>
                 <RoomListSort />
-                <RoomList />
+                <RoomList fetchRoomList={fetchRoomList} />
             </div>
         </div>
     )

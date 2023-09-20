@@ -10,19 +10,30 @@
     &Nav {
         border-bottom: 1px solid rgba(0, 0, 0, 0.04);
         margin: 0 31px;
+        display: flex;
+        gap: 24px;
         &Item {
             display: inline-block;
             width: auto !important;
             height: 72px;
-            padding: 0 24px 0 0;
             font-size: 18px;
             line-height: 72px;
             color: rgba(0, 0, 0, 0.38);
             box-sizing: border-box;
             text-align: center;
+            position: relative;
             &.on {
                 font-weight: bold;
                 color: $pink;
+                &::after {
+                    position: absolute;
+                    content: '';
+                    width: 100%;
+                    height: 2px;
+                    background-color: $pink;
+                    left: 0;
+                    bottom: -1px;
+                }
             }
         }
     }
