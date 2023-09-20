@@ -35,6 +35,10 @@ em {
     font-style: normal;
     font-weight: normal;
 }
+
+button {
+    cursor: pointer;
+}
 button,
 input {
     outline: 0;
@@ -152,4 +156,7 @@ iframe {
             }
         }
     }
+}
+.m16 {
+    margin: 16px;
 }

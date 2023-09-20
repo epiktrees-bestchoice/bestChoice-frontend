@@ -1,9 +1,15 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 
 import style from '@/app/room/room.module.scss'
 import Link from 'next/link'
+import ButtonLike from '@/app/components/btns/ButtonLike'
 
 const RoomList = () => {
+    const [like, setLike] = useState(false)
+    const handleLike = () => {
+        setLike(!like)
+    }
     const RoomLists = [
         // path 수정 필요 - 20230825 by oliv (수정 완료시 주석 삭제)
         {
@@ -105,6 +111,11 @@ const RoomList = () => {
                                 </span>
                             </span>
                         </Link>
+                        <ButtonLike
+                            className={`m16`}
+                            onClick={handleLike}
+                            Liked={like}
+                        />
                     </li>
                 )
             })}
