@@ -23,7 +23,7 @@ const HomeSwiper = () => {
                 // onSwiper={(swiper) => console.log(swiper)}
             >
                 <SwiperSlide>
-                    <Link href="https://www.goodchoice.kr/more/eventView/3348?page=0">
+                    <Link href="/more/event">
                         <img
                             src="./img/home/main_slide1.png"
                             alt="여름휴가는 어촌 바다로"
@@ -31,7 +31,7 @@ const HomeSwiper = () => {
                     </Link>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <Link href="/more/eventView/608?page=0">
+                    <Link href="/more/event">
                         <img
                             src="./img/home/main_slide2.jpg"
                             alt="페이백 50﹪ 쿠폰 이벤트"
@@ -39,7 +39,7 @@ const HomeSwiper = () => {
                     </Link>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <Link href="/more/eventView/3348?page=0">
+                    <Link href="/more/event">
                         <img
                             src="./img/home/main_slide3.png"
                             alt="여름휴가는 어촌 바다로"
@@ -47,7 +47,7 @@ const HomeSwiper = () => {
                     </Link>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <a href="http://more/eventView/3307?page=0">
+                    <a href="/more/event">
                         <img
                             src="./img/home/main_slide4.jpg"
                             alt="레저도 강원특별자치도"

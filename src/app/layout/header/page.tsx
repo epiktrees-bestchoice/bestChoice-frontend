@@ -25,19 +25,15 @@ export const navLinks = [
         sub: [
             {
                 name: '공지사항',
-                path: '/more/inq',
+                path: '/more/notice',
             },
             {
                 name: '이벤트',
                 path: '/more/event',
             },
             {
-                name: '자주 묻는 질문',
-                path: '/more/inq',
-            },
-            {
                 name: '1:1문의',
-                path: '/more/inq',
+                path: '/more/inquiry',
             },
         ],
     },
