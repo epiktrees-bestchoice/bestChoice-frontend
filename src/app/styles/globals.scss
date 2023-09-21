@@ -91,6 +91,7 @@ iframe {
         margin: 40px auto;
         padding: 40px 0;
         &.narrow {
+            padding: 40px 31px 0 0;
             grid-template-columns: 207px auto;
         }
     }
