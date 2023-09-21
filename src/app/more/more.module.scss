@@ -57,3 +57,23 @@
     color: rgba(0, 0, 0, 0.56);
     box-sizing: border-box;
 }
+.event {
+    padding: 10px 0 0 0;
+    &Item {
+        margin: 0 0 40px 0;
+        padding: 0 0 47px 0;
+        border-bottom: none;
+        b {
+            display: block;
+            padding-right: 80px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        span {
+            display: block;
+            margin: 7px 0 12px 0;
+            font-size: 16px;
+            color: rgba(0, 0, 0, 0.56);
+        }
+    }
+}

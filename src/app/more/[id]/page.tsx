@@ -5,6 +5,7 @@ import Sidebar from '@/app/layout/sidebar/page'
 import Inquiry from '@/app/more/inquiry/page'
 import style from '@/app/more/more.module.scss'
 import SideBarNav from '@/app/layout/sidebar/SideBarNav'
+import MoreEvent from '@/app/more/MoreEvent'
 
 const More = (props) => {
     const param = props.params.id
@@ -28,7 +29,7 @@ const More = (props) => {
             </Sidebar>
             <>
                 {param == 'notice' && <div>notice</div>}
-                {param == 'event' && <div>event</div>}
+                {param == 'event' && <MoreEvent />}
                 {param == 'inq' && <Inquiry />}
             </>
         </div>
