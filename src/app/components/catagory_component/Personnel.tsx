@@ -17,7 +17,7 @@ export default function Personnel() {
                             setCount(count - 1)
                         }
                     }}></button>
-                <span className={style.personnelcount}>{count}</span>
+                <span className={style.personnelCount}>{count}</span>
                 <button
                     className={style.personnelPlus}
                     onClick={() => {

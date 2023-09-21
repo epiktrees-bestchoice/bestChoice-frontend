@@ -46,6 +46,7 @@
         :hover {
             cursor: pointer;
         }
+
         &Box::after {
             display: inline-block;
             content: '';
@@ -61,16 +62,34 @@
         }
     }
 }
+.night {
+    position: absolute;
+    right: 100px;
+    top: 71px;
+    font-size: 18px;
+}
 
-.DatePicker {
+.datePicker {
     width: 100%;
-    height: 38px;
+    height: 40px;
     outline: none;
     display: flex;
     border-radius: 4px;
     box-sizing: border-box;
+    font-size: 18px;
+}
+.calenderWrapper {
+    font-size: 20px;
 }
 
+.input[type='checkbox'] {
+    width: 21px;
+    height: 21px;
+    border: 1px solid black;
+}
+.input:checked {
+    background-color: #ff5733;
+}
 .detail {
     &Box {
         margin-top: 24px;
@@ -93,6 +112,8 @@
             float: left;
             background: #fff;
             color: rgb(242, 7, 76);
+            font-size: 16px;
+            height: 38px;
         }
 
         &Apply {
@@ -100,6 +121,8 @@
             float: right;
             background: rgb(242, 7, 76);
             color: #fff;
+            font-size: 16px;
+            height: 38px;
         }
     }
 }
@@ -107,11 +130,12 @@
 .personnel {
     &Box {
         @extend %componentBox;
+        margin-bottom: 21px;
     }
     &Count {
         position: absolute;
         top: 25px;
-        right: 90px;
+        right: 97px;
         text-align: center;
         font-size: 18px;
         font-weight: bold;
@@ -121,7 +145,7 @@
     &Minus {
         position: absolute;
         top: 25px;
-        right: 135px;
+        right: 150px;
         width: 24px;
         height: 24px;
         background: url(//image.goodchoice.kr/images/web_v3/ico_minus.png) 50%
@@ -168,7 +192,7 @@
     &TypeBox {
         text-align: center;
         overflow: hidden;
-        width: 304px;
+        width: 100%;
         margin-left: -20px;
     }
 
