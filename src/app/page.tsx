@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 import HomeCata from '@/app/components/HomeCata'
 import HomeInfo from '@/app/components/HomeInfo'
@@ -13,9 +11,7 @@ export default function Home() {
             <div className={`inner ${style.home}`}>
                 <div className={style.homeBanner}>
                     {/* Link href 수정 필요 - 20230825 by oliv (수정 완료시 주석 삭제) */}
-                    <Link
-                        className={style.homeBannerLink}
-                        href="https://www.goodchoice.kr/more/eventView/3328">
+                    <Link className={style.homeBannerLink} href="/more/event">
                         <span className="blind">여행할 때 여기어때</span>
                     </Link>
                 </div>

@@ -1,13 +1,16 @@
+import { getCatagoryDoc } from '@/app/api/getFireBaseData'
 import SelectBox from '@/app/components/select/SelectBox'
-import Tabs from '@/app/components/tabs/Tabs'
 import PageTop from '@/app/layout/pageTop/page'
 import RoomNav from '@/app/room/RoomNav'
 
-export default function RoomLayout(props) {
+export default async function RoomLayout(props) {
+    const params = props.params.id
+    const roomCata = await getCatagoryDoc()
+    const [data] = roomCata.filter((item) => item.id == params)
     return (
         <div className="content">
-            <PageTop title={props.params.id} children={<SelectBox />} />
-            <RoomNav />
+            <PageTop title={data.name} children={<SelectBox />} />
+            <RoomNav props={roomCata} params={params} />
             {props.children}
         </div>
     )

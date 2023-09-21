@@ -9,13 +9,11 @@ import SrchBar from '@/app/components/SrchBar'
 
 import style from '@/app/layout/header/header.module.scss'
 
-import LoginSideBar from '../loginSidebar/page'
-
 export const navLinks = [
     // path 수정 필요 - 20230825 by oliv (수정 완료시 주석 삭제)
     {
         name: '숙소찾기',
-        path: '/room/motel',
+        path: '/room/1',
     },
     {
         name: '예약내역',
@@ -27,19 +25,15 @@ export const navLinks = [
         sub: [
             {
                 name: '공지사항',
-                path: '/more/inq',
+                path: '/more/notice',
             },
             {
                 name: '이벤트',
                 path: '/more/event',
             },
             {
-                name: '자주 묻는 질문',
-                path: '/more/inq',
-            },
-            {
                 name: '1:1문의',
-                path: '/more/inq',
+                path: '/more/inquiry',
             },
         ],
     },

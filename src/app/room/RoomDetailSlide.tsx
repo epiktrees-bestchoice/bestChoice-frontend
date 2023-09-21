@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import style from './slide.module.scss'
 import ButtonCarousel from '@/app/components/btns/ButtonCarousel'
 
-const RoomDetailSlide = () => {
+const RoomDetailSlide = (roomDetail) => {
     const slideRef = useRef(null)
     const slideBigRef = useRef(null)
 

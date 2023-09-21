@@ -2,7 +2,8 @@
 
 .top {
     background: $main-color;
-    min-height: 141px;
+    min-height: 220px;
+    padding-top: $header-height;
     .inner {
         padding: 0 31px;
         display: flex;

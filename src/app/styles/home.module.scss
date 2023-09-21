@@ -1,4 +1,6 @@
+@use './scss/' as *;
 .home {
+    padding-top: $header-height;
     h2 {
         margin-bottom: 35px;
         font-weight: bold;
