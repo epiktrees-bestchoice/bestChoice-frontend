@@ -12,11 +12,10 @@ const SelectBox = () => {
         // 지역별 링크 수정시 e.preventDefault() 삭제 필요 20230916 by jyj
         e.preventDefault()
         const { innerText } = e.target
-        const liAll = e.target.parentElement.parentElement.childNodes
+        const li = e.target.parentElement.parentElement.childNodes
         setCurrentValue(innerText)
-        for (var i = 0; i < liAll.length; i++) {
-            liAll[i].classList.remove(style['on'])
-        }
+
+        li.forEach((item) => item.classList.remove(style['on']))
         e.target.parentElement.classList.add(style['on'])
         optionShowRef.current.classList.remove(style['on'])
     }

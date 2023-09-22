@@ -49,6 +49,12 @@
         }
         &.on {
             color: $pink;
+            svg {
+                display: block;
+            }
+        }
+        svg {
+            display: none;
         }
     }
     &Carousel {
