@@ -2,21 +2,20 @@
 
 .select {
     position: relative;
-    height: 32px;
+    height: 40px;
     padding: 0 36px 0 12px;
-    border: 1px solid rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 4px;
-    background-color: rgba(0, 0, 0, 0.04);
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 32px;
-    color: #fff;
-    width: fit-content;
+    font-size: 16px;
+    line-height: 40px;
+    color: $black-light;
+    width: 100%;
     &Label {
         position: relative;
         display: flex;
         align-items: center;
         width: 100%;
+        cursor: pointer;
         .icon {
             position: absolute;
             right: -30px;
@@ -36,11 +35,16 @@
         box-sizing: border-box;
         box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2);
         padding: 15px 32px;
-        gap: 30px;
+        gap: 15px;
         transition: all 0.5s ease;
         &.on {
             transition: all 0.5s ease;
-            @include flex(center, center);
+            display: grid;
+            align-items: center;
+            width: 100%;
+            justify-content: center;
+            grid-template-columns: 1fr 1fr;
+            justify-items: center;
         }
         .item {
             flex-shrink: 0;

@@ -5,6 +5,7 @@ import DetailButton from '@/app/components/catagory_component/DetailButton'
 import Personnel from '@/app/components/catagory_component/Personnel'
 import Price from '@/app/components/catagory_component/Price'
 import CheckList from '@/app/components/catagory_component/CheckList'
+import SelectBox from '@/app/components/select/SelectBox'
 
 export default function RoomCata() {
     const info = [
@@ -95,6 +96,10 @@ export default function RoomCata() {
         <>
             <main className={style.background}>
                 <DateChoice />
+                <div className={`${style.roomFilter} ${style.region}`}>
+                    <h3>지역</h3>
+                    <SelectBox />
+                </div>
                 <DetailButton />
                 <CheckList info={info[0]} list={list3} />
                 <Personnel />
