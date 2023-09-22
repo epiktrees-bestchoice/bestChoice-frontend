@@ -4,12 +4,14 @@ import Sidebar from '@/app/layout/sidebar/page'
 import SideBarNav from '@/app/layout/sidebar/SideBarNav'
 import MyPage from '@/app/my/mypage/MyPage'
 import MyReservations from '@/app/my/reservations/MyResevations'
+import Likes from '@/app/my/likes/Likes'
 
 const More = (props) => {
     const param = props.params.id
     const myPages = [
         { path: 'reservations', name: '예약 내역' },
         { path: 'mypage', name: '내 정보 관리' },
+        { path: 'likes', name: '좋아요' },
     ]
     return (
         <div className={`inner contentGrid narrow`}>
@@ -27,6 +29,7 @@ const More = (props) => {
             <>
                 {param == 'reservations' && <MyReservations />}
                 {param == 'mypage' && <MyPage />}
+                {param == 'likes' && <Likes />}
             </>
         </div>
     )

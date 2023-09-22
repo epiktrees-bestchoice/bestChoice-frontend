@@ -7,7 +7,14 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { ko } from 'date-fns/esm/locale'
 
 export default function DateChoice() {
-    const [dateRange, setDateRange] = useState([new Date(), null])
+    useEffect(() => {
+        const today = new Date()
+        const tomorrow = new Date(today)
+        setDateRange([today, new Date(tomorrow.setDate(today.getDate() + 1))])
+    }, [])
+
+    const [dateRange, setDateRange] = useState([])
+    // state 대신 useref 활용하기 (재렌더링방지)
     const [startDate, endDate] = dateRange
 
     const calculateDateDifference = () => {

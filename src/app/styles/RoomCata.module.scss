@@ -127,6 +127,20 @@
     }
 }
 
+.maxMoney {
+    float: right;
+    display: block;
+    margin-right: 24px;
+    font-size: 14px;
+}
+.minMoney {
+    font-size: 14px;
+}
+.rangeBox {
+    margin: 20px 24px 20px 0px;
+    width: '70%';
+}
+
 .personnel {
     &Box {
         @extend %componentBox;
@@ -171,6 +185,7 @@
     }
     &Range {
         color: #ea1c51;
+        font-size: 14px;
     }
 }
 

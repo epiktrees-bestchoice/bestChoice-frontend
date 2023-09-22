@@ -72,6 +72,12 @@ body {
         font-size: 18px;
         padding: 4px 0px;
     }
+    .rc-slider-track {
+        background-color: red;
+    }
+    .rc-slider-handle {
+        border: 1px solid black;
+    }
 }
 
 a {
