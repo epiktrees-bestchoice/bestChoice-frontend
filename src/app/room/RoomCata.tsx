@@ -1,11 +1,11 @@
 import style from '@/app/styles/RoomCata.module.scss'
 import BedType from '@/app/components/catagory_component/BedType'
 import DateChoice from '@/app/components/catagory_component/DateChoice'
-import DetailButton from '@/app/components/catagory_component/DetailButton'
 import Personnel from '@/app/components/catagory_component/Personnel'
 import Price from '@/app/components/catagory_component/Price'
 import CheckList from '@/app/components/catagory_component/CheckList'
 import SelectBox from '@/app/components/select/SelectBox'
+import ButtonDefault from '@/app/components/btns/ButtonDefault'
 
 export default function RoomCata() {
     const info = [
@@ -95,18 +95,39 @@ export default function RoomCata() {
     return (
         <>
             <main className={style.background}>
-                <DateChoice />
+                <div className={`${style.roomFilter}`}>
+                    <h3>날짜</h3>
+                    <DateChoice />
+                </div>
                 <div className={`${style.roomFilter} ${style.region}`}>
                     <h3>지역</h3>
                     <SelectBox />
                 </div>
-                <DetailButton />
-                <CheckList info={info[0]} list={list3} />
-                <Personnel />
-                <Price />
-                <BedType />
-                <CheckList info={info[1]} list={list1} />
-                <CheckList info={info[2]} list={list2} />
+                <div className={`${style.roomFilter} ${style.set}`}>
+                    <h3>상세조건</h3>
+                    <ButtonDefault style="sub">초기화</ButtonDefault>
+                    <ButtonDefault>적용</ButtonDefault>
+                </div>
+                <div className={`${style.roomFilter}`}>
+                    <CheckList info={info[0]} list={list3} />
+                </div>
+                <div className={`${style.roomFilter} ${style.cntPeople}`}>
+                    <h3>인원</h3>
+                    <Personnel />
+                </div>
+                <div className={`${style.roomFilter}`}>
+                    <Price />
+                </div>
+                <div className={`${style.roomFilter}`}>
+                    <h3>베드타입</h3>
+                    <BedType />
+                </div>
+                <div className={`${style.roomFilter}`}>
+                    <CheckList info={info[1]} list={list1} />
+                </div>
+                <div className={`${style.roomFilter}`}>
+                    <CheckList info={info[2]} list={list2} />
+                </div>
             </main>
         </>
     )

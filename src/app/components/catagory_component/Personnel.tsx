@@ -7,23 +7,20 @@ export default function Personnel() {
     let [count, setCount] = useState(2)
 
     return (
-        <section className={style.personnelBox}>
-            <strong>인원</strong>
-            <div>
-                <button
-                    className={style.personnelMinus}
-                    onClick={() => {
-                        if (count > 2) {
-                            setCount(count - 1)
-                        }
-                    }}></button>
-                <span className={style.personnelCount}>{count}</span>
-                <button
-                    className={style.personnelPlus}
-                    onClick={() => {
-                        setCount(count + 1)
-                    }}></button>
-            </div>
-        </section>
+        <div className={style.countButtons}>
+            <button
+                className={style.minus}
+                onClick={() => {
+                    if (count > 2) {
+                        setCount(count - 1)
+                    }
+                }}></button>
+            <span className={style.number}>{count}</span>
+            <button
+                className={style.plus}
+                onClick={() => {
+                    setCount(count + 1)
+                }}></button>
+        </div>
     )
 }

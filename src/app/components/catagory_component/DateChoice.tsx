@@ -29,35 +29,32 @@ export default function DateChoice() {
     }
 
     return (
-        <>
-            <div className={style.calendarChoiceBox}>
-                <h3 className={style.calendarDate}>날짜</h3>
-                {startDate && endDate && (
-                    <span className={style.night}>
-                        {' '}
-                        · {calculateDateDifference()}박
-                    </span>
-                )}
+        <div className={style.calendarChoiceBox}>
+            {startDate && endDate && (
+                <span className={style.night}>
+                    {' '}
+                    · {calculateDateDifference()}박
+                </span>
+            )}
 
-                <label htmlFor="Date" className={style.calendarButton}>
-                    <div className={style.calendarButtonBox}>
-                        <DatePicker
-                            id="Date"
-                            className={style.datePicker}
-                            calendarClassName={style.calenderWrapper}
-                            selectsRange={true}
-                            startDate={startDate}
-                            locale={ko}
-                            dateFormat="MM.dd"
-                            endDate={endDate}
-                            minDate={new Date()}
-                            onChange={(update) => {
-                                setDateRange(update)
-                            }}
-                        />
-                    </div>
-                </label>
-            </div>
-        </>
+            <label htmlFor="Date" className={style.calendarButton}>
+                <div className={style.calendarButtonBox}>
+                    <DatePicker
+                        id="Date"
+                        className={style.datePicker}
+                        calendarClassName={style.calenderWrapper}
+                        selectsRange={true}
+                        startDate={startDate}
+                        locale={ko}
+                        dateFormat="MM.dd"
+                        endDate={endDate}
+                        minDate={new Date()}
+                        onChange={(update) => {
+                            setDateRange(update)
+                        }}
+                    />
+                </div>
+            </label>
+        </div>
     )
 }

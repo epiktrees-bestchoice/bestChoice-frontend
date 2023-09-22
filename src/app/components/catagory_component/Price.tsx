@@ -14,7 +14,7 @@ export default function Price() {
     }
 
     return (
-        <section className={style.prideBox}>
+        <>
             <div>
                 <strong>가격 &nbsp;&nbsp;</strong>
                 <span className={style.prideRange}>
@@ -31,15 +31,14 @@ export default function Price() {
                     onChange={handleRangeChange}
                     handleStyle={{
                         height: 28,
-                        width: 28,
-
-                        marginTop: -11,
-                        backgroundColor: 'red',
+                        width: 30,
+                        marginTop: -12,
+                        marginLeft: -2,
                     }}
                 />
             </div>
             <span className={style.minMoney}>1만원</span>
             <span className={style.maxMoney}>30만원</span>
-        </section>
+        </>
     )
 }
