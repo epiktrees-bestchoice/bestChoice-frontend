@@ -299,3 +299,20 @@
         }
     }
 }
+
+.room {
+    &Filter {
+        h3 {
+            font-size: 18px;
+        }
+        &.region {
+            display: flex;
+            gap: 25px;
+            justify-content: space-between;
+            align-items: center;
+            h3 {
+                flex-shrink: 0;
+            }
+        }
+    }
+}

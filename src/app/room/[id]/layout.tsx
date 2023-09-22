@@ -9,7 +9,7 @@ export default async function RoomLayout(props) {
     const [data] = roomCata.filter((item) => item.id == params)
     return (
         <div className="content">
-            <PageTop title={data.name} children={<SelectBox />} />
+            <PageTop title={data.name} />
             <RoomNav props={roomCata} params={params} />
             {props.children}
         </div>
