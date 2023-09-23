@@ -162,7 +162,7 @@ iframe {
         display: grid;
         grid-template-columns: 357px auto;
         margin: 40px auto;
-        padding: 40px 31px 0;
+        padding: 40px 31px 0 0;
         &.narrow {
             padding: 40px 31px 0 0;
             grid-template-columns: 207px auto;
@@ -236,4 +236,40 @@ iframe {
 }
 .react-datepicker-popper[data-placement^='bottom'] {
     transform: translate(-1px, 40px) !important;
+}
+
+.loading {
+    height: 100vh;
+    @include flex(center, center);
+    flex-direction: column;
+    .loader {
+        width: 70px;
+        height: 70px;
+        border: 7px solid $main-color;
+        border-bottom-color: transparent;
+        border-radius: 50%;
+        display: inline-block;
+        box-sizing: border-box;
+        animation: rotation 1.2s linear infinite;
+        @include keyframes(spinner) {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @include animate(spinner, 1s, linear, infinite);
+    }
+    .character {
+        display: block;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        background: rgb(248 50 63)
+            url('https://idb.imarket.co.kr/con_img/cont/100000038080.png') -12px
+            7px/200px no-repeat;
+        border-radius: 50%;
+    }
 }
