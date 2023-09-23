@@ -5,6 +5,8 @@ import Footer from '@/app/layout/footer/page'
 
 import '@/app/styles/globals.scss'
 import Providers from '@/app/provider/providers'
+import { Suspense } from 'react'
+import Loading from '@/app/loading'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,7 +26,7 @@ export default function RootLayout({
                 <Providers>
                     <div className="wrap bg-white">
                         <Header />
-                        {children}
+                        <Suspense fallback={<Loading />}>{children}</Suspense>
                         <Footer />
                     </div>
                 </Providers>

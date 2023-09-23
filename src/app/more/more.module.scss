@@ -77,3 +77,20 @@
         }
     }
 }
+.notice {
+    padding: 10px 0 0 0;
+    &Item {
+        padding: 38px 24px 35px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        b {
+            display: block;
+            padding-right: 7px;
+            font-size: 18px;
+            font-weight: normal;
+        }
+        span {
+            font-size: 16px;
+            color: rgba(0, 0, 0, 0.38);
+        }
+    }
+}
