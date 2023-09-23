@@ -1,19 +1,19 @@
 'use client'
 
 import Link from 'next/link'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
+import { IsLoginContext } from '@/app/provider/IsLoginProvider'
 
 import SearchIcon from '@mui/icons-material/Search'
 import SrchBar from '@/app/components/SrchBar'
-
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import style from '@/app/layout/header/header.module.scss'
-import HeaderNavLogin from '@/app/layout/header/HeaderNavLogin'
-import HeaderNavLogout from '@/app/layout/header/HeaderNavLogout'
 
 const Header = () => {
     const pathname = usePathname()
     const headerRef = useRef(null)
+    const { isLogin } = useContext(IsLoginContext)
 
     // 스크롤시 header 스타일 변경
     useEffect(() => {
@@ -60,8 +60,70 @@ const Header = () => {
                     className={
                         srchBarOpen ? `${style.gnbCata} hide` : style.gnbCata
                     }>
-                    <HeaderNavLogin />
-                    {/* <HeaderNavLogout /> */}
+                    <li>
+                        <Link href={'/room/1'} className={style.gnbCataLink}>
+                            숙소찾기
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            href={'/my/reservations'}
+                            className={style.gnbCataLink}>
+                            예약내역
+                        </Link>
+                    </li>
+                    <li>
+                        <span className={style.gnbCataLink}>
+                            더보기
+                            <ul className={style.gnbCataSub}>
+                                <li>
+                                    <Link href={'/more/notice'}>공지사항</Link>
+                                </li>
+                                <li>
+                                    <Link href={'/more/event'}>이벤트</Link>
+                                </li>
+                                <li>
+                                    <Link href={'/more/inquiry'}>1:1문의</Link>
+                                </li>
+                            </ul>
+                        </span>
+                    </li>
+                    {isLogin ? (
+                        <li>
+                            <span className={style.gnbCataLink}>
+                                <span className={style.user}>
+                                    <span className="blind">내정보</span>
+                                    <img
+                                        src="https://image.goodchoice.kr/profile/ico/ico_21.png"
+                                        width="30"
+                                        height="30"
+                                        alt=""
+                                    />
+                                    <ArrowDropDownIcon />
+                                </span>
+                                <ul className={style.gnbCataSub}>
+                                    <b className={style.userName}>유저네임</b>
+                                    <li>
+                                        <Link href={'/my/mypage'}>내정보</Link>
+                                    </li>
+                                    <li>
+                                        <Link href={'/my/reservations'}>
+                                            예약내역
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href={'/my/likes'}>좋아요</Link>
+                                    </li>
+                                </ul>
+                            </span>
+                        </li>
+                    ) : (
+                        <li>
+                            <Link href={'/user'} className={style.gnbCataLink}>
+                                로그인
+                            </Link>
+                        </li>
+                    )}
                 </ul>
                 {srchBarOpen && (
                     <SrchBar

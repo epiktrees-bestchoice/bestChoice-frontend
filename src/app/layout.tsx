@@ -4,6 +4,7 @@ import Header from '@/app/layout/header/page'
 import Footer from '@/app/layout/footer/page'
 
 import '@/app/styles/globals.scss'
+import Providers from '@/app/provider/providers'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,11 +21,13 @@ export default function RootLayout({
     return (
         <html lang="ko">
             <body className={inter.className}>
-                <div className="wrap bg-white">
-                    <Header />
-                    {children}
-                    <Footer />
-                </div>
+                <Providers>
+                    <div className="wrap bg-white">
+                        <Header />
+                        {children}
+                        <Footer />
+                    </div>
+                </Providers>
             </body>
         </html>
     )
