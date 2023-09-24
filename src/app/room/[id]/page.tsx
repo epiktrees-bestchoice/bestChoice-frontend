@@ -10,6 +10,7 @@ import { getRoomList } from '@/app/api/getFireBaseData'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useContext, useEffect } from 'react'
 import { RoomListContext } from '@/app/provider/roomListProvider'
+import RoomListEmpty from '@/app/room/RoomListEmpty'
 
 export default function Room() {
     const router = useRouter()
@@ -33,52 +34,19 @@ export default function Room() {
         fetchData()
     }, [searchParams])
 
-    const handleAddQuery = (e) => {
-        const target = e.target
-        const queryName = target.name
-        const queryValue = target.value
-        const params = new URLSearchParams(window.location.search)
-        if (target.checked) {
-            params.append(queryName, queryValue)
-        } else {
-            params.delete(queryName)
-        }
-        router.push(`${pathname}?${params.toString()}`)
-    }
-
     return (
         <div className={`inner contentGrid`}>
             <Sidebar>
-                <label htmlFor="re">스파</label>
-                <input
-                    id="re"
-                    type="checkbox"
-                    name="detailOpt1"
-                    value="spa"
-                    onChange={(e) => handleAddQuery(e)}
-                />
-                <label htmlFor="de">50% 할인</label>
-                <input
-                    id="de"
-                    type="checkbox"
-                    name="detailOpt2"
-                    value="discount"
-                    onChange={(e) => handleAddQuery(e)}
-                />
-                <label htmlFor="de">수영장</label>
-                <input
-                    id="de"
-                    type="checkbox"
-                    name="detailOpt3"
-                    value="pool"
-                    onChange={(e) => handleAddQuery(e)}
-                />
                 <RoomCata />
             </Sidebar>
-            <div>
+            <main>
                 <RoomListSort />
-                <RoomList fetchRoomList={fetchRoomList} />
-            </div>
+                {fetchRoomList.length == 0 ? (
+                    <RoomListEmpty />
+                ) : (
+                    <RoomList fetchRoomList={fetchRoomList} />
+                )}
+            </main>
         </div>
     )
 }

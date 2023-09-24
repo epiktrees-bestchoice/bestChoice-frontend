@@ -7,6 +7,8 @@ import CheckList from '@/app/components/catagory_component/CheckList'
 import SelectBox from '@/app/components/select/SelectBox'
 import ButtonDefault from '@/app/components/btns/ButtonDefault'
 
+import { usePathname, useRouter } from 'next/navigation'
+
 export default function RoomCata() {
     const info = [
         {
@@ -71,27 +73,48 @@ export default function RoomCata() {
     ]
     const list3 = [
         {
-            id: 'motel10',
+            id: '10',
+            condition: 'detailOpt',
+            value: 'fitness',
             title: '피트니스',
         },
         {
-            id: 'motel11',
-            title: '사우나',
+            id: '11',
+            condition: 'detailOpt',
+            value: 'spa',
+            title: '스파',
         },
         {
-            id: 'motel12',
-            title: '주방',
+            id: '12',
+            condition: 'detailOpt',
+            value: 'pool',
+            title: '수영장',
         },
         {
-            id: 'motel13',
-            title: '건조기',
-        },
-        {
-            id: 'motel14',
-            title: '세탁기',
+            id: '13',
+            condition: 'detailOpt',
+            value: 'discount',
+            title: '50% 할인',
         },
     ]
 
+    const router = useRouter()
+    const pathname = usePathname()
+    const handleAddQuery = (e) => {
+        const target = e.target
+        const queryName = target.name
+        const queryValue = target.value
+        const params = new URLSearchParams(window.location.search)
+        if (target.checked) {
+            params.append(queryName, queryValue)
+        } else {
+            params.delete(queryName)
+        }
+        router.push(`${pathname}?${params.toString()}`)
+    }
+    const handleResetQuery = () => {
+        router.push(`${pathname}`)
+    }
     return (
         <>
             <main className={style.background}>
@@ -105,11 +128,17 @@ export default function RoomCata() {
                 </div>
                 <div className={`${style.roomFilter} ${style.set}`}>
                     <h3>상세조건</h3>
-                    <ButtonDefault style="sub">초기화</ButtonDefault>
+                    <ButtonDefault style="sub" onClick={handleResetQuery}>
+                        초기화
+                    </ButtonDefault>
                     <ButtonDefault>적용</ButtonDefault>
                 </div>
                 <div className={`${style.roomFilter}`}>
-                    <CheckList info={info[0]} list={list3} />
+                    <CheckList
+                        info={info[0]}
+                        list={list3}
+                        onChange={handleAddQuery}
+                    />
                 </div>
                 <div className={`${style.roomFilter} ${style.cntPeople}`}>
                     <h3>인원</h3>
@@ -123,10 +152,18 @@ export default function RoomCata() {
                     <BedType />
                 </div>
                 <div className={`${style.roomFilter}`}>
-                    <CheckList info={info[1]} list={list1} />
+                    <CheckList
+                        info={info[1]}
+                        list={list1}
+                        onChange={handleAddQuery}
+                    />
                 </div>
                 <div className={`${style.roomFilter}`}>
-                    <CheckList info={info[2]} list={list2} />
+                    <CheckList
+                        info={info[2]}
+                        list={list2}
+                        onChange={handleAddQuery}
+                    />
                 </div>
             </main>
         </>
