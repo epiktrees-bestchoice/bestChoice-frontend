@@ -1,23 +1,22 @@
 'use client'
 
-import { getRoomList } from '@/app/api/getFireBaseData'
-import ButtonSort from '@/app/components/btns/ButtonSort'
 import Sidebar from '@/app/layout/sidebar/page'
 import RoomCata from '@/app/room/RoomCata'
 import RoomList from '@/app/room/RoomList'
 import RoomListSort from '@/app/room/RoomListSort'
-import style from '@/app/components/btns/btn.module.scss'
+
+import { getRoomList } from '@/app/api/getFireBaseData'
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
+import { RoomListContext } from '@/app/provider/roomListProvider'
 
 export default function Room() {
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
 
-    const [fetchRoomList, setFetchRoomList] = useState([])
-
+    const { fetchRoomList, setFetchRoomList } = useContext(RoomListContext)
     useEffect(() => {
         const valuesArray = Array.from(searchParams.values())
         const fetchData = async () => {
@@ -45,30 +44,6 @@ export default function Room() {
             params.delete(queryName)
         }
         router.push(`${pathname}?${params.toString()}`)
-    }
-
-    // 가격순 정렬
-    const sortButton = [
-        { value: 'asc', text: '낮은 가격 순' },
-        { value: 'desc', text: '높은 가격 순' },
-        { value: 'kr', text: '가나다 순' },
-    ]
-    const handleSortRoomList = (e) => {
-        const sortedList = [...fetchRoomList]
-        const value = e.target.value
-        const buttons = e.target.parentElement.childNodes
-
-        buttons.forEach((button) => button.classList.remove(style['on']))
-
-        if (value == 'asc') {
-            sortedList.sort((a, b) => a.rentAllPrice - b.rentAllPrice)
-        } else if (value == 'desc') {
-            sortedList.sort((a, b) => b.rentAllPrice - a.rentAllPrice)
-        } else if (value == 'kr') {
-            sortedList.sort((a, b) => a.name.localeCompare(b.name))
-        }
-        e.target.classList.add(style['on'])
-        setFetchRoomList(sortedList)
     }
 
     return (
@@ -101,19 +76,7 @@ export default function Room() {
                 <RoomCata />
             </Sidebar>
             <div>
-                <div className={style.btnWrap}>
-                    {sortButton.map((button, index) => {
-                        return (
-                            <ButtonSort
-                                key={index}
-                                name="ButtonSort"
-                                value={button.value}
-                                text={button.text}
-                                onClick={handleSortRoomList}
-                            />
-                        )
-                    })}
-                </div>
+                <RoomListSort />
                 <RoomList fetchRoomList={fetchRoomList} />
             </div>
         </div>
