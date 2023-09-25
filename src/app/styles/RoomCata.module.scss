@@ -14,7 +14,6 @@
 
 .background {
     width: 294px;
-    height: 100%;
     border: 1px solid rgba(0, 0, 0, 0.08);
     display: flex;
     gap: 43px;
@@ -138,7 +137,6 @@
     &Box {
         display: inline-block;
         width: 25%;
-
         &Input {
             position: absolute;
             z-index: -1000;

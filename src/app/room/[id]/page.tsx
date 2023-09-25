@@ -8,7 +8,7 @@ import RoomListSort from '@/app/room/RoomListSort'
 import { getRoomList } from '@/app/api/getFireBaseData'
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import { RoomListContext } from '@/app/provider/roomListProvider'
 import RoomListEmpty from '@/app/room/RoomListEmpty'
 
@@ -16,7 +16,6 @@ export default function Room() {
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
-
     const { fetchRoomList, setFetchRoomList } = useContext(RoomListContext)
     useEffect(() => {
         const valuesArray = Array.from(searchParams.values())
@@ -41,11 +40,7 @@ export default function Room() {
             </Sidebar>
             <main>
                 <RoomListSort />
-                {fetchRoomList.length == 0 ? (
-                    <RoomListEmpty />
-                ) : (
-                    <RoomList fetchRoomList={fetchRoomList} />
-                )}
+                {fetchRoomList.length == 0 ? <RoomListEmpty /> : <RoomList />}
             </main>
         </div>
     )
