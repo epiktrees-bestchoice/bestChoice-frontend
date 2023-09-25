@@ -12,7 +12,7 @@ export const IsLoginContext = createContext({
 
 const IsLoginProvider = (props) => {
     const [isLogin, setInLogin] = useState(
-        userId !== null && token !== null ? false : true,
+        userId !== null && token !== null ? true : false,
     )
     const value = useMemo(
         () => ({ isLogin, setInLogin }),

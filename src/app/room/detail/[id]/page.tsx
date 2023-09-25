@@ -11,7 +11,7 @@ const RoomDetailPage = async (props) => {
 
     return (
         <div className="content">
-            <div className="inner">
+            <div className={`inner ${style.room}`}>
                 <div className={style.roomDetail}>
                     <div className={style.boxImg}>
                         <RoomDetailSlide />

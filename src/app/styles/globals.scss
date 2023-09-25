@@ -168,6 +168,12 @@ iframe {
             grid-template-columns: 207px auto;
         }
     }
+    &.loading {
+        background-color: #fff;
+        z-index: 10000;
+        width: 100%;
+        margin: 0 auto;
+    }
 }
 
 .inner {

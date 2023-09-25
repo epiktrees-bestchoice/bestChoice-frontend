@@ -24,11 +24,14 @@ export default function RootLayout({
         <html lang="ko">
             <body className={inter.className}>
                 <Providers>
-                    <div className="wrap bg-white">
-                        <Header />
-                        <Suspense fallback={<Loading />}>{children}</Suspense>
-                        <Footer />
-                    </div>
+                    <Suspense fallback={<Loading />}>
+                        <div className="wrap bg-white">
+                            <Header />
+                            {children}
+                            {/* {children} */}
+                            <Footer />
+                        </div>
+                    </Suspense>
                 </Providers>
             </body>
         </html>
