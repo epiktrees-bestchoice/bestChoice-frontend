@@ -10,16 +10,22 @@ import { RoomListContext } from '@/app/provider/roomListProvider'
 const RoomList = () => {
     const { fetchRoomList, setFetchRoomList } = useContext(RoomListContext)
     const [like, setLike] = useState({})
+    // 수정 필요 20230926 BY joj
+    const fetchData = async () => {
+        const res = await fetch('/api/room', { method: 'GET' })
+        const data = await res.json()
+        setFetchRoomList(data.data)
+    }
 
     const observerRef = useRef(null)
     const callback = (entries, observer) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 observerRef.current.innerText += '관측되었습니다'
-
                 const reFetchData = async () => {
-                    const data = await getRoomList()
-                    setFetchRoomList((prev) => [...prev, ...data])
+                    const res = await fetch('/api/room', { method: 'GET' })
+                    const data = await res.json()
+                    setFetchRoomList((prev) => [...prev, ...data.data])
                 }
                 reFetchData()
             } else {
@@ -29,10 +35,6 @@ const RoomList = () => {
     }
 
     useEffect(() => {
-        const fetchData = async () => {
-            const data = await getRoomList()
-            setFetchRoomList(data)
-        }
         fetchData()
         const observer = new IntersectionObserver(callback, {
             threshold: 1,
@@ -53,16 +55,17 @@ const RoomList = () => {
             {fetchRoomList.map((room, index) => {
                 return (
                     <li key={index} className={style.roomListItem}>
-                        <Link href={`/room/detail/${room.id}`}>
+                        <Link href={`/room/detail/${room.accommodationId}`}>
                             {/* 테스트용 삭제 예정 20230920 by jyj */}
                             {/* <span>{room.detailOpt}</span> */}
                             <span className={style.boxImg}>
                                 <img src={room.img} alt="" loading="lazy" />
                             </span>
+
                             <span className={style.boxTxt}>
                                 <span className={style.info}>
                                     <strong className={style.infoTit}>
-                                        {room.name}
+                                        {room.accommodationName}
                                     </strong>
                                     <span className={style.infoScore}>
                                         <span>
@@ -96,7 +99,7 @@ const RoomList = () => {
                                         &nbsp;
                                         <span
                                             className={`${style.bold} ${style.pink}`}>
-                                            {room.rentAllPrice}원
+                                            {room.price}원
                                         </span>
                                     </span>
                                 </span>
