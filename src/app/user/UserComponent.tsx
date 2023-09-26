@@ -23,15 +23,26 @@ function SnsButtonBox() {
     ])
     return (
         <div className={style.snsButtonBox}>
-            <Button
-                title={LoginSNS[0]}
-                bg_color="rgb(252,229,30)"
-                color="black"></Button>
-            <Button
-                title={LoginSNS[1]}
-                bg_color="#E8E7E7"
-                color="black"></Button>
-            <Button title={LoginSNS[2]} bg_color="blue" color="white"></Button>
+            <Link href="http://api.epicktrees.net/oauth2/authorization/kakao">
+                <Button
+                    title={LoginSNS[0]}
+                    bg_color="rgb(252,229,30)"
+                    color="black"></Button>
+            </Link>
+
+            <Link href="http://api.epicktrees.net/oauth2/authorization/google">
+                <Button
+                    title={LoginSNS[1]}
+                    bg_color="#E8E7E7"
+                    color="black"></Button>
+            </Link>
+
+            <Link href="http://api.epicktrees.net/oauth2/authorization/facebook">
+                <Button
+                    title={LoginSNS[2]}
+                    bg_color="blue"
+                    color="white"></Button>
+            </Link>
         </div>
     )
 }
