@@ -13,7 +13,7 @@ import style from '@/app/layout/header/header.module.scss'
 const Header = () => {
     const pathname = usePathname()
     const headerRef = useRef(null)
-    const { isLogin } = useContext(IsLoginContext)
+    const { isLogin, userInfo } = useContext(IsLoginContext)
 
     // 스크롤시 header 스타일 변경
     useEffect(() => {
@@ -102,7 +102,9 @@ const Header = () => {
                                     <ArrowDropDownIcon />
                                 </span>
                                 <ul className={style.gnbCataSub}>
-                                    <b className={style.userName}>유저네임</b>
+                                    <b className={style.userName}>
+                                        {userInfo.name}님
+                                    </b>
                                     <li>
                                         <Link href={'/my/mypage'}>내정보</Link>
                                     </li>
@@ -113,6 +115,9 @@ const Header = () => {
                                     </li>
                                     <li>
                                         <Link href={'/my/likes'}>좋아요</Link>
+                                    </li>
+                                    <li>
+                                        <Link href={'/'}>로그아웃</Link>
                                     </li>
                                 </ul>
                             </span>

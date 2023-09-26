@@ -18,11 +18,13 @@ const RoomListSort = () => {
         const buttons = e.target.parentElement.childNodes
         buttons.forEach((button) => button.classList.remove(style['on']))
         if (value == 'asc') {
-            sortedList.sort((a, b) => a.rentAllPrice - b.rentAllPrice)
+            sortedList.sort((a, b) => a.price - b.price)
         } else if (value == 'desc') {
-            sortedList.sort((a, b) => b.rentAllPrice - a.rentAllPrice)
+            sortedList.sort((a, b) => b.price - a.price)
         } else if (value == 'kr') {
-            sortedList.sort((a, b) => a.name.localeCompare(b.name))
+            sortedList.sort((a, b) =>
+                a.accommodationName.localeCompare(b.accommodationName),
+            )
         }
         e.target.classList.add(style['on'])
         setFetchRoomList(sortedList)

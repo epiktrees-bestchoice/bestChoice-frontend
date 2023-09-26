@@ -21,15 +21,12 @@ const RoomList = () => {
     const callback = (entries, observer) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                observerRef.current.innerText += '관측되었습니다'
                 const reFetchData = async () => {
                     const res = await fetch('/api/room', { method: 'GET' })
                     const data = await res.json()
                     setFetchRoomList((prev) => [...prev, ...data.data])
                 }
                 reFetchData()
-            } else {
-                console.log('벗어났씁니다.')
             }
         })
     }

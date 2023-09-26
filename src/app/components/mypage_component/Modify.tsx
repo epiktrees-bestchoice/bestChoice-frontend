@@ -1,12 +1,10 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import style from '@/app/my/mypage/mypage.module.scss'
 
-export default function Modify({ handle, handler, setInputValue }) {
+export default function Modify({ handle, handler }) {
     const inputRef = useRef(null)
 
-    function ChangeName() {
-        setInputValue(inputRef.current.value)
-    }
+    function ChangeName() {}
 
     return (
         <div className={style.modifyBox}>
