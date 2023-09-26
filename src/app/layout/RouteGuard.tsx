@@ -4,7 +4,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { useContext, useEffect } from 'react'
 
 const RouteGuard = ({ children }: { children: React.ReactNode }) => {
-    const { isLogin } = useContext(IsLoginContext)
+    const { isLogin, userInfo } = useContext(IsLoginContext)
     const router = useRouter()
     const pathname = usePathname()
 
@@ -15,8 +15,8 @@ const RouteGuard = ({ children }: { children: React.ReactNode }) => {
         }
     }, [isLogin])
 
-    if (!isLogin) {
-        return null
+    if (!isLogin && userInfo == null) {
+        return <></>
     }
 
     return <>{children}</>
