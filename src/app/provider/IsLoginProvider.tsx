@@ -15,7 +15,7 @@ const IsLoginProvider = (props) => {
     )
     const [userInfo, setUserInfo] = useState({})
     const router = useRouter()
-    const ckeckLogin = async () => {
+    const checkLogin = async () => {
         const res = await fetch('/api/user')
         const data = await res.json()
         if (res.status === 200 && data) {
@@ -29,7 +29,7 @@ const IsLoginProvider = (props) => {
         console.log(data)
     }
     useEffect(() => {
-        ckeckLogin()
+        checkLogin()
     }, [])
     return (
         <IsLoginContext.Provider
