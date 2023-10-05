@@ -15,6 +15,8 @@ const IsLoginProvider = (props) => {
     const ckeckLogin = async () => {
         const res = await fetch('/api/user')
         const data = await res.json()
+
+        console.log(data.data)
         if (isLogin && res.status === 200 && data) {
             // setInLogin(true)
             setUserInfo(data.data)
@@ -29,11 +31,9 @@ const IsLoginProvider = (props) => {
         const myCookie = cookies.includes('JSESSIONID')
             ? cookies.split('=')[1]
             : null
-
-        console.log(myCookie)
         setInLogin(myCookie !== null ? true : false)
         ckeckLogin()
-    }, [])
+    }, [isLogin, userInfo])
     return (
         <IsLoginContext.Provider
             value={{ isLogin, userInfo, setInLogin, setUserInfo }}>
