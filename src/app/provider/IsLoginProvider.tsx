@@ -33,7 +33,7 @@ const IsLoginProvider = (props) => {
             : null
         setInLogin(myCookie !== null ? true : false)
         ckeckLogin()
-    }, [isLogin, userInfo])
+    }, [])
     return (
         <IsLoginContext.Provider
             value={{ isLogin, userInfo, setInLogin, setUserInfo }}>
