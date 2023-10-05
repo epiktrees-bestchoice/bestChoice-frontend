@@ -16,15 +16,16 @@ const IsLoginProvider = (props) => {
         const res = await fetch('/api/user')
         const data = await res.json()
 
-        console.log(data.data)
-        if (isLogin && res.status === 200 && data) {
-            // setInLogin(true)
-            setUserInfo(data.data)
-        } else {
-            // setInLogin(false)
-            setUserInfo({})
-            router.push('/')
-        }
+        setUserInfo(data.data)
+        console.log(userInfo, data.data)
+        // if (isLogin && res.status === 200 && data) {
+        //     // setInLogin(true)
+        //     setUserInfo(data.data)
+        // } else {
+        //     // setInLogin(false)
+        //     setUserInfo({})
+        //     router.push('/')
+        // }
     }
     useEffect(() => {
         const cookies = document.cookie
@@ -32,7 +33,9 @@ const IsLoginProvider = (props) => {
             ? cookies.split('=')[1]
             : null
         setInLogin(myCookie !== null ? true : false)
-        ckeckLogin()
+        if (isLogin) {
+            ckeckLogin()
+        }
     }, [])
     return (
         <IsLoginContext.Provider
