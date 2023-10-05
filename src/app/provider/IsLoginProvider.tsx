@@ -9,17 +9,13 @@ const token =
 export const IsLoginContext = createContext(null)
 
 const IsLoginProvider = (props) => {
-    const cookies = document.cookie
-    const myCookie = cookies.includes('JSESSIONID')
-        ? cookies.split('=')[1]
-        : null
-    const [isLogin, setInLogin] = useState(myCookie !== null ? true : false)
+    const [isLogin, setInLogin] = useState(false)
     const [userInfo, setUserInfo] = useState({})
     const router = useRouter()
     const ckeckLogin = async () => {
         const res = await fetch('/api/user')
         const data = await res.json()
-        if (res.status === 200 && data) {
+        if (isLogin && res.status === 200) {
             // setInLogin(true)
             setUserInfo(data.data)
         } else {
@@ -27,9 +23,15 @@ const IsLoginProvider = (props) => {
             setUserInfo({})
             router.push('/')
         }
-        console.log(myCookie)
     }
     useEffect(() => {
+        const cookies = document.cookie
+        const myCookie = cookies.includes('JSESSIONID')
+            ? cookies.split('=')[1]
+            : null
+
+        console.log(myCookie)
+        setInLogin(myCookie !== null ? true : false)
         ckeckLogin()
     }, [])
     return (
