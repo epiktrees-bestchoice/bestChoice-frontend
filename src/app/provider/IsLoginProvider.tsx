@@ -9,27 +9,25 @@ const token =
 export const IsLoginContext = createContext(null)
 
 const IsLoginProvider = (props) => {
-    const cookies = document.cookie.split('; ')
-    const myCookie = cookies.find((cookie) => cookie.startsWith('myCookie='))
-    const myCookieValue = myCookie ? myCookie.split('=')[1] : null
-    const [isLogin, setInLogin] = useState(
-        false,
-        // userId !== null && token !== null ? false : true,
-    )
+    const cookies = document.cookie
+    const myCookie = cookies.includes('JSESSIONID')
+        ? cookies.split('=')[1]
+        : null
+    const [isLogin, setInLogin] = useState(myCookie !== null ? true : false)
     const [userInfo, setUserInfo] = useState({})
     const router = useRouter()
     const ckeckLogin = async () => {
         const res = await fetch('/api/user')
         const data = await res.json()
         if (res.status === 200 && data) {
-            setInLogin(true)
+            // setInLogin(true)
             setUserInfo(data.data)
         } else {
-            setInLogin(false)
+            // setInLogin(false)
             setUserInfo({})
             router.push('/')
         }
-        console.log(myCookieValue)
+        console.log(myCookie)
     }
     useEffect(() => {
         ckeckLogin()
