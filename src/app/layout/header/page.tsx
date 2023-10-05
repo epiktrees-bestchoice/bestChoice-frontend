@@ -96,7 +96,7 @@ const Header = () => {
                             </ul>
                         </span>
                     </li>
-                    {isLogin && userInfo ? (
+                    {isLogin ? (
                         <li>
                             <span className={style.gnbCataLink}>
                                 <span className={style.user}>

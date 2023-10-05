@@ -9,17 +9,35 @@ const token =
 export const IsLoginContext = createContext(null)
 
 const IsLoginProvider = (props) => {
-    const [isLogin, setInLogin] = useState(false)
+    const [isLogin, setInLogin] = useState(
+        false,
+        // userId !== null && token !== null ? false : true,
+    )
     const [userInfo, setUserInfo] = useState({})
     const router = useRouter()
     const checkLogin = async () => {
         const res = await fetch('/api/user')
         const data = await res.json()
+<<<<<<< HEAD
 
         setUserInfo(data)
     }
     useEffect(() => {
         checkLogin()
+=======
+        if (res.status === 200 && data) {
+            setInLogin(true)
+            setUserInfo(data.data)
+        } else {
+            setInLogin(false)
+            setUserInfo({})
+            router.push('/')
+        }
+        console.log(data)
+    }
+    useEffect(() => {
+        ckeckLogin()
+>>>>>>> 54dfc37e8e08c72c0319498df9a4ebf6fc84613e
     }, [])
     return (
         <IsLoginContext.Provider
