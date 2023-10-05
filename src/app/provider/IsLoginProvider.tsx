@@ -9,6 +9,9 @@ const token =
 export const IsLoginContext = createContext(null)
 
 const IsLoginProvider = (props) => {
+    const cookies = document.cookie.split('; ')
+    const myCookie = cookies.find((cookie) => cookie.startsWith('myCookie='))
+    const myCookieValue = myCookie ? myCookie.split('=')[1] : null
     const [isLogin, setInLogin] = useState(
         false,
         // userId !== null && token !== null ? false : true,
@@ -26,7 +29,7 @@ const IsLoginProvider = (props) => {
             setUserInfo({})
             router.push('/')
         }
-        console.log(data)
+        console.log(myCookieValue)
     }
     useEffect(() => {
         ckeckLogin()
