@@ -15,7 +15,7 @@ const IsLoginProvider = (props) => {
     const ckeckLogin = async () => {
         const res = await fetch('/api/user')
         const data = await res.json()
-        if (isLogin && res.status === 200) {
+        if (isLogin && res.status === 200 && data) {
             // setInLogin(true)
             setUserInfo(data.data)
         } else {
