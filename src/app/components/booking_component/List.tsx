@@ -1,15 +1,7 @@
-'use client'
-import React, { useEffect } from 'react'
+import React from 'react'
 import style from '@/app/my/reservations/reservations.module.scss'
 
 export default function List({ isUsed }) {
-    useEffect(() => {
-        onCheckReserve()
-    }, [])
-    const onCheckReserve = async () => {
-        const res = await fetch('/api/reserve/checkReserve')
-        console.log(res)
-    }
     const usedList = [
         {
             id: '1',

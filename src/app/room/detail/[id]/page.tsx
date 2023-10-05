@@ -1,4 +1,3 @@
-'use client'
 import React from 'react'
 import style from '@/app/room/room.module.scss'
 import ButtonDefault from '@/app/components/btns/ButtonDefault'
@@ -9,13 +8,6 @@ import { getRoomDetail } from '@/app/api/getFireBaseData'
 const RoomDetailPage = async (props) => {
     const params = props.params.id
     const roomDetail = await getRoomDetail(params)
-
-    const onClickAddReserve = async () => {
-        const res = await fetch('/api/reserve/addReserve', {
-            method: 'POST',
-        })
-        console.log(res)
-    }
 
     return (
         <div className="content">
@@ -65,10 +57,7 @@ const RoomDetailPage = async (props) => {
                                     예약 마감
                                 </ButtonDefault>
                             ) : (
-                                <ButtonDefault
-                                    type="button"
-                                    disable={false}
-                                    onClick={onClickAddReserve}>
+                                <ButtonDefault type="button" disable={false}>
                                     숙소 예약
                                 </ButtonDefault>
                             )}

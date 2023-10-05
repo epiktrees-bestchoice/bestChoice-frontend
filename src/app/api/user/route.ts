@@ -1,14 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { cookies } from 'next/headers'
 
 export async function GET(request: NextRequest) {
-    const cookieStore = cookies()
-    const token = cookieStore.get('JSESSIONID')
     try {
         const res = await fetch('https://api.epicktrees.net/api/v1/my/info', {
             method: 'GET',
             headers: {
-                cookie: `JSESSIONID=${token.value}`,
+                cookie: 'JSESSIONID=34668C266465637EDC65985A011AE00F',
             },
             credentials: 'include',
         })

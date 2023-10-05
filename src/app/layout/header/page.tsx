@@ -39,14 +39,6 @@ const Header = () => {
         setsrchBarOpen(!srchBarOpen)
     }
     if (pathname === '/user') return null
-
-    const onClickLogout = async () => {
-        const res = await fetch('/api/logout', {
-            method: 'POST',
-        })
-        console.log(res)
-    }
-
     return (
         <header ref={headerRef} className={style.header}>
             <div className={style.gnb}>
@@ -125,11 +117,7 @@ const Header = () => {
                                         <Link href={'/my/likes'}>좋아요</Link>
                                     </li>
                                     <li>
-                                        <Link href={'/'}>
-                                            <button onClick={onClickLogout}>
-                                                로그아웃
-                                            </button>
-                                        </Link>
+                                        <Link href={'/'}>로그아웃</Link>
                                     </li>
                                 </ul>
                             </span>
