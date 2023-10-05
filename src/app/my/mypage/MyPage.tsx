@@ -10,6 +10,7 @@ import { IsLoginContext } from '@/app/provider/IsLoginProvider'
 function MyPage() {
     const { userInfo } = useContext(IsLoginContext)
     const { name, nickName, phoneNumber, picture } = userInfo
+    console.log(userInfo)
     return (
         <div className={style.myInfoBackGround}>
             <section className={style.topArea}>

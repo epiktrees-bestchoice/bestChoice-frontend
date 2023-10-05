@@ -18,10 +18,6 @@ export default function Login() {
                     <input type="hidden"></input>
                     <Logo />
                     <SnsButtonBox />
-                    <SpaceOr />
-                    <InputBox />
-                    <LoginButton />
-                    <LoginFooter />
                 </form>
             </main>
         </>

@@ -35,7 +35,6 @@ export default function Room() {
     //     }
     //     fetchData()
     // }, [searchParams])
-    console.log(pathname)
 
     return (
         <div className={`inner contentGrid`}>
