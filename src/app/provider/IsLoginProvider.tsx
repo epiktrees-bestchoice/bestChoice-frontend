@@ -9,24 +9,14 @@ const token =
 export const IsLoginContext = createContext(null)
 
 const IsLoginProvider = (props) => {
-    const [isLogin, setInLogin] = useState(
-        false,
-        // userId !== null && token !== null ? false : true,
-    )
+    const [isLogin, setInLogin] = useState(false)
     const [userInfo, setUserInfo] = useState({})
     const router = useRouter()
     const checkLogin = async () => {
         const res = await fetch('/api/user')
         const data = await res.json()
-        if (res.status === 200 && data) {
-            setInLogin(true)
-            setUserInfo(data.data)
-        } else {
-            setInLogin(false)
-            setUserInfo({})
-            router.push('/')
-        }
-        console.log(data)
+
+        setUserInfo(data)
     }
     useEffect(() => {
         checkLogin()
