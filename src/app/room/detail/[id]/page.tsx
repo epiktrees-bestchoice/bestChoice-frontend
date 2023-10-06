@@ -5,8 +5,24 @@ import ButtonDefault from '@/app/components/btns/ButtonDefault'
 import RoomDetailSlide from '@/app/room/RoomDetailSlide'
 import ButtonLike from '@/app/components/btns/ButtonLike'
 
+interface RoomDetail {
+    accommodationName: string
+    region: string | null
+    price: number | null
+    infoOpt: string | null
+    introduce: string | null
+    soldOut: boolean
+}
+
 const RoomDetailPage = (props) => {
-    const [roomDetail, setRoomDetail] = useState({})
+    const [roomDetail, setRoomDetail] = useState<RoomDetail>({
+        accommodationName: '',
+        region: null,
+        price: null,
+        infoOpt: null,
+        introduce: null,
+        soldOut: false,
+    })
     const params = props.params.id
 
     const onClickAddReserve = async () => {
@@ -35,11 +51,11 @@ const RoomDetailPage = (props) => {
                         <RoomDetailSlide roomDetail={roomDetail} />
                     </div>
                     <div className={style.boxTxt}>
-                        {/* {roomDetail?.region && (
+                        {roomDetail?.region && (
                             <span className={style.infoAddr}>
                                 {roomDetail.region}
                             </span>
-                        )} */}
+                        )}
                         <strong className={style.tit}>
                             {roomDetail?.accommodationName}
                         </strong>
