@@ -4,15 +4,15 @@ import React, { useEffect, useRef, useState } from 'react'
 import style from './slide.module.scss'
 import ButtonCarousel from '@/app/components/btns/ButtonCarousel'
 
-const RoomDetailSlide = (roomDetail) => {
+const RoomDetailSlide = ({ roomDetail }) => {
     const slideRef = useRef(null)
     const slideBigRef = useRef(null)
 
     useEffect(() => {
-        if (slideRef.current) {
+        if (roomDetail && slideRef.current) {
             getFirstImage(slideRef.current.children[0].firstChild)
         }
-    }, [])
+    }, [roomDetail])
 
     const getFirstImage = (children) => {
         const cloneBig = children.cloneNode(true)
@@ -41,12 +41,20 @@ const RoomDetailSlide = (roomDetail) => {
                 <div className={style.slideWrap}>
                     <ul className={style.slideList} ref={slideRef}>
                         <li className={`${style.slideListItem}`}>
-                            <img src="../../img/roomList1.jpg" alt="" />
+                            <img src={roomDetail?.imgUrl} alt="" />
                         </li>
-                        <li className={style.slideListItem}>slide2</li>
-                        <li className={style.slideListItem}>slide3</li>
-                        <li className={style.slideListItem}>slide4</li>
-                        <li className={style.slideListItem}>slide5</li>
+                        <li className={style.slideListItem}>
+                            <img src="../../img/no-img.jpg" alt="" />
+                        </li>
+                        <li className={style.slideListItem}>
+                            <img src="../../img/no-img.jpg" alt="" />
+                        </li>
+                        <li className={style.slideListItem}>
+                            <img src="../../img/no-img.jpg" alt="" />
+                        </li>
+                        <li className={style.slideListItem}>
+                            <img src="../../img/no-img.jpg" alt="" />
+                        </li>
                     </ul>
                 </div>
                 <div className={style.slideControls}>

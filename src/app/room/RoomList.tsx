@@ -30,7 +30,6 @@ const RoomList = () => {
             }
         })
     }
-
     useEffect(() => {
         fetchData()
         const observer = new IntersectionObserver(callback, {
@@ -66,10 +65,11 @@ const RoomList = () => {
                                     </strong>
                                     <span className={style.infoScore}>
                                         <span>
-                                            <em>{room.score}</em>&nbsp;
-                                            {room.scoreTxt}
+                                            {/* <em>{room.score}</em>&nbsp; */}
+                                            {/* {room.scoreTxt} */}
+                                            만족해요
                                         </span>
-                                        &nbsp;(3611)
+                                        &nbsp;(3663)
                                     </span>
                                     <span className={style.infoAddr}>
                                         {room.infoAddr}
@@ -82,16 +82,20 @@ const RoomList = () => {
                                     </span>
                                 </span>
                                 <span className={style.price}>
-                                    <span className={style.priceDetail}>
-                                        {room.rentHalf}&nbsp;
-                                        <span className={style.bold}>
-                                            {room.rentHalfPrice}원
+                                    {room.rentHalf && (
+                                        <span className={style.priceDetail}>
+                                            {room.rentHalf}&nbsp;
+                                            <span className={style.bold}>
+                                                {room.rentHalfPrice}원
+                                            </span>
                                         </span>
-                                    </span>
+                                    )}
+
                                     <span className={style.priceDetail}>
                                         {room.rentAll}&nbsp;
                                         <span className={style.badge}>
-                                            {room.rentBedge}
+                                            {/* {room.rentBedge} */}
+                                            할인중
                                         </span>
                                         &nbsp;
                                         <span
