@@ -37,7 +37,7 @@ const RoomDetailPage = (props) => {
                     <div className={style.boxTxt}>
                         {roomDetail?.region && (
                             <span className={style.infoAddr}>
-                                {roomDetail?.region}
+                                {roomDetail.region}
                             </span>
                         )}
                         <strong className={style.tit}>
@@ -50,24 +50,24 @@ const RoomDetailPage = (props) => {
                                     {roomDetail.scoreTxt}
                                     */}
                                     <em>할인 특가</em>
-                                    {roomDetail?.price}원
+                                    {roomDetail.price}원
                                 </span>
                             )}
                             {roomDetail?.infoOpt && (
                                 <span className={style.infoOpt}>
-                                    {roomDetail?.infoOpt}
+                                    {roomDetail.infoOpt}
                                 </span>
                             )}
                             {roomDetail?.introduce && (
                                 <span className={style.infoEvt}>
-                                    {roomDetail?.introduce}
+                                    {roomDetail.introduce}
                                 </span>
                             )}
                             {roomDetail?.introduce && (
                                 <span className={style.infoCeo}>
                                     <strong>사장님 한마디</strong>
                                     <span className={style.clamp}>
-                                        {roomDetail?.introduce}
+                                        {roomDetail.introduce}
                                     </span>
                                 </span>
                             )}
