@@ -18,13 +18,6 @@ const IsLoginProvider = (props) => {
     const checkLogin = async () => {
         const res = await fetch('/api/user')
         const data = await res.json()
-<<<<<<< HEAD
-
-        setUserInfo(data)
-    }
-    useEffect(() => {
-        checkLogin()
-=======
         if (res.status === 200 && data) {
             setInLogin(true)
             setUserInfo(data.data)
@@ -36,8 +29,7 @@ const IsLoginProvider = (props) => {
         console.log(data)
     }
     useEffect(() => {
-        ckeckLogin()
->>>>>>> 54dfc37e8e08c72c0319498df9a4ebf6fc84613e
+        checkLogin()
     }, [])
     return (
         <IsLoginContext.Provider
