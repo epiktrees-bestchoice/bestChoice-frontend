@@ -26,10 +26,4 @@ export async function getRoomList() {
     return data
 }
 
-export async function getRoomDetail(id) {
-    const roomDetailRef = doc(db, 'roomList', id)
-    const roomDetailSnap = await getDoc(roomDetailRef)
-    const data = roomDetailSnap.data()
-    return data
-}
 // export default getRoomCatagory

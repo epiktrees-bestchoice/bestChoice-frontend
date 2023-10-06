@@ -24,7 +24,7 @@ const IsLoginProvider = (props) => {
         } else {
             setInLogin(false)
             setUserInfo({})
-            router.push('/')
+            // router.push('/')
         }
         console.log(data)
     }
