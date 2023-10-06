@@ -12,12 +12,11 @@ import { useContext, useEffect, useRef } from 'react'
 import { RoomListContext } from '@/app/provider/roomListProvider'
 import RoomListEmpty from '@/app/room/RoomListEmpty'
 
-export default function Room() {
+export default function Room({ params }: { params: { id: number } }) {
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
     const { fetchRoomList, setFetchRoomList } = useContext(RoomListContext)
-
     // useEffect(() => {
     //     const valuesArray = Array.from(searchParams.values())
     //     const fetchData = async () => {
@@ -39,7 +38,7 @@ export default function Room() {
     return (
         <div className={`inner contentGrid`}>
             <Sidebar>
-                <RoomCata />
+                <RoomCata categoryId={params.id} />
             </Sidebar>
             <main>
                 <RoomListSort />

@@ -8,8 +8,13 @@ import SelectBox from '@/app/components/select/SelectBox'
 import ButtonDefault from '@/app/components/btns/ButtonDefault'
 
 import { usePathname, useRouter } from 'next/navigation'
+import { useEffect } from 'react'
+interface RoomCataProps {
+    categoryId: number
+}
+export default function RoomCata(props: RoomCataProps) {
+    const { categoryId } = props
 
-export default function RoomCata() {
     const info = [
         {
             isTitle: false,
@@ -100,6 +105,17 @@ export default function RoomCata() {
 
     const router = useRouter()
     const pathname = usePathname()
+
+    useEffect(() => {
+        console.log(categoryId)
+        const getKeyword = async () => {
+            const res = await fetch(`/api/keyword?categoryId=${categoryId}`)
+            const data = await res.json() // 데이터 비동기 추출
+            console.log(data) // 추출된 데이터 출력
+        }
+        getKeyword()
+    }, [])
+
     const handleAddQuery = (e) => {
         const target = e.target
         const queryName = target.name
