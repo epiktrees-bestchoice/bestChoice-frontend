@@ -35,11 +35,11 @@ const RoomDetailPage = (props) => {
                         <RoomDetailSlide roomDetail={roomDetail} />
                     </div>
                     <div className={style.boxTxt}>
-                        {roomDetail?.region && (
+                        {/* {roomDetail?.region && (
                             <span className={style.infoAddr}>
                                 {roomDetail.region}
                             </span>
-                        )}
+                        )} */}
                         <strong className={style.tit}>
                             {roomDetail?.accommodationName}
                         </strong>
