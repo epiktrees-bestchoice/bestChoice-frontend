@@ -56,7 +56,7 @@ const RoomList = () => {
                             {/* 테스트용 삭제 예정 20230920 by jyj */}
                             {/* <span>{room.detailOpt}</span> */}
                             <span className={style.boxImg}>
-                                <img src={room.img} alt="" loading="lazy" />
+                                <img src={room.imgUrl} alt="" loading="lazy" />
                             </span>
 
                             <span className={style.boxTxt}>
