@@ -5,12 +5,8 @@ export async function POST(request: NextRequest) {
     const cookieStore = cookies()
     const token = cookieStore.get('JSESSIONID')
 
-    const requestBody = {
-        // reserveId: 1, // 또는 원하는 값을 설정하세요
-        // userId: 1, // 예시로 1을 설정했습니다
-        // accommodationId: 1, // 예시로 1을 설정했습니다
-    }
-    //api 완성되면 수정할 것 
+    const requestBody = request.body
+  
 
     try {
         const res = await fetch(
@@ -19,10 +15,10 @@ export async function POST(request: NextRequest) {
                 method: 'DELETE',
                 headers: {
                     cookie: `JSESSIONID=${token.value}`,
-                    'Content-Type': 'application/json', // Content-Type 설정
+                    'Content-Type': 'application/json',
                 },
                 credentials: 'include',
-                body: JSON.stringify(requestBody), // FormData 객체를 요청 본문으로 사용
+                body: JSON.stringify(requestBody), 
             },
         )
         const data = await res.json()
