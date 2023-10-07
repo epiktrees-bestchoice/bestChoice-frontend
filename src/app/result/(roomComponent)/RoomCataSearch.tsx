@@ -17,8 +17,8 @@ export interface mtypeInterface {
 }
 
 export interface keywordInterface {
-    id: number
-    value: string
+    keywordId: number
+    keywordName: string
 }
 
 export default function RoomCataSearch() {
@@ -33,24 +33,24 @@ export default function RoomCataSearch() {
     const keywordList = [
         [
             {
-                id: 1,
-                value: 'HOTEL',
+                keywordId: 1,
+                keywordName: 'HOTEL',
             },
             {
-                id: 2,
-                value: 'MOTEL',
+                keywordId: 2,
+                keywordName: 'MOTEL',
             },
             {
-                id: 3,
-                value: 'PENSION',
+                keywordId: 3,
+                keywordName: 'PENSION',
             },
             {
-                id: 4,
-                value: 'GESTHOUSE',
+                keywordId: 4,
+                keywordName: 'GESTHOUSE',
             },
             {
-                id: 5,
-                value: 'CAMPING',
+                keywordId: 5,
+                keywordName: 'CAMPING',
             },
         ],
     ]
@@ -58,7 +58,7 @@ export default function RoomCataSearch() {
     const router = useRouter()
     const pathname = usePathname()
 
-    const handleAddQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleAddQuery = (e) => {
         const target = e.target
         const queryName = target.name
         const queryValue = target.value
@@ -68,7 +68,8 @@ export default function RoomCataSearch() {
         } else {
             params.delete(queryName)
         }
-        router.push(`${pathname}?${params.toString()}`)
+        //router.push(`${pathname}?${params.toString()}`)
+        console.log(e)
     }
     const handleResetQuery = () => {
         router.push(`${pathname}`)

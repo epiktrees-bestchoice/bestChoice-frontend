@@ -3,15 +3,17 @@ import SearchIcon from '@mui/icons-material/Search'
 import CloseIcon from '@mui/icons-material/Close'
 
 import style from '@/app/layout/header/header.module.scss'
+import Link from 'next/link'
 
-const SearchBar = ({ srchBarOpen, handleSrchBar }) => {
+const SearchBar = ({ srchBarOpen, onInputSearch, handleSrchBar }) => {
     const handleEnterPress = (event) => {
-        if (event.key === 'Enter') {
+        if (event.key === 'Enter' && event.target.value != '') {
             const searchText = event.target.value
             console.log(searchText) // 입력된 텍스트를 콘솔에 출력
+            onInputSearch(searchText)
+            event.target.value = ''
         }
     }
-
     return (
         <div className={style.srchBar}>
             <div className={style.srchBarWrap}>
@@ -20,7 +22,7 @@ const SearchBar = ({ srchBarOpen, handleSrchBar }) => {
                     id="keyword"
                     placeholder="지역, 숙소명"
                     autoComplete="off"
-                    onKeyUp={handleEnterPress} // 엔터 키 누름 감지 시 핸들러 호출
+                    onKeyUp={handleEnterPress}
                 />
                 <button type="button" className={style.btnSrch}>
                     <SearchIcon className={style.btnSrchIcon} />

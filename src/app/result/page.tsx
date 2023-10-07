@@ -1,5 +1,4 @@
 'use client'
-
 import Sidebar from '@/app/layout/sidebar/page'
 import RoomList from '@/app/room/(roomComponent)/RoomList'
 import RoomListSort from '@/app/room/(roomComponent)/RoomListSort'
@@ -8,8 +7,7 @@ import { useContext, useEffect, useRef } from 'react'
 import { RoomListContext } from '@/app/provider/roomListProvider'
 import RoomCataSearch from '@/app/result/(roomComponent)/RoomCataSearch'
 
-export default function Room({ params }: { params: { searchText: string } }) {
-    console.log(decodeURIComponent(params.searchText))
+export default function Room() {
     return (
         <div className={`inner contentGrid`}>
             <Sidebar>
