@@ -32,12 +32,11 @@ const RoomDetailPage = async (props) => {
 
     const onClickAddReserve = async () => {
         const requestBody = {
-            reserveId: 0, // 또는 원하는 값을 설정하세요
-            userId: userInfo.userId, // 예시로 1을 설정했습니다
-            accommodationId: fetchRoomList.accommodationId, // 예시로 1을 설정했습니다
+            userId: userInfo.userId,
+            accommodationId: fetchRoomList.accommodationId,
+            reserveDate: fetchRoomList.reserveDate,
+            endDate: fetchRoomList.endDate,
         }
-
-        // 데이터를 JSON 문자열로 변환
 
         const res = await fetch('/api/reserve/addReserve', {
             method: 'POST',

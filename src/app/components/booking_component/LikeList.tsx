@@ -42,6 +42,7 @@ export default function LikeList() {
     return (
         <>
             {fetchLikeList.map((room, index) => {
+                // api구조 완성하면 마저 끝낼것
                 return (
                     <li key={index}>
                         <div className={style.reservationDetail}>

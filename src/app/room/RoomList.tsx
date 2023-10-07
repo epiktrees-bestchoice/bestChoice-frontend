@@ -42,26 +42,47 @@ const RoomList = () => {
         return () => observer && observer.disconnect()
     }, [])
 
+    const postLike = async () => {
+        const requestBody = {
+            userLikeId: 0,
+            userId: userInfo.userId,
+            accommodationId: fetchRoomList.accommodationId,
+        }
+
+        const res = await fetch('/api/like/addLike', {
+            method: 'POST',
+            body: JSON.stringify(requestBody),
+        })
+        const data = await res.json()
+        console.log(data)
+    }
+
+    const deleteLike = async (userLikeId) => {
+        const requestBody = {
+            userLikeId: `${userLikeId}`,
+        }
+        const res = await fetch('/api/like/deleteLike', {
+            method: 'DELETE',
+            body: JSON.stringify(requestBody),
+        })
+        const data = await res.json()
+        console.log(data)
+    }
+
     const handleLike = (id) => {
         setLike((prev) => ({
             ...prev,
             [id]: !prev[id],
         }))
     }
-    const onClickToggleLike = async () => {
-        const requestBody = {
-            reserveId: 0, // 또는 원하는 값을 설정하세요
-            userId: userInfo.userId, // 예시로 1을 설정했습니다
-            userlikedId: fetchRoomList.accommodationId, // 예시로 1을 설정했습니다
-        }
-        //좋아요 api 데이터 형식 질문하기
 
-        const res = await fetch('/api/like/addLike', {
-            method: 'POST',
-            body: JSON.stringify(requestBody), // FormData 객체를 요청 본문으로 사용
-        })
-        const data = await res.json()
-        console.log(data)
+    const onClickToggleLike = (id, userLikeId) => {
+        handleLike(id)
+        if (id) {
+            postLike()
+        } else {
+            deleteLike(userLikeId)
+        }
     }
 
     return (
@@ -126,7 +147,9 @@ const RoomList = () => {
                         </Link>
                         <ButtonLike
                             className={`m16`}
-                            onClick={() => handleLike(room.id)}
+                            onClick={() =>
+                                onClickToggleLike(room.id, room.userLikeId)
+                            }
                             Liked={like[room.id]}
                         />
                     </li>
