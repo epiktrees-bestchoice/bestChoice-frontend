@@ -4,9 +4,10 @@ import { cookies } from 'next/headers'
 export async function GET(request: NextRequest) {
     const cookieStore = cookies()
     const token = cookieStore.get('JSESSIONID')
+  
     try {
         const res = await fetch(
-            `https://api.epicktrees.net/api/v1/reserve/user/accommodations?userId=${1}`,
+            `https://api.epicktrees.net/api/v1/reserve/user/accommodations`,
             {
                 method: 'GET',
                 headers: {

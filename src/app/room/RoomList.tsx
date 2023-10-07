@@ -6,8 +6,11 @@ import ButtonLike from '@/app/components/btns/ButtonLike'
 import style from '@/app/room/room.module.scss'
 import { getRoomList } from '@/app/api/getFireBaseData'
 import { RoomListContext } from '@/app/provider/roomListProvider'
+import { IsLoginContext } from '@/app/provider/IsLoginProvider'
 
 const RoomList = () => {
+    const { userInfo } = useContext(IsLoginContext)
+
     const { fetchRoomList, setFetchRoomList } = useContext(RoomListContext)
     const [like, setLike] = useState({})
     // 수정 필요 20230926 BY joj
@@ -44,6 +47,21 @@ const RoomList = () => {
             ...prev,
             [id]: !prev[id],
         }))
+    }
+    const onClickToggleLike = async () => {
+        const requestBody = {
+            reserveId: 0, // 또는 원하는 값을 설정하세요
+            userId: userInfo.userId, // 예시로 1을 설정했습니다
+            userlikedId: fetchRoomList.accommodationId, // 예시로 1을 설정했습니다
+        }
+        //좋아요 api 데이터 형식 질문하기
+
+        const res = await fetch('/api/like/addLike', {
+            method: 'POST',
+            body: JSON.stringify(requestBody), // FormData 객체를 요청 본문으로 사용
+        })
+        const data = await res.json()
+        console.log(data)
     }
 
     return (
