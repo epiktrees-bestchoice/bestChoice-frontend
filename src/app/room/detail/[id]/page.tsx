@@ -7,20 +7,20 @@ import ButtonLike from '@/app/components/btns/ButtonLike'
 
 interface RoomDetail {
     accommodationName: string
-    region: string | null
-    price: number | null
-    infoOpt: string | null
-    introduce: string | null
+    region: string | undefined
+    price: number | undefined
+    infoOpt: string | undefined
+    introduce: string | undefined
     soldOut: boolean
 }
 
 const RoomDetailPage = (props) => {
     const [roomDetail, setRoomDetail] = useState<RoomDetail>({
         accommodationName: '',
-        region: null,
-        price: null,
-        infoOpt: null,
-        introduce: null,
+        region: undefined,
+        price: undefined,
+        infoOpt: undefined,
+        introduce: undefined,
         soldOut: false,
     })
     const params = props.params.id
@@ -51,16 +51,18 @@ const RoomDetailPage = (props) => {
                         <RoomDetailSlide roomDetail={roomDetail} />
                     </div>
                     <div className={style.boxTxt}>
-                        {roomDetail?.region && (
+                        {roomDetail.region ? (
                             <span className={style.infoAddr}>
                                 {roomDetail.region}
                             </span>
+                        ) : (
+                            <></>
                         )}
                         <strong className={style.tit}>
                             {roomDetail?.accommodationName}
                         </strong>
                         <span className={style.info}>
-                            {roomDetail?.price && (
+                            {roomDetail.price ? (
                                 <span className={style.infoScore}>
                                     {/* <em>{roomDetail.score}&nbsp;</em> 
                                     {roomDetail.scoreTxt}
@@ -68,24 +70,32 @@ const RoomDetailPage = (props) => {
                                     <em>할인 특가</em>
                                     {roomDetail.price}원
                                 </span>
+                            ) : (
+                                <></>
                             )}
-                            {roomDetail?.infoOpt && (
+                            {roomDetail.infoOpt ? (
                                 <span className={style.infoOpt}>
                                     {roomDetail.infoOpt}
                                 </span>
+                            ) : (
+                                <></>
                             )}
-                            {roomDetail?.introduce && (
+                            {roomDetail.introduce ? (
                                 <span className={style.infoEvt}>
                                     {roomDetail.introduce}
                                 </span>
+                            ) : (
+                                <></>
                             )}
-                            {roomDetail?.introduce && (
+                            {roomDetail.introduce ? (
                                 <span className={style.infoCeo}>
                                     <strong>사장님 한마디</strong>
                                     <span className={style.clamp}>
                                         {roomDetail.introduce}
                                     </span>
                                 </span>
+                            ) : (
+                                <></>
                             )}
                         </span>
                         <span className={style.btn}>
