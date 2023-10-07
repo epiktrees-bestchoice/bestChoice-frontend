@@ -2,7 +2,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import style from '@/app/room/room.module.scss'
 import ButtonDefault from '@/app/components/btns/ButtonDefault'
-import RoomDetailSlide from '@/app/room/RoomDetailSlide'
+import RoomDetailSlide from '@/app/room/(roomComponent)/RoomDetailSlide'
 import ButtonLike from '@/app/components/btns/ButtonLike'
 import { IsLoginContext } from '@/app/provider/IsLoginProvider'
 import { RoomListContext } from '@/app/provider/roomListProvider'

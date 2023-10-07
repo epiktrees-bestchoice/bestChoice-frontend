@@ -1,7 +1,7 @@
 import { getCatagoryDoc } from '@/app/api/getFireBaseData'
 import SelectBox from '@/app/components/select/SelectBox'
 import PageTop from '@/app/layout/pageTop/page'
-import RoomNav from '@/app/room/RoomNav'
+import RoomNav from '@/app/room/(roomComponent)/RoomNav'
 
 export default async function RoomLayout(props) {
     const params = props.params.id
