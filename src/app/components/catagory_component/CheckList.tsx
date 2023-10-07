@@ -15,8 +15,8 @@ export default function CheckList({ info, list, onChange }) {
                             id={val.keywordName + val.keywordId}
                             type="checkbox"
                             name={`${val.condition}${val.keywordId}`}
-                            value={val.value}
-                            onChange={onChange}
+                            value={val.keywordName}
+                            onClick={onChange}
                             className={style.inputCheck}
                         />
                         <label

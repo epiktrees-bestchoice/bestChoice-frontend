@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
-import style from '@/app/room/slide.module.scss'
+import style from './slide.module.scss'
 import ButtonCarousel from '@/app/components/btns/ButtonCarousel'
 
 const RoomDetailSlide = ({ roomDetail }) => {

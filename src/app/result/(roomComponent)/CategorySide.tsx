@@ -2,7 +2,7 @@ import style from '@/app/styles/RoomCata.module.scss'
 import {
     keywordInterface,
     mtypeInterface,
-} from '@/app/result/(roomComponent)/RoomCataSearch'
+} from '@/app/room/(roomComponent)/RoomCata'
 import CheckList from '@/app/components/catagory_component/CheckList'
 
 interface KeywordsComponentInterface {
@@ -17,8 +17,10 @@ function KeywordsComponent(props: KeywordsComponentInterface) {
         <>
             {props.mtypeList
                 ? props.mtypeList.map((mtype, index) => {
+                      console.log(index + '번째 mtpye!')
+                      console.log(mtype)
                       return (
-                          <div className={`${style.roomFilter}`} key={index}>
+                          <div className={`${style.roomFilter}`}>
                               <CheckList
                                   info={{
                                       title: mtype.mtypeName,
