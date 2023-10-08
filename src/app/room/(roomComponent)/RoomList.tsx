@@ -45,33 +45,6 @@ const RoomList = () => {
         return () => observer && observer.disconnect()
     }, [])
 
-    const postLike = async () => {
-        const requestBody = {
-            userLikeId: 0,
-            userId: userInfo.userId,
-            accommodationId: fetchRoomList.accommodationId,
-        }
-
-        const res = await fetch('/api/like/addLike', {
-            method: 'POST',
-            body: JSON.stringify(requestBody),
-        })
-        const data = await res.json()
-        console.log(data)
-    }
-
-    const deleteLike = async (userLikeId) => {
-        const requestBody = {
-            userLikeId: `${userLikeId}`,
-        }
-        const res = await fetch('/api/like/deleteLike', {
-            method: 'DELETE',
-            body: JSON.stringify(requestBody),
-        })
-        const data = await res.json()
-        console.log(data)
-    }
-
     const handleLike = (id) => {
         console.log('눌렀다!' + id)
         const matchingLike = userLikeList.find(
@@ -100,15 +73,6 @@ const RoomList = () => {
                 likeReducer({ type: 'AddLike', like: data.data })
             }
             addLike()
-        }
-    }
-
-    const onClickToggleLike = (id, userLikeId) => {
-        handleLike(id)
-        if (id) {
-            postLike()
-        } else {
-            deleteLike(userLikeId)
         }
     }
 

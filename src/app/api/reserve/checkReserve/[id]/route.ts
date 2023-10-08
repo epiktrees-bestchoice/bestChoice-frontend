@@ -1,13 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
 
-export async function GET(request: NextRequest) {
+export async function GET(request: NextRequest, 
+    { params }: { params: { id: string } },) {
     const cookieStore = cookies()
     const token = cookieStore.get('JSESSIONID')
+    console.log(token)
+
   
     try {
         const res = await fetch(
-            `https://api.epicktrees.net/api/v1/reserve/user/accommodations`,
+            `https://api.epicktrees.net/api/v1/reserve/user/accommodations?userId=${params.id}`,
             {
                 method: 'GET',
                 headers: {

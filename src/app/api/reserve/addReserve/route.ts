@@ -7,14 +7,13 @@ export async function POST(request: NextRequest) {
 
     const res = await request.json()
    console.log(res)
-    
 
-    const requestBody = request.body
-  
+   const requestBody = res
+
 
     try {
         const res = await fetch(
-            `https://api.epicktrees.net/api/v1/reserve/user/accommodation?startDate=2023-08-23&endDate=2023-08-24'`,
+            `https://api.epicktrees.net/api/v1/reserve/user/accommodation`,
             {
                 method: 'POST',
                 headers: {
