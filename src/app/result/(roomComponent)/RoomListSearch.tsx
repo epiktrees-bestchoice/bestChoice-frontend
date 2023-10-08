@@ -4,7 +4,6 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import ButtonLike from '@/app/components/btns/ButtonLike'
 import style from '@/app/room/room.module.scss'
-import { getRoomList } from '@/app/api/getFireBaseData'
 import { RoomListContext } from '@/app/provider/roomListProvider'
 import { useSearchParams } from 'next/navigation'
 

@@ -1,23 +1,40 @@
 'use client'
 
+import { roomCata } from '@/app/components/HomeCata'
+
 import Sidebar from '@/app/layout/sidebar/page'
 import RoomList from '@/app/room/(roomComponent)/RoomList'
 import RoomListSort from '@/app/room/(roomComponent)/RoomListSort'
 
-import { getRoomList } from '@/app/api/getFireBaseData'
-import { NextResponse } from 'next/server'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { useContext, useEffect, useRef } from 'react'
+import {
+    useParams,
+    usePathname,
+    useRouter,
+    useSearchParams,
+} from 'next/navigation'
+import { useContext, useEffect } from 'react'
 import { RoomListContext } from '@/app/provider/roomListProvider'
 import RoomListEmpty from '@/app/room/(roomComponent)/RoomListEmpty'
 import RoomCata from '@/app/room/(roomComponent)/RoomCata'
 
-export default function Room({ params }: { params: { id: number } }) {
+export default function Room() {
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
+    const params = useParams()
+    const [paramId] = roomCata.filter((item) => item.type == params.id)
 
     const { fetchRoomList, setFetchRoomList } = useContext(RoomListContext)
+
+    const fetchData = async () => {
+        const res = await fetch(`/api/room/${params.id}`, { method: 'GET' })
+        const data = await res.json()
+        setFetchRoomList(data.data)
+    }
+
+    useEffect(() => {
+        fetchData()
+    }, [])
 
     // useEffect(() => {
     //     const valuesArray = Array.from(searchParams.values())
@@ -36,11 +53,10 @@ export default function Room({ params }: { params: { id: number } }) {
     //     }
     //     fetchData()
     // }, [searchParams])
-
     return (
         <div className={`inner contentGrid`}>
             <Sidebar>
-                <RoomCata categoryId={params.id} />
+                <RoomCata categoryId={paramId.id} />
             </Sidebar>
             <main>
                 <RoomListSort />
