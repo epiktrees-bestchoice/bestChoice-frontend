@@ -6,7 +6,7 @@ const ButtonLike = ({ ...props }) => {
     return (
         <button
             className={`${props.className} ${style.btnLike} ${
-                props.Liked ? style.on : ''
+                props.LikeToggle ? style.on : ''
             }`}
             onClick={props.onClick}>
             <FavoriteTwoToneIcon />

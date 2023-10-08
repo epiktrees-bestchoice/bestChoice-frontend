@@ -2,11 +2,8 @@
 import React, { useEffect, useState, useContext } from 'react'
 import style from '@/app/my/reservations/reservations.module.scss'
 import { IsLoginContext } from '@/app/provider/IsLoginProvider'
-import { RoomListContext } from '@/app/provider/roomListProvider'
 
 export default function List() {
-    const { userInfo } = useContext(IsLoginContext)
-
     const [fetchReserveList, setFetchReserveList] = useState([])
     useEffect(() => {
         onCheckReserve()
@@ -19,14 +16,9 @@ export default function List() {
         console.log(data)
     }
 
-    const onClickDeleteReserve = async (reserveId) => {
-        const requestBody = {
-            reserveId: `${reserveId}`,
-        }
-
+    const onClickDeleteReserve = async () => {
         const res = await fetch('/api/reserve/deleteReserve', {
             method: 'DELETE',
-            body: JSON.stringify(requestBody),
         })
         const data = await res.json()
         console.log(data)
@@ -61,9 +53,7 @@ export default function List() {
                     <li key={index}>
                         <div className={style.reservationDetail}>
                             <button
-                                onClick={() =>
-                                    onClickDeleteReserve(room.reserveId)
-                                }
+                                onClick={onClickDeleteReserve}
                                 type="button"
                                 className={style.buttonDelete}>
                                 삭제

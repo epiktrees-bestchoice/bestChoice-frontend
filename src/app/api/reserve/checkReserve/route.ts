@@ -7,7 +7,7 @@ export async function GET(request: NextRequest) {
   
     try {
         const res = await fetch(
-            `https://api.epicktrees.net/api/v1/reserve/user/accommodations`,
+            `https://api.epicktrees.net/api/v1/reserve/user/accommodations?userId=2`,
             {
                 method: 'GET',
                 headers: {

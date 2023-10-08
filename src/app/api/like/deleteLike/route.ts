@@ -5,9 +5,6 @@ export async function POST(request: NextRequest) {
     const cookieStore = cookies()
     const token = cookieStore.get('JSESSIONID')
 
-    const requestBody = request.body
-  
-
     try {
         const res = await fetch(
             `https://api.epicktrees.net/api/v1/my/like/{userLikedId}`,
@@ -18,7 +15,7 @@ export async function POST(request: NextRequest) {
                     'Content-Type': 'application/json',
                 },
                 credentials: 'include',
-                body: JSON.stringify(requestBody), 
+               
             },
         )
         const data = await res.json()

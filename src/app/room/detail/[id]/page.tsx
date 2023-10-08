@@ -14,6 +14,7 @@ interface RoomDetail {
     infoOpt: string | undefined
     introduce: string | undefined
     soldOut: boolean
+    accommodationId: number
 }
 
 const RoomDetailPage = async (props) => {
@@ -26,6 +27,7 @@ const RoomDetailPage = async (props) => {
         infoOpt: undefined,
         introduce: undefined,
         soldOut: false,
+        accommodationId: 0,
     })
 
     const params = props.params.id
@@ -33,9 +35,9 @@ const RoomDetailPage = async (props) => {
     const onClickAddReserve = async () => {
         const requestBody = {
             userId: userInfo.userId,
-            accommodationId: fetchRoomList.accommodationId,
-            reserveDate: fetchRoomList.reserveDate,
-            endDate: fetchRoomList.endDate,
+            accommodationId: roomDetail.accommodationId,
+            reserveDate: '2023-10-08T00:57:19.571Z',
+            endDate: '2023-10-11T00:57:19.571Z',
         }
 
         const res = await fetch('/api/reserve/addReserve', {

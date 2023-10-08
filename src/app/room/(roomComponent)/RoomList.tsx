@@ -6,11 +6,13 @@ import ButtonLike from '@/app/components/btns/ButtonLike'
 import style from '@/app/room/room.module.scss'
 import { getRoomList } from '@/app/api/getFireBaseData'
 import { RoomListContext } from '@/app/provider/roomListProvider'
+import { IsLoginContext } from '@/app/provider/IsLoginProvider'
 
 const RoomList = () => {
-    // const { fetchRoomList, setFetchRoomList } = useContext(RoomListContext)
     const [fetchRoomList, setFetchRoomList] = useState([])
-    const [like, setLike] = useState({})
+    const [isLike, setIsLike] = useState(false)
+
+    const { userInfo } = useContext(IsLoginContext)
     // 수정 필요 20230926 BY joj
     const fetchData = async () => {
         const res = await fetch('/api/room', {
@@ -43,11 +45,11 @@ const RoomList = () => {
         return () => observer && observer.disconnect()
     }, [])
 
-    const postLike = async () => {
+    const postLike = async (accommodationId) => {
         const requestBody = {
             userLikeId: 0,
             userId: userInfo.userId,
-            accommodationId: fetchRoomList.accommodationId,
+            accommodationId: accommodationId,
         }
 
         const res = await fetch('/api/like/addLike', {
@@ -58,33 +60,19 @@ const RoomList = () => {
         console.log(data)
     }
 
-    const deleteLike = async (userLikeId) => {
-        const requestBody = {
-            userLikeId: `${userLikeId}`,
-        }
+    const deleteLike = async () => {
         const res = await fetch('/api/like/deleteLike', {
             method: 'DELETE',
-            body: JSON.stringify(requestBody),
         })
         const data = await res.json()
         console.log(data)
     }
 
-    const handleLike = (id) => {
-        setLike((prev) => ({
-            ...prev,
-            [id]: !prev[id],
-        }))
+    const handleClick = () => {
+        setIsLike((prev) => !prev)
     }
 
-    const onClickToggleLike = (id, userLikeId) => {
-        handleLike(id)
-        if (id) {
-            postLike()
-        } else {
-            deleteLike(userLikeId)
-        }
-    }
+    const likeToggle = isLike ? true : false
 
     return (
         <ul className={style.roomList}>
@@ -148,10 +136,15 @@ const RoomList = () => {
                         </Link>
                         <ButtonLike
                             className={`m16`}
-                            onClick={() =>
-                                onClickToggleLike(room.id, room.userLikeId)
-                            }
-                            Liked={like[room.id]}
+                            onClick={() => {
+                                handleClick()
+                                if (likeToggle) {
+                                    postLike(room.accommodationId)
+                                } else {
+                                    deleteLike()
+                                }
+                            }}
+                            LikeToggle={likeToggle}
                         />
                     </li>
                 )
