@@ -1,54 +1,46 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import style from '@/app/my/reservations/reservations.module.scss'
+import { IsLoginContext } from '@/app/provider/IsLoginProvider'
+import { UserLikeContext, userLikeDto } from '@/app/provider/UserLikeProvider'
 
 export default function LikeList() {
     const [fetchLikeList, setFetchLikeList] = useState([])
-    useEffect(() => {
-        onCheckLike()
-    }, [])
+    const userLikeList = useContext(UserLikeContext)
+    const { userInfo } = useContext(IsLoginContext)
 
-    const onCheckLike = async () => {
-        const res = await fetch('/api/like/checkLike')
+    const getItem = async (like: userLikeDto) => {
+        const res = await fetch(`/api/room/detail/${like.accommodationId}`)
         const data = await res.json()
-        setFetchLikeList(data.data)
-        console.log(data)
+        setFetchLikeList([...fetchLikeList, data.data])
     }
 
-    // const List = [
-    //     {
-    //         id: '1',
-    //         img: 'https://image.goodchoice.kr/resize_531x276/adimg_new/50188/138814/04b0e90d9c17ef6f564a0041cf6165fe.jpg',
-    //         alt: '경포대',
-
-    //         roomName: '경포대 아테네',
-    //     },
-    //     {
-    //         id: '2',
-    //         img: 'https://image.goodchoice.kr/resize_531x276/adimg_new/50188/138814/04b0e90d9c17ef6f564a0041cf6165fe.jpg',
-    //         alt: '강남',
-
-    //         roomName: '강남 파라다이스',
-    //     },
-    //     {
-    //         id: '3',
-    //         img: 'https://image.goodchoice.kr/resize_531x276/adimg_new/50188/138814/04b0e90d9c17ef6f564a0041cf6165fe.jpg',
-    //         alt: '부산',
-
-    //         roomName: '부산 마린시티',
-    //     },
-    // ]
+    useEffect(() => {
+        //onCheckLike()
+        userLikeList.map((like) => {
+            getItem(like)
+        })
+    }, [])
+    // console.log('공유 좋아요 리스트')
+    // console.log(userLikeList)
+    // const onCheckLike = async () => {
+    //     const res = await fetch(`/api/like/checkLike?userId=${userInfo.userId}`)
+    //     const data = await res.json()
+    //     setFetchLikeList(data.data)
+    //     console.log(data)
+    // }
 
     return (
         <>
             {fetchLikeList.map((room, index) => {
+                // api구조 완성하면 마저 끝낼것
                 return (
                     <li key={index}>
                         <div className={style.reservationDetail}>
                             <p className={style.pic}>
                                 <img
-                                    className={style.imageBook}
-                                    src={room.img}
+                                    className={`${style.imageBook}`}
+                                    src={room.imgUrl}
                                     alt={room.alt}
                                 />
                             </p>

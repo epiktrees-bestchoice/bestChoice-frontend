@@ -52,7 +52,7 @@
     .pic {
         height: 184px;
         border-radius: 2px 2px 0 0;
-
+        overflow: hidden;
         position: relative;
 
         width: 100%;
@@ -60,11 +60,12 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-
+            
             width: 100%;
             height: 100%;
             filter: brightness(50%);
             &Book {
+                overflow: hidden;
                 filter: brightness(100%);
                 height: 100%;
                 width: 100%;

@@ -1,17 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
 
-export async function GET(request: NextRequest, 
-    { params }: { params: { id: string } },) {
+export async function DELETE(request: NextRequest) {
     const cookieStore = cookies()
     const token = cookieStore.get('JSESSIONID')
+    const { searchParams } = new URL(request.url)
+    const userLikeId = searchParams.get('userLikeId')
+    console.log(userLikeId + '를 제거')
     try {
         const res = await fetch(
-            `https://api.epicktrees.net/api/v1/my/like/${params.id}`,
+            `https://api.epicktrees.net/api/v1/my/like/${userLikeId}`,
             {
-                method: 'GET',
+                method: 'DELETE',
                 headers: {
                     cookie: `JSESSIONID=${token.value}`,
+                    'Content-Type': 'application/json',
                 },
                 credentials: 'include',
             },

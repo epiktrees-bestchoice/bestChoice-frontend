@@ -5,6 +5,7 @@ import ButtonDefault from '@/app/components/btns/ButtonDefault'
 import RoomDetailSlide from '@/app/room/(roomComponent)/RoomDetailSlide'
 import ButtonLike from '@/app/components/btns/ButtonLike'
 import { IsLoginContext } from '@/app/provider/IsLoginProvider'
+import { RoomListContext } from '@/app/provider/roomListProvider'
 
 interface RoomDetail {
     accommodationName: string
@@ -13,12 +14,11 @@ interface RoomDetail {
     infoOpt: string | undefined
     introduce: string | undefined
     soldOut: boolean
-    accommodationId: number
 }
 
 const RoomDetailPage = async (props) => {
     const { userInfo } = useContext(IsLoginContext)
-
+    const { fetchRoomList } = useContext(RoomListContext)
     const [roomDetail, setRoomDetail] = useState<RoomDetail>({
         accommodationName: '',
         region: undefined,
@@ -26,7 +26,6 @@ const RoomDetailPage = async (props) => {
         infoOpt: undefined,
         introduce: undefined,
         soldOut: false,
-        accommodationId: 0,
     })
 
     const params = props.params.id
@@ -34,13 +33,13 @@ const RoomDetailPage = async (props) => {
     const onClickAddReserve = async () => {
         const requestBody = {
             userId: userInfo.userId,
-            accommodationId: roomDetail.accommodationId,
-            reserveDate: '2023-10-10T00:57:19.571Z',
-            endDate: '2023-10-14T00:57:19.571Z',
+            accommodationId: fetchRoomList.accommodationId,
+            reserveDate: fetchRoomList.reserveDate,
+            endDate: fetchRoomList.endDate,
         }
+
         const res = await fetch('/api/reserve/addReserve', {
             method: 'POST',
-
             body: JSON.stringify(requestBody),
         })
         const data = await res.json()
