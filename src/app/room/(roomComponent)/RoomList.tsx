@@ -6,11 +6,13 @@ import ButtonLike from '@/app/components/btns/ButtonLike'
 import style from '@/app/room/room.module.scss'
 import { RoomListContext } from '@/app/provider/roomListProvider'
 import { useParams } from 'next/navigation'
+import { IsLoginContext } from '@/app/provider/IsLoginProvider'
 
 const RoomList = () => {
     const params = useParams()
     const { fetchRoomList, setFetchRoomList } = useContext(RoomListContext)
     const [like, setLike] = useState({})
+    const { userInfo } = useContext(IsLoginContext)
 
     // 수정 필요 20230926 BY joj
     const observerRef = useRef(null)

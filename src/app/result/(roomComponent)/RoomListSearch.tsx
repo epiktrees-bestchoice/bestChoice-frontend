@@ -4,8 +4,6 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import ButtonLike from '@/app/components/btns/ButtonLike'
 import style from '@/app/room/room.module.scss'
-import { getRoomList } from '@/app/api/getFireBaseData'
-import { RoomListContext } from '@/app/provider/roomListProvider'
 import { useSearchParams } from 'next/navigation'
 
 const RoomList = () => {
@@ -27,6 +25,11 @@ const RoomList = () => {
         // setFetchRoomList()
         setPage(page + 1)
     }
+    useEffect(() => {
+        setFetchRoomList([]) // fetchRoomList 초기화
+        setPage(0) // 페이지 초기화
+        fetchData() // fetchData 호출
+    }, [query])
 
     const observerRef = useRef(null)
     const callback = (entries, observer) => {
