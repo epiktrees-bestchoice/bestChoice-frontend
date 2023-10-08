@@ -8,7 +8,9 @@ const PageTop = ({ ...props }) => {
     return (
         <div className={style.top}>
             <div className={style.inner}>
-                <h2 className={style.topTit}>{decodeURIComponent(search)}</h2>
+                <h2 className={style.topTit}>
+                    {search ? decodeURIComponent(search) : props.title}
+                </h2>
                 {props.children}
             </div>
         </div>

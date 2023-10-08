@@ -6,35 +6,31 @@ import ButtonLike from '@/app/components/btns/ButtonLike'
 import style from '@/app/room/room.module.scss'
 import { getRoomList } from '@/app/api/getFireBaseData'
 import { RoomListContext } from '@/app/provider/roomListProvider'
-import { IsLoginContext } from '@/app/provider/IsLoginProvider'
-import { useSearchParams } from 'next/navigation'
 
 const RoomList = () => {
-    const searchParams = useSearchParams()
-    const query = searchParams.get('query')
-    const [page, setPage] = useState(0)
-
-    const { userInfo } = useContext(IsLoginContext)
-    const { fetchRoomList, setFetchRoomList } = useContext(RoomListContext)
+    // const { fetchRoomList, setFetchRoomList } = useContext(RoomListContext)
+    const [fetchRoomList, setFetchRoomList] = useState([])
     const [like, setLike] = useState({})
     // 수정 필요 20230926 BY joj
     const fetchData = async () => {
-        const res = await fetch(`/api/textsearch?query=${query}&page=${page}`, {
+        const res = await fetch('/api/room', {
             method: 'GET',
+            cache: 'no-store',
         })
         const data = await res.json()
-        console.log('data 결과')
-        console.log(data.data.content)
-        setFetchRoomList((prev) => [...prev, ...data.data.content])
-        // setFetchRoomList()
-        setPage(page + 1)
+        setFetchRoomList(data.data)
     }
 
     const observerRef = useRef(null)
     const callback = (entries, observer) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                fetchData()
+                const reFetchData = async () => {
+                    const res = await fetch('/api/room', { method: 'GET' })
+                    const data = await res.json()
+                    setFetchRoomList((prev) => [...prev, ...data.data])
+                }
+                reFetchData()
             }
         })
     }
