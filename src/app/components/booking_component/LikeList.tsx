@@ -8,11 +8,14 @@ export default function LikeList() {
     const [fetchLikeList, setFetchLikeList] = useState([])
     const userLikeList = useContext(UserLikeContext)
     const { userInfo } = useContext(IsLoginContext)
-
+    console.log(fetchLikeList)
     const getItem = async (like: userLikeDto) => {
         const res = await fetch(`/api/room/detail/${like.accommodationId}`)
         const data = await res.json()
-        setFetchLikeList([...fetchLikeList, data.data])
+        setFetchLikeList((prevFetchLikeList) => [
+            ...prevFetchLikeList,
+            data.data,
+        ])
     }
 
     useEffect(() => {
@@ -34,6 +37,7 @@ export default function LikeList() {
         <>
             {fetchLikeList.map((room, index) => {
                 // api구조 완성하면 마저 끝낼것
+                console.log(room)
                 return (
                     <li key={index}>
                         <div className={style.reservationDetail}>
