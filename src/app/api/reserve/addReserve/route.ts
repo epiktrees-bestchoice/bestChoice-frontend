@@ -4,7 +4,10 @@ import { cookies } from 'next/headers'
 export async function POST(request: NextRequest) {
     const cookieStore = cookies()
     const token = cookieStore.get('JSESSIONID')
-    console.log(request.body)
+
+    const res = await request.json()
+   console.log(res)
+    
 
     const requestBody = request.body
   
