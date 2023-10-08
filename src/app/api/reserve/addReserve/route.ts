@@ -7,10 +7,9 @@ export async function POST(request: NextRequest) {
 
     const res = await request.json()
    console.log(res)
-    
 
-    const requestBody = request.body
-  
+   const requestBody = res
+
 
     try {
         const res = await fetch(

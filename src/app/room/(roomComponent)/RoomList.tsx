@@ -5,10 +5,8 @@ import Link from 'next/link'
 import ButtonLike from '@/app/components/btns/ButtonLike'
 import style from '@/app/room/room.module.scss'
 import { RoomListContext } from '@/app/provider/roomListProvider'
-
-import { IsLoginContext } from '@/app/provider/IsLoginProvider'
-// 수정 필요 20230926 BY joj
 import { useParams } from 'next/navigation'
+import { IsLoginContext } from '@/app/provider/IsLoginProvider'
 
 const RoomList = () => {
     const params = useParams()
@@ -40,11 +38,11 @@ const RoomList = () => {
         return () => observer && observer.disconnect()
     }, [])
 
-    const postLike = async (accommodationId) => {
+    const postLike = async () => {
         const requestBody = {
             userLikeId: 0,
             userId: userInfo.userId,
-            accommodationId: accommodationId,
+            accommodationId: fetchRoomList.accommodationId,
         }
 
         const res = await fetch('/api/like/addLike', {
@@ -55,12 +53,32 @@ const RoomList = () => {
         console.log(data)
     }
 
-    const deleteLike = async () => {
+    const deleteLike = async (userLikeId) => {
+        const requestBody = {
+            userLikeId: `${userLikeId}`,
+        }
         const res = await fetch('/api/like/deleteLike', {
             method: 'DELETE',
+            body: JSON.stringify(requestBody),
         })
         const data = await res.json()
         console.log(data)
+    }
+
+    const handleLike = (id) => {
+        setLike((prev) => ({
+            ...prev,
+            [id]: !prev[id],
+        }))
+    }
+
+    const onClickToggleLike = (id, userLikeId) => {
+        handleLike(id)
+        if (id) {
+            postLike()
+        } else {
+            deleteLike(userLikeId)
+        }
     }
 
     return (
@@ -128,11 +146,16 @@ const RoomList = () => {
                                     </span>
                                 </span>
                             </Link>
-                            <ButtonLike className={`m16`} />
+                            <ButtonLike
+                                className={`m16`}
+                                onClick={() =>
+                                    onClickToggleLike(room.id, room.userLikeId)
+                                }
+                                Liked={like[room.id]}
+                            />
                         </li>
                     )
                 })}
-
             <li ref={observerRef}></li>
         </ul>
     )

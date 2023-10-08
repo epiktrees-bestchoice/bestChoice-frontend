@@ -5,6 +5,7 @@ export async function GET(request: NextRequest,
     { params }: { params: { id: string } },) {
     const cookieStore = cookies()
     const token = cookieStore.get('JSESSIONID')
+    console.log(token)
 
   
     try {

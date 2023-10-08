@@ -35,12 +35,12 @@ const RoomDetailPage = async (props) => {
         const requestBody = {
             userId: userInfo.userId,
             accommodationId: roomDetail.accommodationId,
-            reserveDate: '2023-10-08T00:57:19.571Z',
-            endDate: '2023-10-11T00:57:19.571Z',
+            reserveDate: '2023-10-10T00:57:19.571Z',
+            endDate: '2023-10-14T00:57:19.571Z',
         }
-
         const res = await fetch('/api/reserve/addReserve', {
             method: 'POST',
+
             body: JSON.stringify(requestBody),
         })
         const data = await res.json()

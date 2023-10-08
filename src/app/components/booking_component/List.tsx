@@ -4,20 +4,22 @@ import style from '@/app/my/reservations/reservations.module.scss'
 import { IsLoginContext } from '@/app/provider/IsLoginProvider'
 
 export default function List() {
+    const { userInfo } = useContext(IsLoginContext)
     const [fetchReserveList, setFetchReserveList] = useState([])
+    const userId = userInfo.userId
     useEffect(() => {
         onCheckReserve()
     }, [])
 
     const onCheckReserve = async () => {
-        const res = await fetch('/api/reserve/checkReserve')
+        const res = await fetch(`/api/reserve/checkReserve/${userId}`)
         const data = await res.json()
         setFetchReserveList(data.data)
         console.log(data)
     }
 
-    const onClickDeleteReserve = async () => {
-        const res = await fetch('/api/reserve/deleteReserve', {
+    const onClickDeleteReserve = async (reserveId) => {
+        const res = await fetch(`/api/reserve/deleteReserve/${reserveId}`, {
             method: 'DELETE',
         })
         const data = await res.json()
@@ -53,7 +55,9 @@ export default function List() {
                     <li key={index}>
                         <div className={style.reservationDetail}>
                             <button
-                                onClick={onClickDeleteReserve}
+                                onClick={() => {
+                                    onClickDeleteReserve(room.reserveId)
+                                }}
                                 type="button"
                                 className={style.buttonDelete}>
                                 삭제
@@ -61,7 +65,9 @@ export default function List() {
                             <p className={style.pic}>
                                 <img
                                     className={style.imageBook}
-                                    src={room.imgUrl}
+                                    src={
+                                        'https://image.goodchoice.kr/resize_490x348/affiliate/2019/08/20/5d5b53a26dbdb.jpg'
+                                    }
                                     alt=""
                                     //api 이미지 프로퍼티필요
                                 />
@@ -71,7 +77,7 @@ export default function List() {
                                     예약확정
                                 </i>
                                 <strong className={style.roomName}>
-                                    {room.accommodationName}
+                                    {room.accommodationId}
                                     {/*   api 숙소이름 프로퍼티필요   */}
                                 </strong>
                                 <span className={style.roomDate}>
