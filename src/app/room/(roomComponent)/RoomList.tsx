@@ -10,7 +10,6 @@ import { IsLoginContext } from '@/app/provider/IsLoginProvider'
 
 const RoomList = () => {
     const [fetchRoomList, setFetchRoomList] = useState([])
-    const [isLike, setIsLike] = useState(false)
 
     const { userInfo } = useContext(IsLoginContext)
     // 수정 필요 20230926 BY joj
@@ -67,12 +66,6 @@ const RoomList = () => {
         const data = await res.json()
         console.log(data)
     }
-
-    const handleClick = () => {
-        setIsLike((prev) => !prev)
-    }
-
-    const likeToggle = isLike ? true : false
 
     return (
         <ul className={style.roomList}>
@@ -134,18 +127,7 @@ const RoomList = () => {
                                 </span>
                             </span>
                         </Link>
-                        <ButtonLike
-                            className={`m16`}
-                            onClick={() => {
-                                handleClick()
-                                if (likeToggle) {
-                                    postLike(room.accommodationId)
-                                } else {
-                                    deleteLike()
-                                }
-                            }}
-                            LikeToggle={likeToggle}
-                        />
+                        <ButtonLike className={`m16`} />
                     </li>
                 )
             })}
