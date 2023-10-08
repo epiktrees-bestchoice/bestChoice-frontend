@@ -1,10 +1,7 @@
 'use client'
 import Sidebar from '@/app/layout/sidebar/page'
-import RoomList from '@/app/room/(roomComponent)/RoomList'
+import RoomList from '@/app/result/(roomComponent)/RoomListSearch'
 import RoomListSort from '@/app/room/(roomComponent)/RoomListSort'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { useContext, useEffect, useRef } from 'react'
-import { RoomListContext } from '@/app/provider/roomListProvider'
 import RoomCataSearch from '@/app/result/(roomComponent)/RoomCataSearch'
 
 export default function Room() {
