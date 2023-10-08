@@ -1,6 +1,6 @@
 import { roomCata } from '@/app/components/HomeCata'
 import PageTop from '@/app/layout/pageTop/page'
-import RoomNav from '@/app/room/RoomNav'
+import RoomNav from '@/app/room/(roomComponent)/RoomNav'
 
 export default function RoomLayout(props) {
     const params = props.params.id

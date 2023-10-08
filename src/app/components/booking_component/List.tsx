@@ -1,8 +1,12 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import style from '@/app/my/reservations/reservations.module.scss'
+import { IsLoginContext } from '@/app/provider/IsLoginProvider'
+import { RoomListContext } from '@/app/provider/roomListProvider'
 
 export default function List() {
+    const { userInfo } = useContext(IsLoginContext)
+
     const [fetchReserveList, setFetchReserveList] = useState([])
     useEffect(() => {
         onCheckReserve()
@@ -15,32 +19,40 @@ export default function List() {
         console.log(data)
     }
 
-    // const usedList = [
-    //     {
-    //         id: '1',
-    //         img: 'https://image.goodchoice.kr/resize_531x276/adimg_new/50188/138814/04b0e90d9c17ef6f564a0041cf6165fe.jpg',
-    //         alt: '경포대',
-    //         isUsed: true,
-    //         roomName: '경포대 아테네',
-    //         date: ' 02.25 토 - 02.26 일 • 1박',
-    //     },
-    //     {
-    //         id: '2',
-    //         img: 'https://image.goodchoice.kr/resize_531x276/adimg_new/50188/138814/04b0e90d9c17ef6f564a0041cf6165fe.jpg',
-    //         alt: '강남',
-    //         isUsed: false,
-    //         roomName: '강남 파라다이스',
-    //         date: '체크인: 03.16 수 - 03.18 금 • 2박',
-    //     },
-    //     {
-    //         id: '3',
-    //         img: 'https://image.goodchoice.kr/resize_531x276/adimg_new/50188/138814/04b0e90d9c17ef6f564a0041cf6165fe.jpg',
-    //         alt: '부산',
-    //         isUsed: true,
-    //         roomName: '부산 마린시티',
-    //         date: ' 07.02 일 - 07.05 수 • 3박',
-    //     },
-    // ]
+    const onClickDeleteReserve = async (reserveId) => {
+        const requestBody = {
+            reserveId: `${reserveId}`,
+        }
+
+        const res = await fetch('/api/reserve/deleteReserve', {
+            method: 'DELETE',
+            body: JSON.stringify(requestBody),
+        })
+        const data = await res.json()
+        console.log(data)
+    }
+
+    function formatDate(startDate, endDate) {
+        const start = new Date(startDate)
+        const end = new Date(endDate)
+        const startDayOfMonth = start.getDate() // 시작 날짜 일
+        const endDayOfMonth = end.getDate() // 끝 날짜 일
+        const startMonth = start.getMonth() + 1 // 시작 월 (0부터 시작하므로 +1 해줍니다)
+        const endMonth = end.getMonth() + 1 // 끝 월 (0부터 시작하므로 +1 해줍니다)
+        const startDayOfWeek = start.toLocaleDateString('ko-KR', {
+            weekday: 'short',
+        }) // 시작 요일
+        const endDayOfWeek = end.toLocaleDateString('ko-KR', {
+            weekday: 'short',
+        }) // 끝 요일
+
+        const nightCount = Math.floor(
+            (end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24),
+        ) // 박수 계산
+
+        return `${startMonth}.${startDayOfMonth} ${startDayOfWeek} - ${endMonth}.${endDayOfMonth} ${endDayOfWeek} • ${nightCount}박`
+    }
+    //출력 예시 ' 02.25 토 - 02.26 일 • 1박'
 
     return (
         <>
@@ -49,7 +61,9 @@ export default function List() {
                     <li key={index}>
                         <div className={style.reservationDetail}>
                             <button
-                                onClick={() => {}}
+                                onClick={() =>
+                                    onClickDeleteReserve(room.reserveId)
+                                }
                                 type="button"
                                 className={style.buttonDelete}>
                                 삭제
@@ -57,8 +71,9 @@ export default function List() {
                             <p className={style.pic}>
                                 <img
                                     className={style.imageBook}
-                                    src={room.img}
-                                    alt={room.alt}
+                                    src={room.imgUrl}
+                                    alt=""
+                                    //api 이미지 프로퍼티필요
                                 />
                             </p>
                             <a className={style.productTitle}>
@@ -67,9 +82,10 @@ export default function List() {
                                 </i>
                                 <strong className={style.roomName}>
                                     {room.accommodationName}
+                                    {/*   api 숙소이름 프로퍼티필요   */}
                                 </strong>
                                 <span className={style.roomDate}>
-                                    {room.reserveDate} • {room.stayDay} 박
+                                    {formatDate(room.reserveDate, room.endDate)}
                                 </span>
                             </a>
                         </div>

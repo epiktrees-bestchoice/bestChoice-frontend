@@ -1,16 +1,16 @@
 'use client'
-
 import Link from 'next/link'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { IsLoginContext } from '@/app/provider/IsLoginProvider'
-
+import { useRouter } from 'next/navigation'
 import SearchIcon from '@mui/icons-material/Search'
 import SrchBar from '@/app/components/SrchBar'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import style from '@/app/layout/header/header.module.scss'
 
 const Header = () => {
+    const router = useRouter()
     const pathname = usePathname()
     const headerRef = useRef(null)
     const { isLogin, userInfo } = useContext(IsLoginContext)
@@ -45,6 +45,11 @@ const Header = () => {
             method: 'POST',
         })
         console.log(res)
+    }
+
+    const onInputSearch = (searchText: string) => {
+        console.log(searchText) // 입력된 텍스트를 콘솔에 출력
+        router.push(`/result?query=${searchText}`)
     }
 
     return (
@@ -147,6 +152,7 @@ const Header = () => {
                 {srchBarOpen && (
                     <SrchBar
                         srchBarOpen={srchBarOpen}
+                        onInputSearch={onInputSearch}
                         handleSrchBar={handleSrchBar}
                     />
                 )}
