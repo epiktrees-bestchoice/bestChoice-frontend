@@ -1,21 +1,44 @@
 import Link from 'next/link'
 import React from 'react'
-import { collection, getDocs, query, onSnapshot } from 'firebase/firestore'
-import { db } from '@/app/api/firebase'
-
 import style from '@/app/styles/home.module.scss'
-import { getCatagoryCollection } from '@/app/api/getFireBaseData'
+
+export const roomCata = [
+    { id: 1, type: 'MOTEL', name: '모텔', icon: './icons/ico_category_01.png' },
+    {
+        id: 2,
+        type: 'HOTEL',
+        name: '호텔·리조트',
+        icon: './icons/ico_category_02.png',
+    },
+    {
+        id: 3,
+        type: 'PENSION',
+        name: '펜션',
+        icon: './icons/ico_category_03.png',
+    },
+    {
+        id: 4,
+        type: 'GUESTHOUSE',
+        name: '게스트하우스',
+        icon: './icons/ico_category_04.png',
+    },
+    {
+        id: 5,
+        type: 'CAMPING',
+        name: '캠핑',
+        icon: './icons/ico_category_05.png',
+    },
+]
 
 const HomeCata = async () => {
-    const homeCatagories = await getCatagoryCollection()
     return (
         <div className={style.homeCata}>
             <ul className={style.homeCataList}>
-                {homeCatagories.map((link, idx) => {
+                {roomCata.map((link, idx) => {
                     return (
                         <li key={idx} className={style.item}>
                             <Link
-                                href={`/room/${link.id}`}
+                                href={`/room/${link.type}`}
                                 className={style.itemLink}>
                                 <span className={style.boxImg}>
                                     <img src={link.icon} alt="" />
