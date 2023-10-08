@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
 
-export async function GET(request: NextRequest) {
+export async function GET(request: NextRequest, 
+    { params }: { params: { id: string } },) {
     const cookieStore = cookies()
     const token = cookieStore.get('JSESSIONID')
     try {
         const res = await fetch(
-            `https://api.epicktrees.net/api/v1/my/like/{userId}`,
+            `https://api.epicktrees.net/api/v1/my/like/${params.id}`,
             {
                 method: 'GET',
                 headers: {

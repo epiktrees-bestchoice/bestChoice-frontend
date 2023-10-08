@@ -1,18 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { cookies } from 'next/headers'
-
-export async function DELETE(request: NextRequest) {
- 
 
 
-
+export async function DELETE(request: NextRequest,
+    { params }: { params: { id: string } },) {
     try {
         const res = await fetch(
-            `https://api.epicktrees.net/api/v1/reserve/user/delect`,
+            `https://api.epicktrees.net/api/v1/reserve/${params.id}`,
             {
                 method: 'DELETE',
-                
-                
             },
         )
         const data = await res.json()

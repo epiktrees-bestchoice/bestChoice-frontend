@@ -5,7 +5,6 @@ import ButtonDefault from '@/app/components/btns/ButtonDefault'
 import RoomDetailSlide from '@/app/room/(roomComponent)/RoomDetailSlide'
 import ButtonLike from '@/app/components/btns/ButtonLike'
 import { IsLoginContext } from '@/app/provider/IsLoginProvider'
-import { RoomListContext } from '@/app/provider/roomListProvider'
 
 interface RoomDetail {
     accommodationName: string
@@ -19,7 +18,7 @@ interface RoomDetail {
 
 const RoomDetailPage = async (props) => {
     const { userInfo } = useContext(IsLoginContext)
-    const { fetchRoomList } = useContext(RoomListContext)
+
     const [roomDetail, setRoomDetail] = useState<RoomDetail>({
         accommodationName: '',
         region: undefined,
