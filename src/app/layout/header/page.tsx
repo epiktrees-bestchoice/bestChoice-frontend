@@ -69,7 +69,9 @@ const Header = () => {
                         srchBarOpen ? `${style.gnbCata} hide` : style.gnbCata
                     }>
                     <li>
-                        <Link href={'/room/1'} className={style.gnbCataLink}>
+                        <Link
+                            href={'/room/MOTEL'}
+                            className={style.gnbCataLink}>
                             숙소찾기
                         </Link>
                     </li>

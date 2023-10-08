@@ -9,11 +9,11 @@ const RoomNav = ({ props, params }) => {
                 {props.map((nav) => {
                     return (
                         <Link
-                            key={nav.id}
+                            key={nav.type}
                             className={`${style.roomNavItem} ${
-                                params == nav.id ? style.on : ''
+                                params == nav.type ? style.on : ''
                             }`}
-                            href={`/room/${nav.id}`}>
+                            href={`/room/${nav.type}`}>
                             {nav.name}
                         </Link>
                     )

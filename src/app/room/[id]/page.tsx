@@ -4,10 +4,12 @@ import Sidebar from '@/app/layout/sidebar/page'
 import RoomCata from '@/app/room/RoomCata'
 import RoomList from '@/app/room/RoomList'
 import RoomListSort from '@/app/room/RoomListSort'
-
-import { getRoomList } from '@/app/api/getFireBaseData'
-import { NextResponse } from 'next/server'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import {
+    useParams,
+    usePathname,
+    useRouter,
+    useSearchParams,
+} from 'next/navigation'
 import { useContext, useEffect, useRef } from 'react'
 import { RoomListContext } from '@/app/provider/roomListProvider'
 import RoomListEmpty from '@/app/room/RoomListEmpty'
@@ -16,7 +18,19 @@ export default function Room() {
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
-    const { fetchRoomList, setFetchRoomList } = useContext(RoomListContext)
+
+    const params = useParams()
+    const { setFetchRoomList } = useContext(RoomListContext)
+
+    const fetchData = async () => {
+        const res = await fetch(`/api/room/${params.id}`, { method: 'GET' })
+        const data = await res.json()
+        setFetchRoomList(data.data)
+    }
+
+    useEffect(() => {
+        fetchData()
+    }, [])
 
     // useEffect(() => {
     //     const valuesArray = Array.from(searchParams.values())
@@ -35,7 +49,6 @@ export default function Room() {
     //     }
     //     fetchData()
     // }, [searchParams])
-
     return (
         <div className={`inner contentGrid`}>
             <Sidebar>
