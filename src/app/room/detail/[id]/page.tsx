@@ -1,9 +1,11 @@
 'use client'
-import React, { use, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import style from '@/app/room/room.module.scss'
 import ButtonDefault from '@/app/components/btns/ButtonDefault'
 import RoomDetailSlide from '@/app/room/(roomComponent)/RoomDetailSlide'
 import ButtonLike from '@/app/components/btns/ButtonLike'
+import { IsLoginContext } from '@/app/provider/IsLoginProvider'
+import { RoomListContext } from '@/app/provider/roomListProvider'
 
 interface RoomDetail {
     accommodationName: string
@@ -14,7 +16,9 @@ interface RoomDetail {
     soldOut: boolean
 }
 
-const RoomDetailPage = (props) => {
+const RoomDetailPage = async (props) => {
+    const { userInfo } = useContext(IsLoginContext)
+    const { fetchRoomList } = useContext(RoomListContext)
     const [roomDetail, setRoomDetail] = useState<RoomDetail>({
         accommodationName: '',
         region: undefined,
@@ -23,13 +27,23 @@ const RoomDetailPage = (props) => {
         introduce: undefined,
         soldOut: false,
     })
+
     const params = props.params.id
 
     const onClickAddReserve = async () => {
+        const requestBody = {
+            userId: userInfo.userId,
+            accommodationId: fetchRoomList.accommodationId,
+            reserveDate: fetchRoomList.reserveDate,
+            endDate: fetchRoomList.endDate,
+        }
+
         const res = await fetch('/api/reserve/addReserve', {
             method: 'POST',
+            body: JSON.stringify(requestBody),
         })
-        console.log(res)
+        const data = await res.json()
+        console.log(data)
     }
 
     useEffect(() => {
@@ -51,51 +65,41 @@ const RoomDetailPage = (props) => {
                         <RoomDetailSlide roomDetail={roomDetail} />
                     </div>
                     <div className={style.boxTxt}>
-                        {roomDetail.region ? (
+                        {roomDetail?.region && (
                             <span className={style.infoAddr}>
                                 {roomDetail.region}
                             </span>
-                        ) : (
-                            <></>
                         )}
                         <strong className={style.tit}>
                             {roomDetail?.accommodationName}
                         </strong>
                         <span className={style.info}>
-                            {roomDetail.price ? (
+                            {roomDetail?.price && (
                                 <span className={style.infoScore}>
                                     {/* <em>{roomDetail.score}&nbsp;</em> 
-                                    {roomDetail.scoreTxt}
-                                    */}
+                                {roomDetail.scoreTxt}
+                                */}
                                     <em>할인 특가</em>
                                     {roomDetail.price}원
                                 </span>
-                            ) : (
-                                <></>
                             )}
-                            {roomDetail.infoOpt ? (
+                            {roomDetail?.infoOpt && (
                                 <span className={style.infoOpt}>
                                     {roomDetail.infoOpt}
                                 </span>
-                            ) : (
-                                <></>
                             )}
-                            {roomDetail.introduce ? (
+                            {roomDetail?.introduce && (
                                 <span className={style.infoEvt}>
                                     {roomDetail.introduce}
                                 </span>
-                            ) : (
-                                <></>
                             )}
-                            {roomDetail.introduce ? (
+                            {roomDetail?.introduce && (
                                 <span className={style.infoCeo}>
                                     <strong>사장님 한마디</strong>
                                     <span className={style.clamp}>
                                         {roomDetail.introduce}
                                     </span>
                                 </span>
-                            ) : (
-                                <></>
                             )}
                         </span>
                         <span className={style.btn}>

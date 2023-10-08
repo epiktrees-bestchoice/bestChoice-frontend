@@ -1,14 +1,7 @@
 'use client'
 import style from '@/app/styles/user.module.scss'
 import '@/public/fonts/style.css'
-import {
-    LoginFooter,
-    LoginButton,
-    SpaceOr,
-    InputBox,
-    Logo,
-    SnsButtonBox,
-} from '@/app/user/UserComponent'
+import { Logo, SnsButtonBox } from '@/app/user/UserComponent'
 
 export default function Login() {
     return (

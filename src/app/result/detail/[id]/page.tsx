@@ -1,9 +1,11 @@
 'use client'
-import React, { use, useEffect, useState } from 'react'
+import React, { use, useEffect, useState, useContext } from 'react'
 import style from '@/app/room/room.module.scss'
 import ButtonDefault from '@/app/components/btns/ButtonDefault'
 import RoomDetailSlide from '@/app/room/(roomComponent)/RoomDetailSlide'
 import ButtonLike from '@/app/components/btns/ButtonLike'
+import { RoomListContext } from '@/app/provider/roomListProvider'
+import { IsLoginContext } from '@/app/provider/IsLoginProvider'
 
 interface RoomDetail {
     accommodationName: string
@@ -15,6 +17,9 @@ interface RoomDetail {
 }
 
 const RoomDetailPage = (props) => {
+    const { fetchRoomList, setFetchRoomList } = useContext(RoomListContext)
+    const { userInfo } = useContext(IsLoginContext)
+
     const [roomDetail, setRoomDetail] = useState<RoomDetail>({
         accommodationName: '',
         region: undefined,
@@ -26,8 +31,16 @@ const RoomDetailPage = (props) => {
     const params = props.params.id
 
     const onClickAddReserve = async () => {
+        const requestBody = {
+            userId: userInfo.userId,
+            accommodationId: fetchRoomList.accommodationId,
+            reserveDate: fetchRoomList.reserveDate,
+            endDate: fetchRoomList.endDate,
+        }
+
         const res = await fetch('/api/reserve/addReserve', {
             method: 'POST',
+            body: JSON.stringify(requestBody),
         })
         console.log(res)
     }

@@ -1,8 +1,12 @@
+
 import { NextRequest, NextResponse } from 'next/server'
 export async function GET(request: NextRequest) {
+    const { searchParams } = new URL (request.url)
+    const id = searchParams.get('id')
+   
     try {
         const res = await fetch(
-            'https://api.epicktrees.net/api/product/accommodation/dumy/HOTEL',
+            'https://api.epicktrees.net/api/product/accommodation/${id}',
         )
         const data = await res.json()
         return NextResponse.json({ data: data }, { status: 200 })

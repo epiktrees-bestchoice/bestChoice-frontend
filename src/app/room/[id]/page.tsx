@@ -16,7 +16,9 @@ export default function Room({ params }: { params: { id: number } }) {
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
+
     const { fetchRoomList, setFetchRoomList } = useContext(RoomListContext)
+
     // useEffect(() => {
     //     const valuesArray = Array.from(searchParams.values())
     //     const fetchData = async () => {
