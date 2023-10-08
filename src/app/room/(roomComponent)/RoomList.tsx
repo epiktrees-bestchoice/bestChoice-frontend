@@ -14,25 +14,25 @@ import {
 
 const RoomList = () => {
     const params = useParams()
-    const { fetchRoomList, setFetchRoomList } = useContext(RoomListContext)
-    const [like, setLike] = useState({})
+    const [fetchRoomList, setFetchRoomList] = useState([])
     const { userInfo } = useContext(IsLoginContext)
     const userLikeList = useContext(UserLikeContext)
     const likeReducer = useContext(UserLikeDispatchContext)
+
+    const fetchData = async () => {
+        const res = await fetch(`/api/room/${params.id}`, {
+            method: 'GET',
+        })
+        const data = await res.json()
+        setFetchRoomList((prev) => [...prev, ...data.data])
+    }
 
     // 수정 필요 20230926 BY joj
     const observerRef = useRef(null)
     const callback = (entries, observer) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                const reFetchData = async () => {
-                    const res = await fetch(`/api/room/${params.id}`, {
-                        method: 'GET',
-                    })
-                    const data = await res.json()
-                    setFetchRoomList((prev) => [...prev, ...data.data])
-                }
-                reFetchData()
+                fetchData()
             }
         })
     }
@@ -75,9 +75,8 @@ const RoomList = () => {
     const handleLike = (id) => {
         console.log('눌렀다!' + id)
         const matchingLike = userLikeList.find(
-            (like) => like.accommodationId === id,
+            (like) => like?.accommodationId === id,
         )
-        console.log('매칭!')
         if (matchingLike) {
             const removeLike = async () => {
                 const res = await fetch(
@@ -182,11 +181,13 @@ const RoomList = () => {
                                 className={`m16`}
                                 onClick={() => handleLike(room.accommodationId)}
                                 Liked={
-                                    userLikeList.find(
-                                        (like) =>
-                                            like.accommodationId ===
-                                            room.accommodationId,
-                                    )
+                                    userLikeList.length == 0
+                                        ? false
+                                        : userLikeList.find(
+                                              (like) =>
+                                                  like?.accommodationId ===
+                                                  room.accommodationId,
+                                          )
                                         ? true
                                         : false
                                 }

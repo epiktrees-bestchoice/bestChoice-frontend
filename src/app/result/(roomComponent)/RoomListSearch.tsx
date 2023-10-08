@@ -22,7 +22,6 @@ const RoomList = () => {
     const query = searchParams.get('query')
     const [page, setPage] = useState(0)
     const [fetchRoomList, setFetchRoomList] = useState([])
-    const [like, setLike] = useState({})
     const { userInfo } = useContext(IsLoginContext)
     const userLikeList = useContext(UserLikeContext)
     const likeReducer = useContext(UserLikeDispatchContext)
