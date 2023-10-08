@@ -7,12 +7,18 @@ import style from '@/app/room/room.module.scss'
 import { RoomListContext } from '@/app/provider/roomListProvider'
 import { useParams } from 'next/navigation'
 import { IsLoginContext } from '@/app/provider/IsLoginProvider'
+import {
+    UserLikeContext,
+    UserLikeDispatchContext,
+} from '@/app/provider/UserLikeProvider'
 
 const RoomList = () => {
     const params = useParams()
     const { fetchRoomList, setFetchRoomList } = useContext(RoomListContext)
     const [like, setLike] = useState({})
     const { userInfo } = useContext(IsLoginContext)
+    const userLikeList = useContext(UserLikeContext)
+    const likeReducer = useContext(UserLikeDispatchContext)
 
     // 수정 필요 20230926 BY joj
     const observerRef = useRef(null)
@@ -30,6 +36,7 @@ const RoomList = () => {
             }
         })
     }
+
     useEffect(() => {
         const observer = new IntersectionObserver(callback, {
             threshold: 1,
@@ -66,10 +73,35 @@ const RoomList = () => {
     }
 
     const handleLike = (id) => {
-        setLike((prev) => ({
-            ...prev,
-            [id]: !prev[id],
-        }))
+        console.log('눌렀다!' + id)
+        const matchingLike = userLikeList.find(
+            (like) => like.accommodationId === id,
+        )
+        console.log('매칭!')
+        if (matchingLike) {
+            const removeLike = async () => {
+                const res = await fetch(
+                    `/api/like/deleteLike?userLikeId=${matchingLike.userLikeId}`,
+                    {
+                        method: 'DELETE',
+                    },
+                )
+            }
+            removeLike()
+            likeReducer({ type: 'RemoveLike', like: matchingLike })
+        } else {
+            const addLike = async () => {
+                const res = await fetch(
+                    `/api/like/addLike?userId=${userInfo.userId}&accommodationId=${id}`,
+                    {
+                        method: 'POST',
+                    },
+                )
+                const data = await res.json()
+                likeReducer({ type: 'AddLike', like: data.data })
+            }
+            addLike()
+        }
     }
 
     const onClickToggleLike = (id, userLikeId) => {
@@ -148,10 +180,16 @@ const RoomList = () => {
                             </Link>
                             <ButtonLike
                                 className={`m16`}
-                                onClick={() =>
-                                    onClickToggleLike(room.id, room.userLikeId)
+                                onClick={() => handleLike(room.accommodationId)}
+                                Liked={
+                                    userLikeList.find(
+                                        (like) =>
+                                            like.accommodationId ===
+                                            room.accommodationId,
+                                    )
+                                        ? true
+                                        : false
                                 }
-                                Liked={like[room.id]}
                             />
                         </li>
                     )
