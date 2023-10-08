@@ -1,12 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
+import { useSearchParams } from 'next/navigation'
 
 export async function GET(request: NextRequest) {
     const cookieStore = cookies()
     const token = cookieStore.get('JSESSIONID')
+    const { searchParams } = new URL(request.url)
+    const userId = searchParams.get('userId')
     try {
         const res = await fetch(
-            `https://api.epicktrees.net/api/v1/my/like/{userId}`,
+            `https://api.epicktrees.net/api/v1/my/like/${userId}`,
             {
                 method: 'GET',
                 headers: {

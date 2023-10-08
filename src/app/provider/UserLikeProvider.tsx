@@ -1,4 +1,5 @@
 import LikeList from '@/app/components/booking_component/LikeList'
+import { IsLoginContext } from '@/app/provider/IsLoginProvider'
 import { useRouter } from 'next/navigation'
 import React, {
     useState,
@@ -9,52 +10,66 @@ import React, {
     useReducer,
 } from 'react'
 
-const userId =
-    typeof window !== 'undefined' ? sessionStorage.getItem('id') : null
-const token =
-    typeof window !== 'undefined' ? sessionStorage.getItem('token') : null
+export type userLikeDto = {
+    accommodationId: number
+    userId: number
+    userLikeId: number
+}
 
 type Action =
     | {
           type: 'AddLike'
-          accommodationId: number
+          like: userLikeDto
       }
-    | { type: 'RemoveLike'; accommodationId: number }
+    | { type: 'RemoveLike'; like: userLikeDto }
 type UserLikeDispatch = Dispatch<Action>
 
-function reducer(state: Array<number>, action: Action) {
+function reducer(userLikeList: Array<userLikeDto>, action: Action) {
     switch (action.type) {
         case 'AddLike':
-            if (!state.includes(action.accommodationId)) {
-                // 존재하지 않은 경우에만 추가
-                return [...state, action.accommodationId]
-            }
-            return state
+            return [...userLikeList, action.like]
         case 'RemoveLike':
-            if (state.includes(action.accommodationId)) {
+            if (userLikeList.includes(action.like)) {
                 // 존재하는 경우에만 제거
-                return state.filter((item) => item !== action.accommodationId)
+                return userLikeList.filter((item) => item !== action.like)
             }
-            return state
+            return userLikeList
         default:
-            return state
+            return userLikeList
     }
 }
 
-export const UserLikeContext = createContext<Array<number>>([])
+export const UserLikeContext = createContext<Array<userLikeDto>>([])
 export const UserLikeDispatchContext = createContext<UserLikeDispatch>(null)
 
-export type UserLikeDto = {
-    accommodationId: number
-}
-
 const UserLikeProvider = (props) => {
-    const [state, dispatch] = useReducer(reducer, [])
+    const [userLikeList, dispatch] = useReducer(reducer, [])
+    const { userInfo } = useContext(IsLoginContext)
 
-    useEffect(() => {})
+    const checkLike = async () => {
+        const res = await fetch(`/api/like/checkLike?userId=${userInfo.userId}`)
+        const data = await res.json()
+        console.log('like context')
+        console.log(data.data)
+        if (data.data) {
+            data.data.map((d, index) => {
+                console.log(data)
+                dispatch({
+                    type: 'AddLike',
+                    like: d,
+                })
+            })
+        }
+    }
+
+    useEffect(() => {
+        if (userInfo.userId !== undefined) {
+            checkLike()
+        }
+    }, [userInfo])
 
     return (
-        <UserLikeContext.Provider value={state}>
+        <UserLikeContext.Provider value={userLikeList}>
             <UserLikeDispatchContext.Provider value={dispatch}>
                 {props.children}
             </UserLikeDispatchContext.Provider>
