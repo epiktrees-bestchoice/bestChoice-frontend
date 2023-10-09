@@ -20,8 +20,8 @@ export interface mtypeInterface {
 }
 
 export interface keywordInterface {
-    id: number
-    value: string
+    keywordId: number
+    keywordName: string
 }
 
 export default function RoomCata(props: RoomCataProps) {
