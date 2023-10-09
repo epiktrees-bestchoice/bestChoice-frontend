@@ -5,7 +5,6 @@ import ButtonDefault from '@/app/components/btns/ButtonDefault'
 import RoomDetailSlide from '@/app/room/(roomComponent)/RoomDetailSlide'
 import ButtonLike from '@/app/components/btns/ButtonLike'
 import { IsLoginContext } from '@/app/provider/IsLoginProvider'
-import { RoomListContext } from '@/app/provider/roomListProvider'
 
 interface RoomDetail {
     accommodationName: string
@@ -47,7 +46,6 @@ const RoomDetailPage = async (props) => {
         const data = await res.json()
         console.log(data)
     }
-
     useEffect(() => {
         const fetchData = async () => {
             const res = await fetch(`/api/room/detail/${params}`, {

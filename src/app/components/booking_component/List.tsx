@@ -11,13 +11,14 @@ export default function List() {
         onCheckReserve()
     }, [])
 
+    const userId = userInfo.userId
+
     const onCheckReserve = async () => {
         const res = await fetch(`/api/reserve/checkReserve/${userId}`)
         const data = await res.json()
         setFetchReserveList(data.data)
         console.log(data)
     }
-
     const onClickDeleteReserve = async (reserveId) => {
         const res = await fetch(`/api/reserve/deleteReserve/${reserveId}`, {
             method: 'DELETE',
