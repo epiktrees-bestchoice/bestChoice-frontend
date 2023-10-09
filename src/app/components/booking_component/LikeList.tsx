@@ -1,13 +1,12 @@
 'use client'
 import React, { useContext, useEffect, useState } from 'react'
 import style from '@/app/my/reservations/reservations.module.scss'
-import { IsLoginContext } from '@/app/provider/IsLoginProvider'
+
 import { UserLikeContext, userLikeDto } from '@/app/provider/UserLikeProvider'
 
 export default function LikeList() {
     const [fetchLikeList, setFetchLikeList] = useState([])
     const userLikeList = useContext(UserLikeContext)
-    const { userInfo } = useContext(IsLoginContext)
     console.log(fetchLikeList)
     const getItem = async (like: userLikeDto) => {
         const res = await fetch(`/api/room/detail/${like.accommodationId}`)
