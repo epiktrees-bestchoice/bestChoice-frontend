@@ -11,8 +11,6 @@ export default function List() {
         onCheckReserve()
     }, [])
 
-    const userId = userInfo.userId
-
     const onCheckReserve = async () => {
         const res = await fetch(`/api/reserve/checkReserve/${userId}`)
         const data = await res.json()
