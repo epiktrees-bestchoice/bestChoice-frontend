@@ -8,7 +8,7 @@ const IsLoginProvider = (props) => {
     const fetchUserData = async () => {
         const res = await fetch('/api/user')
         const data = await res.json()
-        if (isLogin && res.status === 200) {
+        if (res.status == 200 && data) {
             setUserInfo(data.data)
         } else {
             setUserInfo({})
