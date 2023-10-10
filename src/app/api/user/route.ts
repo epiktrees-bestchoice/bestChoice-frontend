@@ -13,7 +13,6 @@ export async function GET(request: NextRequest) {
             credentials: 'include',
         })
         const data = await res.json()
-        console.log(data)
         return NextResponse.json({ data: data }, { status: 200 })
     } catch (error) {
         return NextResponse.json({ error: error.message }, { status: 500 })

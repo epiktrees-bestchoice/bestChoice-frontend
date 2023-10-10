@@ -13,18 +13,19 @@ const IsLoginProvider = (props) => {
         } else {
             setUserInfo({})
         }
-        console.log(data)
     }
     useEffect(() => {
         const cookies = document.cookie
         const myCookie = cookies.includes('JSESSIONID')
             ? cookies.split('=')[1]
             : null
-        setInLogin(myCookie !== null ? true : false)
-        if (isLogin) {
+        const hello = myCookie !== null ? true : false
+        setInLogin(hello)
+        if (hello) {
             fetchUserData()
         }
     }, [])
+
     return (
         <IsLoginContext.Provider
             value={{ isLogin, userInfo, setInLogin, setUserInfo }}>
