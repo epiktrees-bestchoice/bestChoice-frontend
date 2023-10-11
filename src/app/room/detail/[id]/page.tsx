@@ -5,6 +5,7 @@ import ButtonDefault from '@/app/components/btns/ButtonDefault'
 import RoomDetailSlide from '@/app/room/(roomComponent)/RoomDetailSlide'
 import ButtonLike from '@/app/components/btns/ButtonLike'
 import { IsLoginContext } from '@/app/provider/IsLoginProvider'
+import { UserLikeContext } from '@/app/provider/UserLikeProvider'
 
 interface RoomDetail {
     accommodationName: string
@@ -17,8 +18,8 @@ interface RoomDetail {
 }
 
 const RoomDetailPage = (props) => {
-    const { userInfo } = useContext(IsLoginContext)
-
+    const { isLogin, userInfo } = useContext(IsLoginContext)
+    const userLikeList = useContext(UserLikeContext)
     const [roomDetail, setRoomDetail] = useState<RoomDetail>({
         accommodationName: '',
         region: undefined,
@@ -117,7 +118,23 @@ const RoomDetailPage = (props) => {
                             )}
                         </span>
                     </div>
-                    <ButtonLike />
+                    {isLogin ? (
+                        <ButtonLike
+                            Liked={
+                                userLikeList.length == 0
+                                    ? false
+                                    : userLikeList.find(
+                                          (like) =>
+                                              like?.accommodationId ===
+                                              roomDetail.accommodationId,
+                                      )
+                                    ? true
+                                    : false
+                            }
+                        />
+                    ) : (
+                        <></>
+                    )}
                 </div>
             </div>
         </div>

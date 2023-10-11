@@ -16,8 +16,9 @@
         margin-bottom: 13px;
         @include flex(center, center);
         background-color: #f4f4f4;
+        overflow: hidden;
         img {
-            height: 100%;
+            width: 100%;
             object-fit: cover;
         }
     }
@@ -27,7 +28,7 @@
         left: 0;
         display: flex;
         &Item {
-            display: inline-block;
+            display: inline-flex;
             width: 115px;
             height: 86px;
             padding: 2px;
@@ -41,7 +42,7 @@
                 border: 1px solid rgba(0, 0, 0, 0.38);
             }
             img {
-                height: 100%;
+                width: 100%;
                 object-fit: cover;
             }
             &.active {
