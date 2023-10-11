@@ -9,8 +9,6 @@
 
 .list {
     &Box {
-        width: 724px;
-        margin-right: 31px;
         padding-top: 10px;
     }
     &Text {
@@ -23,14 +21,15 @@
         overflow: hidden;
         display: grid;
         grid-template-columns: 1fr 1fr;
+        gap: 20px;
     }
 }
 
 .reservationDetail {
     position: relative;
-    margin-bottom: 15px;
-    margin-right: 15px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    overflow: hidden;
     .buttonDelete {
         display: inline-block;
         position: absolute;
@@ -43,35 +42,50 @@
         background: url(https://image.goodchoice.kr/images/web_v3/ico_close_2.png)
             50% 50% no-repeat;
         background-size: 24px auto;
-        text-indent: -9999px;
     }
     .buttonDelete:hover {
         cursor: pointer;
     }
-
-    .pic {
-        height: 184px;
-        border-radius: 2px 2px 0 0;
-        overflow: hidden;
-        position: relative;
-
-        width: 100%;
-        .image {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            
+    .item {
+        display: block;
+        &Img {
+            height: 184px;
+            overflow: hidden;
+            position: relative;
+            display: inline-block;
             width: 100%;
-            height: 100%;
-            filter: brightness(50%);
             &Book {
-                overflow: hidden;
-                filter: brightness(100%);
-                height: 100%;
+                height: auto;
                 width: 100%;
             }
         }
+        &Name {
+            display: block;
+            text-align: center;
+            padding: 8px 0 12px;
+        }
     }
+    // .pic {
+    //     height: 184px;
+    //     overflow: hidden;
+    //     position: relative;
+    //     display: inline-block;
+    //     width: 100%;
+    //     .image {
+    //         position: absolute;
+    //         top: 50%;
+    //         transform: translateY(-50%);
+    //         width: 100%;
+    //         height: auto;
+    //         filter: brightness(50%);
+    //         &Book {
+    //             overflow: hidden;
+    //             filter: brightness(100%);
+    //             height: auto;
+    //             width: 100%;
+    //         }
+    //     }
+    // }
     .product {
         &Title {
             display: block;
@@ -93,7 +107,8 @@
 
             .room {
                 &Name {
-                    display: block;
+                    text-align: center;
+                    padding: 8px 0 12px;
                 }
                 &Date {
                     display: block;
@@ -118,6 +133,7 @@
                 background: #ff2b5c;
                 font-style: normal;
                 color: white;
+                padding: 0 2px;
             }
         }
     }

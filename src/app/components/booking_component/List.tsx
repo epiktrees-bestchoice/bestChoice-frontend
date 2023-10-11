@@ -2,6 +2,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import style from '@/app/my/reservations/reservations.module.scss'
 import { IsLoginContext } from '@/app/provider/IsLoginProvider'
+import Link from 'next/link'
 
 export default function List() {
     const { userInfo } = useContext(IsLoginContext)
@@ -51,39 +52,41 @@ export default function List() {
         <>
             {fetchReserveList.map((room, index) => {
                 return (
-                    <li key={index}>
-                        <div className={style.reservationDetail}>
-                            <button
-                                onClick={() => {
-                                    onClickDeleteReserve(room.reserveId)
-                                }}
-                                type="button"
-                                className={style.buttonDelete}>
-                                삭제
-                            </button>
-                            <p className={style.pic}>
+                    <li key={index} className={style.reservationDetail}>
+                        <button
+                            onClick={() => {
+                                onClickDeleteReserve(room.reserveId)
+                            }}
+                            type="button"
+                            className={style.buttonDelete}>
+                            <span className="blind">삭제</span>
+                        </button>
+                        <Link
+                            href={`/room/detail/${room.accommodationId}`}
+                            className={style.item}>
+                            <span className={style.itemImg}>
                                 <img
-                                    className={style.imageBook}
+                                    className={style.itemImgBook}
                                     src={
                                         'https://image.goodchoice.kr/resize_490x348/affiliate/2019/08/20/5d5b53a26dbdb.jpg'
                                     }
                                     alt=""
                                     //api 이미지 프로퍼티필요
                                 />
-                            </p>
-                            <a className={style.productTitle}>
+                            </span>
+                            <span className={style.itemName}>
                                 <i className={style.productStateBook}>
                                     예약확정
                                 </i>
-                                <strong className={style.roomName}>
+                                <span className={style.itemName}>
                                     {room.accommodationId}
                                     {/*   api 숙소이름 프로퍼티필요   */}
-                                </strong>
+                                </span>
                                 <span className={style.roomDate}>
                                     {formatDate(room.reserveDate, room.endDate)}
                                 </span>
-                            </a>
-                        </div>
+                            </span>
+                        </Link>
                     </li>
                 )
             })}
