@@ -10,13 +10,6 @@ function MyReservations() {
                 <ul className={style.listWrap}>
                     <List />
                 </ul>
-                <div className={style.seeMoreButton}>
-                    더보기
-                    <img
-                        src="https://reservation.goodchoice.kr/icn_arrow_down.svg"
-                        alt="더보기"
-                    />
-                </div>
             </section>
         </div>
     )

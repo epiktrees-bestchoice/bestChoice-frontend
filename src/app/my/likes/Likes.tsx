@@ -13,13 +13,6 @@ function Likes() {
                 <ul className={style.listWrap}>
                     <LikeList />
                 </ul>
-                <div className={style.seeMoreButton}>
-                    더보기
-                    <img
-                        src="https://reservation.goodchoice.kr/icn_arrow_down.svg"
-                        alt="더보기"
-                    />
-                </div>
             </section>
         </div>
     )

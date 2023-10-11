@@ -33,7 +33,7 @@ export default function RoomCata(props: RoomCataProps) {
     const pathname = usePathname()
 
     useEffect(() => {
-        console.log(categoryId)
+        console.log('이게 뭔데?', categoryId)
         const getKeyword = async () => {
             const res = await fetch(`/api/keyword?categoryId=${categoryId}`)
             const data = await res.json() // 데이터 비동기 추출

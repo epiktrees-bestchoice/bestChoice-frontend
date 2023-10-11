@@ -15,7 +15,7 @@ import {
 const RoomList = () => {
     const params = useParams()
     const [fetchRoomList, setFetchRoomList] = useState([])
-    const { userInfo } = useContext(IsLoginContext)
+    const { isLogin, userInfo } = useContext(IsLoginContext)
     const userLikeList = useContext(UserLikeContext)
     const likeReducer = useContext(UserLikeDispatchContext)
 
@@ -141,21 +141,27 @@ const RoomList = () => {
                                     </span>
                                 </span>
                             </Link>
-                            <ButtonLike
-                                className={`m16`}
-                                onClick={() => handleLike(room.accommodationId)}
-                                Liked={
-                                    userLikeList.length == 0
-                                        ? false
-                                        : userLikeList.find(
-                                              (like) =>
-                                                  like?.accommodationId ===
-                                                  room.accommodationId,
-                                          )
-                                        ? true
-                                        : false
-                                }
-                            />
+                            {isLogin ? (
+                                <ButtonLike
+                                    className={`m16`}
+                                    onClick={() =>
+                                        handleLike(room.accommodationId)
+                                    }
+                                    Liked={
+                                        userLikeList.length == 0
+                                            ? false
+                                            : userLikeList.find(
+                                                  (like) =>
+                                                      like?.accommodationId ===
+                                                      room.accommodationId,
+                                              )
+                                            ? true
+                                            : false
+                                    }
+                                />
+                            ) : (
+                                <></>
+                            )}
                         </li>
                     )
                 })}
