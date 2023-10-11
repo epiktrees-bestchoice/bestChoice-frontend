@@ -83,8 +83,6 @@ const RoomList = () => {
                     return (
                         <li key={index} className={style.roomListItem}>
                             <Link href={`/room/detail/${room.accommodationId}`}>
-                                {/* 테스트용 삭제 예정 20230920 by jyj */}
-                                {/* <span>{room.detailOpt}</span> */}
                                 <span className={style.boxImg}>
                                     <img
                                         src={room.imgUrl}

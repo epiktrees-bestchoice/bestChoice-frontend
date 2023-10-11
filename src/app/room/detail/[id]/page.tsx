@@ -6,6 +6,7 @@ import RoomDetailSlide from '@/app/room/(roomComponent)/RoomDetailSlide'
 import ButtonLike from '@/app/components/btns/ButtonLike'
 import { IsLoginContext } from '@/app/provider/IsLoginProvider'
 import { UserLikeContext } from '@/app/provider/UserLikeProvider'
+import { RevervationContext } from '@/app/provider/reservationProvider'
 
 interface RoomDetail {
     accommodationName: string
@@ -19,6 +20,7 @@ interface RoomDetail {
 
 const RoomDetailPage = (props) => {
     const { isLogin, userInfo } = useContext(IsLoginContext)
+    const { reservationList, dispatch } = useContext(RevervationContext)
     const userLikeList = useContext(UserLikeContext)
     const [roomDetail, setRoomDetail] = useState<RoomDetail>({
         accommodationName: '',
@@ -29,10 +31,9 @@ const RoomDetailPage = (props) => {
         soldOut: false,
         accommodationId: 0,
     })
-
     const params = props.params.id
 
-    const onClickAddReserve = async () => {
+    const onClickAddReserve = async (roomDetail) => {
         const requestBody = {
             userId: userInfo.userId,
             accommodationId: roomDetail.accommodationId,
@@ -41,11 +42,11 @@ const RoomDetailPage = (props) => {
         }
         const res = await fetch('/api/reserve/addReserve', {
             method: 'POST',
-
             body: JSON.stringify(requestBody),
         })
         const data = await res.json()
-        console.log(data)
+        dispatch({ type: 'AddReservation', reservation: roomDetail })
+        alert('예약 완료')
     }
     useEffect(() => {
         const fetchData = async () => {
@@ -106,13 +107,15 @@ const RoomDetailPage = (props) => {
                         <span className={style.btn}>
                             {roomDetail?.soldOut ? (
                                 <ButtonDefault type="button" disable={true}>
-                                    예약 마감
+                                    예약 완료
                                 </ButtonDefault>
                             ) : (
                                 <ButtonDefault
                                     type="button"
                                     disable={false}
-                                    onClick={onClickAddReserve}>
+                                    onClick={() => {
+                                        onClickAddReserve(roomDetail)
+                                    }}>
                                     숙소 예약
                                 </ButtonDefault>
                             )}

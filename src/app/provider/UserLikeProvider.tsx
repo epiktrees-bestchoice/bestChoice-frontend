@@ -49,11 +49,8 @@ const UserLikeProvider = (props) => {
     const checkLike = async () => {
         const res = await fetch(`/api/like/checkLike?userId=${userInfo.userId}`)
         const data = await res.json()
-        console.log('like context')
-        console.log(data.data)
         if (data.data) {
             data.data.map((d, index) => {
-                console.log(data)
                 dispatch({
                     type: 'AddLike',
                     like: d,
