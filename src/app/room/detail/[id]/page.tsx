@@ -16,7 +16,7 @@ interface RoomDetail {
     accommodationId: number
 }
 
-const RoomDetailPage = async (props) => {
+const RoomDetailPage = (props) => {
     const { userInfo } = useContext(IsLoginContext)
 
     const [roomDetail, setRoomDetail] = useState<RoomDetail>({
