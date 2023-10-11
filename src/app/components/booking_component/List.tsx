@@ -3,27 +3,40 @@ import React, { useEffect, useState, useContext } from 'react'
 import style from '@/app/my/reservations/reservations.module.scss'
 import { IsLoginContext } from '@/app/provider/IsLoginProvider'
 import Link from 'next/link'
+import { RevervationContext } from '@/app/provider/reservationProvider'
 
 export default function List() {
     const { userInfo } = useContext(IsLoginContext)
+    const { reservationList, dispatch } = useContext(RevervationContext)
     const [fetchReserveList, setFetchReserveList] = useState([])
     const userId = userInfo.userId
     useEffect(() => {
-        onCheckReserve()
-    }, [])
+        reservationList.map((reservation) => {
+            fetctReservationDetail(reservation)
+        })
+    }, [reservationList])
 
-    const onCheckReserve = async () => {
-        const res = await fetch(`/api/reserve/checkReserve/${userId}`)
+    // fetch 나의 예약 리스트
+    const fetctReservationDetail = async (reservation) => {
+        const res = await fetch(
+            `/api/room/detail/${reservation.accommodationId}`,
+        )
         const data = await res.json()
-        setFetchReserveList(data.data)
-        console.log(data)
+        const totalList = Object.assign(reservation, data.data)
+        setFetchReserveList((prev) => [...prev, totalList])
     }
+
+    // delete 나의 예약 리스트
     const onClickDeleteReserve = async (reserveId) => {
         const res = await fetch(`/api/reserve/deleteReserve/${reserveId}`, {
             method: 'DELETE',
         })
         const data = await res.json()
-        console.log(data)
+        dispatch({
+            type: 'RemoveReservation',
+            reserveId: reserveId,
+        })
+        setFetchReserveList([])
     }
 
     function formatDate(startDate, endDate) {
@@ -67,11 +80,8 @@ export default function List() {
                             <span className={style.itemImg}>
                                 <img
                                     className={style.itemImgBook}
-                                    src={
-                                        'https://image.goodchoice.kr/resize_490x348/affiliate/2019/08/20/5d5b53a26dbdb.jpg'
-                                    }
+                                    src={`${room.imgUrl}`}
                                     alt=""
-                                    //api 이미지 프로퍼티필요
                                 />
                             </span>
                             <span className={style.itemName}>
@@ -79,8 +89,7 @@ export default function List() {
                                     예약확정
                                 </i>
                                 <span className={style.itemName}>
-                                    {room.accommodationId}
-                                    {/*   api 숙소이름 프로퍼티필요   */}
+                                    {room.accommodationName}
                                 </span>
                                 <span className={style.roomDate}>
                                     {formatDate(room.reserveDate, room.endDate)}

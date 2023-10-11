@@ -52,8 +52,10 @@
             height: 184px;
             overflow: hidden;
             position: relative;
-            display: inline-block;
+            display: inline-flex;
             width: 100%;
+            align-items: center;
+            justify-content: center;
             &Book {
                 height: auto;
                 width: 100%;
