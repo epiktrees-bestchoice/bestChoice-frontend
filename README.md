@@ -2,11 +2,13 @@
 
 ### 🎯프로젝트 소개
 
-추후 작성예정
+커머스와 유사한 형태의 서비스인 여기어때를 클론한 사이드 프로젝트로
+텍스트 검색, 조건 검색, 예약 기능에 중점을 두고 작업하였습니다.
 
-### 🎯프로젝트 기간
 
-추후 작성예정
+### 🎯프로젝트 기간  
+
+2023년 8월 28일 ~ 2023년 10월 9일
 
 ### 🎯작업자
 
@@ -15,17 +17,16 @@
 
 ### 🎯기술 스택
 
--   CI / CD :
--   Frontend : HTML TailwindCSS JavaScript TypeScript React Next Sass
--   Backend : 뭐가 있는지... 흑... 몰라요... 작성해주세요 ㅎㅎㅎㅎ
+-   CI / CD : S3, CloudFront, EC2, Github Action, Vercel
+-   Frontend : Next.js, JavaScript/TypeScript, React, Sass
+-   Backend : Kotlin, JAVA, Spring, JPA
 -   IDE : VSCODE
 
 ### 🎯협업 도구
 
--   Notion
 -   Figma
--   스웨거라고 했나...
--   또 뭐 있었는데...
+-   Swagger
+-   Postman
 
 ### 🎯구현 내용
 
