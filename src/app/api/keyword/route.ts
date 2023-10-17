@@ -7,7 +7,7 @@ export async function GET(request: NextRequest) {
     const categoryId = searchParams.get('categoryId')
     try {
         const res = await fetch(
-            `https://api.epicktrees.net/api/v1/keywords/${categoryId}`,
+            process.env.API_URL + `/api/v1/keywords/${categoryId}`,
             {
                 method: 'GET',
             },

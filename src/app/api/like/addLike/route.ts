@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
     const accommodationId = searchParams.get('accommodationId')
     console.log(userId + ' ' + accommodationId + ' 추가')
     try {
-        const res = await fetch(`https://api.epicktrees.net/api/v1/my/like`, {
+        const res = await fetch(process.env.API_URL + `/api/v1/my/like`, {
             method: 'POST',
             headers: {
                 cookie: `JSESSIONID=${token.value}`,

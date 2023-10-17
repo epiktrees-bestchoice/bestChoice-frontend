@@ -6,7 +6,7 @@ export async function POST(request: NextRequest) {
     const token = cookieStore.get('JSESSIONID')
     console.log('logout cookie : ', token.value)
     try {
-        const res = await fetch('https://api.epicktrees.net/api/v1/my/logout', {
+        const res = await fetch(process.env.API_URL + '/api/v1/my/logout', {
             method: 'POST',
             headers: {
                 cookie: `JSESSIONID=${token.value}`,

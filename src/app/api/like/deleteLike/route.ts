@@ -9,7 +9,7 @@ export async function DELETE(request: NextRequest) {
     console.log(userLikeId + '를 제거')
     try {
         const res = await fetch(
-            `https://api.epicktrees.net/api/v1/my/like/${userLikeId}`,
+            process.env.API_URL + `/api/v1/my/like/${userLikeId}`,
             {
                 method: 'DELETE',
                 headers: {

@@ -6,7 +6,7 @@ export async function GET(request: NextRequest) {
     console.log(page, query)
     try {
         const res = await fetch(
-            `https://api.epicktrees.net/api/v1/search/result/${query}?page=${page}`,
+            process.env.API_URL + `/api/v1/search/result/${query}?page=${page}`,
         )
         const data = await res.json()
         console.log(data)
