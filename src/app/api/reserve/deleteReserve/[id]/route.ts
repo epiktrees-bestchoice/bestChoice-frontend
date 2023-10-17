@@ -6,7 +6,7 @@ export async function DELETE(
 ) {
     try {
         const res = await fetch(
-            `https://api.epicktrees.net/api/v1/reserve/${params.id}`,
+            process.env.API_URL + `/api/v1/reserve/${params.id}`,
             {
                 method: 'DELETE',
             },

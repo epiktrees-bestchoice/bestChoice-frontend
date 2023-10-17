@@ -23,21 +23,21 @@ function SnsButtonBox() {
     ])
     return (
         <div className={style.snsButtonBox}>
-            <Link href="https://api.epicktrees.net/oauth2/authorization/kakao">
+            <Link href={process.env.API_URL + '/oauth2/authorization/kakao'}>
                 <Button
                     title={LoginSNS[0]}
                     bg_color="rgb(252,229,30)"
                     color="black"></Button>
             </Link>
 
-            <Link href="https://api.epicktrees.net/oauth2/authorization/google">
+            <Link href={process.env.API_URL + '/oauth2/authorization/google'}>
                 <Button
                     title={LoginSNS[1]}
                     bg_color="#E8E7E7"
                     color="black"></Button>
             </Link>
 
-            <Link href="http://api.epicktrees.net/oauth2/authorization/facebook">
+            <Link href={process.env.API_URL + '/oauth2/authorization/facebook'}>
                 <Button
                     title={LoginSNS[2]}
                     bg_color="blue"

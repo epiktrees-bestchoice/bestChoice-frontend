@@ -5,7 +5,8 @@ export async function GET(
 ) {
     try {
         const res = await fetch(
-            `https://api.epicktrees.net/api/product/accommodation/dumy/${params.id}`,
+            process.env.API_URL +
+                `/api/product/accommodation/dumy/${params.id}`,
             { cache: 'no-store' },
         )
         const data = await res.json()

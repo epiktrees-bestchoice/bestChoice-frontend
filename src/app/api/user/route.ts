@@ -5,7 +5,7 @@ export async function GET(request: NextRequest) {
     const cookieStore = cookies()
     const token = cookieStore.get('JSESSIONID')
     try {
-        const res = await fetch('https://api.epicktrees.net/api/v1/my/info', {
+        const res = await fetch(process.env.API_URL + '/api/v1/my/info', {
             method: 'GET',
             headers: {
                 cookie: `JSESSIONID=${token.value}`,

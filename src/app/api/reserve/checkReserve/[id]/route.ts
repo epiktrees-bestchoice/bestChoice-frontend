@@ -9,7 +9,8 @@ export async function GET(
     const token = cookieStore.get('JSESSIONID')
     try {
         const res = await fetch(
-            `https://api.epicktrees.net/api/v1/reserve/user/accommodations?userId=${params.id}`,
+            process.env.API_URL +
+                `/api/v1/reserve/user/accommodations?userId=${params.id}`,
             {
                 method: 'GET',
                 headers: {

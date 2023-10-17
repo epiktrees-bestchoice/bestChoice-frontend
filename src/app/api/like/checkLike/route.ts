@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
     const userId = searchParams.get('userId')
     try {
         const res = await fetch(
-            `https://api.epicktrees.net/api/v1/my/like/${userId}`,
+            process.env.API_URL + `/api/v1/my/like/${userId}`,
             {
                 method: 'GET',
                 headers: {
