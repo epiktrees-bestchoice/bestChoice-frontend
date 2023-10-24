@@ -7,6 +7,7 @@ import ButtonLike from '@/app/components/btns/ButtonLike'
 import { IsLoginContext } from '@/app/provider/IsLoginProvider'
 import { UserLikeContext } from '@/app/provider/UserLikeProvider'
 import { RevervationContext } from '@/app/provider/reservationProvider'
+import RoomDetailLoading from '@/app/room/(roomComponent)/RoomDetailLoading'
 
 interface RoomDetail {
     accommodationName: string
@@ -22,6 +23,7 @@ const RoomDetailPage = (props) => {
     const { isLogin, userInfo } = useContext(IsLoginContext)
     const { reservationList, dispatch } = useContext(RevervationContext)
     const userLikeList = useContext(UserLikeContext)
+    const [isLoading, setIsLoading] = useState(true)
     const [roomDetail, setRoomDetail] = useState<RoomDetail>({
         accommodationName: '',
         region: undefined,
@@ -55,92 +57,101 @@ const RoomDetailPage = (props) => {
             })
             const data = await res.json()
             setRoomDetail(data.data)
+            setIsLoading(false)
         }
         fetchData()
     }, [])
 
     return (
-        <div className="content">
-            <div className={`inner ${style.room}`}>
-                <div className={style.roomDetail}>
-                    <div className={style.boxImg}>
-                        <RoomDetailSlide roomDetail={roomDetail} />
-                    </div>
-                    <div className={style.boxTxt}>
-                        {roomDetail?.region && (
-                            <span className={style.infoAddr}>
-                                {roomDetail.region}
-                            </span>
-                        )}
-                        <strong className={style.tit}>
-                            {roomDetail?.accommodationName}
-                        </strong>
-                        <span className={style.info}>
-                            {roomDetail?.price && (
-                                <span className={style.infoScore}>
-                                    {/* <em>{roomDetail.score}&nbsp;</em> 
+        <>
+            {isLoading ? (
+                <RoomDetailLoading />
+            ) : (
+                <div className="content">
+                    <div className={`inner ${style.room}`}>
+                        <div className={style.roomDetail}>
+                            <div className={style.boxImg}>
+                                <RoomDetailSlide roomDetail={roomDetail} />
+                            </div>
+                            <div className={style.boxTxt}>
+                                {roomDetail?.region && (
+                                    <span className={style.infoAddr}>
+                                        {roomDetail.region}
+                                    </span>
+                                )}
+                                <strong className={style.tit}>
+                                    {roomDetail?.accommodationName}
+                                </strong>
+                                <span className={style.info}>
+                                    {roomDetail?.price && (
+                                        <span className={style.infoScore}>
+                                            {/* <em>{roomDetail.score}&nbsp;</em> 
                                 {roomDetail.scoreTxt}
                                 */}
-                                    <em>할인 특가</em>
-                                    {roomDetail.price}원
+                                            <em>할인 특가</em>
+                                            {roomDetail.price}원
+                                        </span>
+                                    )}
+                                    {roomDetail?.infoOpt && (
+                                        <span className={style.infoOpt}>
+                                            {roomDetail.infoOpt}
+                                        </span>
+                                    )}
+                                    {roomDetail?.introduce && (
+                                        <span className={style.infoEvt}>
+                                            {roomDetail.introduce}
+                                        </span>
+                                    )}
+                                    {roomDetail?.introduce && (
+                                        <span className={style.infoCeo}>
+                                            <strong>사장님 한마디</strong>
+                                            <span className={style.clamp}>
+                                                {roomDetail.introduce}
+                                            </span>
+                                        </span>
+                                    )}
                                 </span>
-                            )}
-                            {roomDetail?.infoOpt && (
-                                <span className={style.infoOpt}>
-                                    {roomDetail.infoOpt}
+                                <span className={style.btn}>
+                                    {roomDetail?.soldOut ? (
+                                        <ButtonDefault
+                                            type="button"
+                                            disable={true}>
+                                            예약 완료
+                                        </ButtonDefault>
+                                    ) : (
+                                        <ButtonDefault
+                                            type="button"
+                                            disable={false}
+                                            onClick={() => {
+                                                onClickAddReserve(roomDetail)
+                                            }}>
+                                            숙소 예약
+                                        </ButtonDefault>
+                                    )}
                                 </span>
-                            )}
-                            {roomDetail?.introduce && (
-                                <span className={style.infoEvt}>
-                                    {roomDetail.introduce}
-                                </span>
-                            )}
-                            {roomDetail?.introduce && (
-                                <span className={style.infoCeo}>
-                                    <strong>사장님 한마디</strong>
-                                    <span className={style.clamp}>
-                                        {roomDetail.introduce}
-                                    </span>
-                                </span>
-                            )}
-                        </span>
-                        <span className={style.btn}>
-                            {roomDetail?.soldOut ? (
-                                <ButtonDefault type="button" disable={true}>
-                                    예약 완료
-                                </ButtonDefault>
+                            </div>
+                            {isLogin ? (
+                                <ButtonLike
+                                    Liked={
+                                        userLikeList.length == 0
+                                            ? false
+                                            : userLikeList.find(
+                                                  (like) =>
+                                                      like?.accommodationId ===
+                                                      roomDetail.accommodationId,
+                                              )
+                                            ? true
+                                            : false
+                                    }
+                                />
                             ) : (
-                                <ButtonDefault
-                                    type="button"
-                                    disable={false}
-                                    onClick={() => {
-                                        onClickAddReserve(roomDetail)
-                                    }}>
-                                    숙소 예약
-                                </ButtonDefault>
+                                <></>
                             )}
-                        </span>
+                        </div>
                     </div>
-                    {isLogin ? (
-                        <ButtonLike
-                            Liked={
-                                userLikeList.length == 0
-                                    ? false
-                                    : userLikeList.find(
-                                          (like) =>
-                                              like?.accommodationId ===
-                                              roomDetail.accommodationId,
-                                      )
-                                    ? true
-                                    : false
-                            }
-                        />
-                    ) : (
-                        <></>
-                    )}
                 </div>
-            </div>
-        </div>
+            )}
+        </>
     )
 }
 

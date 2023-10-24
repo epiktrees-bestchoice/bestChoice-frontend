@@ -10,6 +10,13 @@ $green: #168d85;
 $yellow: rgb(255, 167, 38);
 $pink: rgb(242, 7, 76);
 $red-light: rgba(248, 113, 111, 1);
+$skeleton: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.2) 20%,
+    rgba(255, 255, 255, 0.5) 60%,
+    rgba(255, 255, 255, 0)
+);
 
 $mobile-width: 600px;
 $tablet-width: 1024px;
