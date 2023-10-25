@@ -23,6 +23,7 @@
 
 @mixin skeleton($bg) {
     position: relative;
+    border-radius: 4px;
     &::after {
         position: absolute;
         top: 0;
