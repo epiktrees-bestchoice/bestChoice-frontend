@@ -26,15 +26,15 @@ export default function Room() {
 
     const { fetchRoomList, setFetchRoomList } = useContext(RoomListContext)
 
-    const fetchData = async () => {
-        const res = await fetch(`/api/room/${params.id}`, { method: 'GET' })
-        const data = await res.json()
-        setFetchRoomList(data.data)
-    }
+    // const fetchData = async () => {
+    //     const res = await fetch(`/api/room/${params.id}`, { method: 'GET' })
+    //     const data = await res.json()
+    //     setFetchRoomList(data.data)
+    // }
 
-    useEffect(() => {
-        fetchData()
-    }, [])
+    // useEffect(() => {
+    //     fetchData()
+    // }, [])
 
     // useEffect(() => {
     //     const valuesArray = Array.from(searchParams.values())

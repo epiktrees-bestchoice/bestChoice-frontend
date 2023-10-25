@@ -243,7 +243,12 @@ iframe {
 .react-datepicker-popper[data-placement^='bottom'] {
     transform: translate(-1px, 40px) !important;
 }
-
+.opacity0 {
+    opacity: 0;
+}
+.opacity100 {
+    opacity: 100;
+}
 .loading {
     height: 100vh;
     @include flex(center, center);

@@ -77,12 +77,6 @@ export default function RoomCata(props: RoomCataProps) {
                     </ButtonDefault>
                     <ButtonDefault>적용</ButtonDefault>
                 </div>
-                <KeywordsComponent
-                    mtypeList={mtypeList}
-                    keywordList={keywordList}
-                    handleAddQuery={handleAddQuery}
-                />
-
                 <div className={`${style.roomFilter} ${style.cntPeople}`}>
                     <h3>인원</h3>
                     <Personnel />
@@ -94,6 +88,11 @@ export default function RoomCata(props: RoomCataProps) {
                     <h3>베드타입</h3>
                     <BedType />
                 </div>
+                <KeywordsComponent
+                    mtypeList={mtypeList}
+                    keywordList={keywordList}
+                    handleAddQuery={handleAddQuery}
+                />
             </main>
         </>
     )
