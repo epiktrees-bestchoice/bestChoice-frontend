@@ -346,7 +346,7 @@
     .infoEvt,
     .infoCeo,
     .btn {
-        background: #e5e5e5;
+        background: #e5e5e5 !important;
         @include skeleton($skeleton-bg);
     }
     .slideListItem {
