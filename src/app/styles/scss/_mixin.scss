@@ -3,6 +3,7 @@
     align-items: $alingn-item;
     justify-content: $justify-content;
 }
+
 @mixin flexColumn($alingn-item, $justify-content) {
     display: flex;
     flex-direction: column;
@@ -13,8 +14,29 @@
 @mixin animate($animation, $duration, $method, $times) {
     animation: $animation $duration $method $times;
 }
+
 @mixin keyframes($name) {
     @keyframes #{$name} {
         @content;
+    }
+}
+
+@mixin skeleton($bg) {
+    position: relative;
+    &::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transform: translateX(-100%);
+        background-image: $bg;
+        content: '';
+        @include keyframes(skeleton) {
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        @include animate(skeleton, 1.8s, ease-in-out, infinite);
     }
 }

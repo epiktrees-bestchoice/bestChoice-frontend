@@ -11,10 +11,12 @@ import {
     UserLikeContext,
     UserLikeDispatchContext,
 } from '@/app/provider/UserLikeProvider'
+import RoomListLoading from '@/app/room/(roomComponent)/RoomListLoading'
 
 const RoomList = () => {
     const params = useParams()
     const [fetchRoomList, setFetchRoomList] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
     const { isLogin, userInfo } = useContext(IsLoginContext)
     const userLikeList = useContext(UserLikeContext)
     const likeReducer = useContext(UserLikeDispatchContext)
@@ -25,6 +27,7 @@ const RoomList = () => {
         })
         const data = await res.json()
         setFetchRoomList((prev) => [...prev, ...data.data])
+        setIsLoading(false)
     }
 
     // 수정 필요 20230926 BY joj
@@ -38,6 +41,7 @@ const RoomList = () => {
     }
 
     useEffect(() => {
+        fetchData()
         const observer = new IntersectionObserver(callback, {
             threshold: 1,
         })
@@ -78,11 +82,15 @@ const RoomList = () => {
 
     return (
         <ul className={style.roomList}>
-            {fetchRoomList &&
+            {isLoading ? (
+                <RoomListLoading />
+            ) : (
                 fetchRoomList.map((room, index) => {
                     return (
-                        <li key={index} className={style.roomListItem}>
-                            <Link href={`/room/detail/${room.accommodationId}`}>
+                        <li key={index} className={`${style.roomListItem}`}>
+                            <Link
+                                href={`/room/detail/${room.accommodationId}`}
+                                className={style.link}>
                                 <span className={style.boxImg}>
                                     <img
                                         src={room.imgUrl}
@@ -162,7 +170,8 @@ const RoomList = () => {
                             )}
                         </li>
                     )
-                })}
+                })
+            )}
             <li ref={observerRef}></li>
         </ul>
     )
