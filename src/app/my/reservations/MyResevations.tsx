@@ -1,5 +1,5 @@
 import React from 'react'
-import List from '@/app/components/booking_component/List'
+import List from '@/app/components/booking/List'
 import style from '@/app/my/reservations/reservations.module.scss'
 
 function MyReservations() {

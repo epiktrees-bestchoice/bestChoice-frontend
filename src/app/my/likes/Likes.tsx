@@ -1,5 +1,5 @@
 import React from 'react'
-import LikeList from '@/app/components/booking_component/LikeList'
+import LikeList from '@/app/components/booking/LikeList'
 import style from '@/app/my/reservations/reservations.module.scss'
 
 function Likes() {

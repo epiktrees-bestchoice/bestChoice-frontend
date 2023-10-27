@@ -1,4 +1,4 @@
-import LikeList from '@/app/components/booking_component/LikeList'
+import LikeList from '@/app/components/booking/LikeList'
 import { IsLoginContext } from '@/app/provider/IsLoginProvider'
 import { useRouter } from 'next/navigation'
 import React, {
