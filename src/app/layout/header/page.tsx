@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import { IsLoginContext } from '@/app/provider/IsLoginProvider'
 import { useRouter } from 'next/navigation'
 import SearchIcon from '@mui/icons-material/Search'
-import SrchBar from '@/app/components/SrchBar'
+import SearchBar from '@/app/components/SearchBar'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import style from '@/app/layout/header/header.module.scss'
 
@@ -34,9 +34,9 @@ const Header = () => {
     }, [])
 
     // 클릭시 검색바 show & hide
-    const [srchBarOpen, setsrchBarOpen] = useState(false)
-    const handleSrchBar = () => {
-        setsrchBarOpen(!srchBarOpen)
+    const [searchBarOpen, setsearchBarOpen] = useState(false)
+    const handleSearchBar = () => {
+        setsearchBarOpen(!searchBarOpen)
     }
     if (pathname === '/user') return null
 
@@ -61,17 +61,17 @@ const Header = () => {
                 <button
                     type="button"
                     className={
-                        srchBarOpen
+                        searchBarOpen
                             ? `${style.btnSrch} ${style.opened}`
                             : style.btnSrch
                     }
-                    onClick={handleSrchBar}>
+                    onClick={handleSearchBar}>
                     <SearchIcon className={style.btnSrchIcon} />
                     <span className="blind">검색</span>
                 </button>
                 <ul
                     className={
-                        srchBarOpen ? `${style.gnbCata} hide` : style.gnbCata
+                        searchBarOpen ? `${style.gnbCata} hide` : style.gnbCata
                     }>
                     <li>
                         <Link
@@ -149,11 +149,11 @@ const Header = () => {
                         </li>
                     )}
                 </ul>
-                {srchBarOpen && (
-                    <SrchBar
-                        srchBarOpen={srchBarOpen}
+                {searchBarOpen && (
+                    <SearchBar
+                        searchBarOpen={searchBarOpen}
                         onInputSearch={onInputSearch}
-                        handleSrchBar={handleSrchBar}
+                        handleSearchBar={handleSearchBar}
                     />
                 )}
             </div>

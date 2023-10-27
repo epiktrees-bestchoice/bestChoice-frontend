@@ -3,7 +3,7 @@
 import React, { useContext } from 'react'
 import style from '@/app/my/mypage/mypage.module.scss'
 
-import UserInfoForm from '@/app/components/mypage_component/UserInfoForm'
+import UserInfoForm from '@/app/components/mypage/UserInfoForm'
 
 import { IsLoginContext } from '@/app/provider/IsLoginProvider'
 
