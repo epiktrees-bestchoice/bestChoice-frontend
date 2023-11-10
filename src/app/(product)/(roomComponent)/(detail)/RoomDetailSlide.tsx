@@ -43,19 +43,34 @@ const RoomDetailSlide = ({ roomDetail }) => {
                 <div className={style.slideWrap}>
                     <ul className={style.slideList} ref={slideRef}>
                         <li className={`${style.slideListItem}`}>
-                            <img src={roomDetail?.imgUrl} alt="" />
+                            <img
+                                src={`https://d3dp03fmze904.cloudfront.net/accommodations/${roomDetail.type}/${roomDetail.type}1.png`}
+                                alt={`${roomDetail.accommodationName} 숙소 상세 사진`}
+                            />
                         </li>
                         <li className={style.slideListItem}>
-                            <img src="../../img/no-img.jpg" alt="" />
+                            <img
+                                src={`https://d3dp03fmze904.cloudfront.net/accommodations/${roomDetail.type}/${roomDetail.type}2.png`}
+                                alt={`${roomDetail.accommodationName} 숙소 상세 사진`}
+                            />
                         </li>
                         <li className={style.slideListItem}>
-                            <img src="../../img/no-img.jpg" alt="" />
+                            <img
+                                src={`https://d3dp03fmze904.cloudfront.net/accommodations/${roomDetail.type}/${roomDetail.type}3.png`}
+                                alt={`${roomDetail.accommodationName} 숙소 상세 사진`}
+                            />
                         </li>
                         <li className={style.slideListItem}>
-                            <img src="../../img/no-img.jpg" alt="" />
+                            <img
+                                src={`https://d3dp03fmze904.cloudfront.net/accommodations/${roomDetail.type}/${roomDetail.type}4.png`}
+                                alt={`${roomDetail.accommodationName} 숙소 상세 사진`}
+                            />
                         </li>
                         <li className={style.slideListItem}>
-                            <img src="../../img/no-img.jpg" alt="" />
+                            <img
+                                src={`https://d3dp03fmze904.cloudfront.net/accommodations/${roomDetail.type}/${roomDetail.type}5.png`}
+                                alt=""
+                            />
                         </li>
                     </ul>
                 </div>
