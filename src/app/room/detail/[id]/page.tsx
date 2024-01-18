@@ -41,7 +41,6 @@ const RoomDetailPage = async (props) => {
         }
         const res = await fetch('/api/reserve/addReserve', {
             method: 'POST',
-
             body: JSON.stringify(requestBody),
         })
         const data = await res.json()
